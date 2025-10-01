@@ -9,6 +9,17 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+
+### Jiong Rui
+
+<img src="images/jiru-code.png" width="200px">
+
+[[github](https://github.com/jiru-code)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: Testing and Code Quality
+
 ### Tan Guan Lin
 
 <img src="images/tan-guan-lin.png" width="200px">
