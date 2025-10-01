@@ -10,6 +10,17 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 ## Project team
 
 
+### Ngo Hoang Nhat Minh
+
+<img src="images/ngohoangnhatminh.png" width="200px">
+
+[[github](http://github.com/ngohoangnhatminh)]
+[[portfolio](team/johndoe.md)]
+
+- Role: Documentation + In charge of Storage
+- Responsibilities: Responsible for the quality of various project documents.
+
+
 ### Jiong Rui
 
 <img src="images/jiru-code.png" width="200px">
@@ -50,4 +61,4 @@ Roles:
 [[portfolio](team/johndoe.md)]
 
 * Role: Team lead, Deliverables & deadlines
-* In charge: Model
+
