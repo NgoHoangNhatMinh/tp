@@ -260,15 +260,9 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ### Product scope
 
-**Target user profile**:
+**Target user profile**: Hospital Admin Manager at General Medicine Department
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
-
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: provide fast access to patient information and details using CLI
 
 
 ### User stories
@@ -326,7 +320,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Patient**: A person that use healthcare services of the hospital
+* **Hospital Admin Manager**: A person that has full access to patient's database
 
 --------------------------------------------------------------------------------------------------------------------
 
