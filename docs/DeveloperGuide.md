@@ -271,12 +271,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | user                                   | view all patient's appointments         | see a complete list of appointments for a given patient.                 |
+| `* * *`  | user                                       | add a patient's appointment               |                                                                        |
+| `* * *`  | user                                       | delete a patient's appointment                | remove entries that I no longer need                                   |
+| `* * *`  | user                                       | view patient's payment information          |               |
+| `*`    | user                                       | generate invoice   | can give patients the receipt of their payment               |
+| `*`      | user | export patient's data to Excel           | can have a spreadsheet version of the data                                                 |
 
 *{More to be added}*
 
