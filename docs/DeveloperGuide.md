@@ -275,8 +275,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | add a patient's appointment               |                                                                        |
 | `* * *`  | user                                       | delete a patient's appointment                | remove entries that I no longer need                                   |
 | `* * *`  | user                                       | view patient's payment information          |               |
-| `*`    | user                                       | generate invoice   | can give patients the receipt of their payment               |
-| `*`      | user | export patient's data to Excel           | can have a spreadsheet version of the data                                                 |
+| `* *`    | user                                       | generate invoice   | can give patients the receipt of their payment               |
+| `* *`      | user | export patient's data to Excel           | can have a spreadsheet version of the data                                                 |
 
 *{More to be added}*
 
