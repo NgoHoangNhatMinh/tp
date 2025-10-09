@@ -1,11 +1,11 @@
 package seedu.address.model.person;
 
-import seedu.address.model.tag.Tag;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 import java.util.Set;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.model.tag.Tag;
 
 /*
 Command format: patient add /patient <PATIENT_ID> /name "<FULL_NAME>" /dob <BIRTHDATE> /gender <GENDER>
@@ -13,6 +13,9 @@ Command format: patient add /patient <PATIENT_ID> /name "<FULL_NAME>" /dob <BIRT
  /language <LANG>
 */
 
+/**
+ * Represents a Patient in the hospital system.
+ */
 public class Patient extends Person {
     private final String patientId;
     private final Birthday birthday;
@@ -21,7 +24,12 @@ public class Patient extends Person {
     private final String id;
     private final String lang;
 
-    public Patient (String patientId, Name name, Birthday birthday, String gender, Phone phone, Email email,
+    /**
+     * Constructs a {@code Patient}.
+     *
+     * @param patientId The patient's unique ID.
+     */
+    public Patient(String patientId, Name name, Birthday birthday, String gender, Phone phone, Email email,
                     Address address, String emergency, String id, String lang, Set<Tag> tags) {
         super(name, phone, email, address, tags);
 
@@ -89,7 +97,8 @@ public class Patient extends Person {
 
     @Override
     public String toString() {
-        return String.format("Patient[" + super.getName() + birthday + "gender=%s, patientId=%s, id=%s, " + super.getPhone() + super.getEmail() + super.getAddress() + "emergency=%s, language=%s]",
+        return String.format("Patient[" + super.getName() + birthday + "gender=%s, patientId=%s, id=%s, "
+                        + super.getPhone() + super.getEmail() + super.getAddress() + "emergency=%s, language=%s]",
                 gender, patientId, id, emergency, lang);
     }
 }
