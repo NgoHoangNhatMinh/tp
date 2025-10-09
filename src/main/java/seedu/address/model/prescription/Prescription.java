@@ -20,7 +20,7 @@ public class Prescription {
 
 
     /**
-     * Constructs an {@code Prescription}.
+     * Constructs a {@code Prescription}.
      *
      * @param patientId The patient's unique ID.
      * @param medicationName The medication name
