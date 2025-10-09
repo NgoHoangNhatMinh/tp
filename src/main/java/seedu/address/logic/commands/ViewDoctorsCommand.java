@@ -22,7 +22,7 @@ public class ViewDoctorsCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         return new CommandResult(showListOfDoctors());
     }
-    
+
     private String showListOfDoctors() {
         String doctors = "";
         for (int i = 1; i <= DOCTORS.length; i++) {
