@@ -86,7 +86,7 @@ public class Patient extends Person {
                 && id.equals(otherPatient.id)
                 && gender.equals(otherPatient.gender)
                 && birthday.equals(otherPatient.birthday);
-        // Not checking for lang or emergency, since they may change over time.
+        // Not checking for language or emergency, since they may change over time.
     }
 
 
