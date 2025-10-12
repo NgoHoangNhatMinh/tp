@@ -38,8 +38,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
-    //// list overwrite operations
-
+    /**
+     * Replaces the current list of persons with the provided list.
+     *
+     * @param persons the new list of {@link Person} objects to set
+     */
     public void setPersons(List<Person> persons) {
         this.persons.setPersons(persons);
     }
@@ -52,13 +55,23 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.appointments.setAppointments(appointments);
     }
 
+    /**
+     * Replaces the current address book data with the data from the given {@code ReadOnlyAddressBook}.
+     *
+     * @param newData the new {@link ReadOnlyAddressBook} whose data will replace the current data
+     */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
         setPersons(newData.getPersonList());
         setAppointments(newData.getAppointmentList());
     }
 
-    //// person-level operations
+    /**
+     * Checks if the specified person exists in the current list of persons.
+     *
+     * @param person the {@link Person} object to check for
+     * @return {@code true} if the list contains the specified person, {@code false} otherwise
+     */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
@@ -77,7 +90,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
-    //// appointment-level operations
+    /**
+     * Checks if the specified appointment exists in the current list of appointments.
+     *
+     * @param appointment the {@link Appointment} object to check for
+     * @return {@code true} if the list contains the specified appointment, {@code false} otherwise
+     */
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
         return appointments.contains(appointment);
