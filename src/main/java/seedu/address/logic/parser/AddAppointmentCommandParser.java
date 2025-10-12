@@ -23,18 +23,12 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
     @Override
     public AddAppointmentCommand parse(String args) throws ParseException {
         String raw = args.trim();
-        if (raw.startsWith("add")) {  // tolerate if upstream forgot to strip
+        if (raw.startsWith("add")) {
             raw = raw.substring(3).trim();
         }
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
                 " " + raw, PREFIX_APPT_PATIENT, PREFIX_APPT_DOCTOR, PREFIX_APPT_TIME, PREFIX_APPT_NOTE);
-
-        System.out.println("DEBUG -- PREAMBLE=[" + argMultimap.getPreamble() + "]");
-        System.out.println("DEBUG -- p/ present=" + argMultimap.getValue(PREFIX_APPT_PATIENT).isPresent());
-        System.out.println("DEBUG -- d/ present=" + argMultimap.getValue(PREFIX_APPT_DOCTOR).isPresent());
-        System.out.println("DEBUG -- t/ present=" + argMultimap.getValue(PREFIX_APPT_TIME).isPresent());
-        System.out.println("DEBUG -- note/ present=" + argMultimap.getValue(PREFIX_APPT_NOTE).isPresent());
 
         if (!arePrefixesPresent(argMultimap, PREFIX_APPT_PATIENT, PREFIX_APPT_DOCTOR, PREFIX_APPT_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -51,9 +45,8 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
 
         LocalDateTime dateTime;
         try {
-            // accept "yyyy-MM-dd HH:mm" or just "yyyy-MM-dd"
-            DateTimeFormatter FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd[' 'HH:mm]");
-            dateTime = LocalDateTime.parse(timeRaw, FMT);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd[' 'HH:mm]");
+            dateTime = LocalDateTime.parse(timeRaw, formatter);
         } catch (DateTimeParseException e) {
             throw new ParseException("Invalid datetime format. Use yyyy-MM-dd HH:mm");
         }
@@ -62,7 +55,6 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         return new AddAppointmentCommand(patientName, appt);
     }
 
-    /** AB3-style helper — note the use of .isPresent() */
     private static boolean arePrefixesPresent(ArgumentMultimap mm, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> mm.getValue(prefix).isPresent());
     }
