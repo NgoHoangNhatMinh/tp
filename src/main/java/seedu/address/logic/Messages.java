@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.person.Person;
+import seedu.address.model.prescription.Prescription;
 
 /**
  * Container for user visible messages.
@@ -48,4 +49,19 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code person} for display to the user.
+     */
+    public static String format(Prescription prescription) {
+        return "PatientId: " +
+                prescription.getPatientId() +
+                "; Medication: " +
+                prescription.getMedicationName() +
+                "; Dosage: " +
+                prescription.getDosage() +
+                "; Frequency: " +
+                prescription.getFrequency() +
+                "; Duration: " +
+                prescription.getDosage();
+    }
 }

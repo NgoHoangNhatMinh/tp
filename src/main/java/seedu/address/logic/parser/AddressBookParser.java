@@ -17,7 +17,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.PrescribeCommand;
+import seedu.address.logic.commands.AddPrescriptionCommand;
 import seedu.address.logic.commands.ViewDoctorsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -82,8 +82,8 @@ public class AddressBookParser {
         case ViewDoctorsCommand.COMMAND_WORD:
             return new ViewDoctorsCommand();
 
-        case PrescribeCommand.COMMAND_WORD:
-            return new PrescribeCommand();
+        case AddPrescriptionCommand.COMMAND_WORD:
+            return new AddPrescriptionCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
