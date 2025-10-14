@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.prescription.Prescription;
+import seedu.address.testutil.PrescriptionBuilder;
 
 public class JsonAdaptedPrescriptionTest {
 
@@ -109,6 +110,20 @@ public class JsonAdaptedPrescriptionTest {
         assertEquals(VALID_START_DATE, modelPrescription.getStartDate());
         assertEquals(VALID_DURATION, modelPrescription.getDuration());
         assertEquals(null, modelPrescription.getNote());
+    }
+
+    @Test
+    public void constructor_fromPrescription_preservesData() {
+        Prescription prescription = new PrescriptionBuilder().build();
+        JsonAdaptedPrescription adaptedPrescription = new JsonAdaptedPrescription(prescription);
+
+        assertEquals(prescription.getPatientId(), adaptedPrescription.toModelType().getPatientId());
+        assertEquals(prescription.getMedicationName(), adaptedPrescription.toModelType().getMedicationName());
+        assertEquals(prescription.getDosage(), adaptedPrescription.toModelType().getDosage());
+        assertEquals(prescription.getFrequency(), adaptedPrescription.toModelType().getFrequency());
+        assertEquals(prescription.getStartDate(), adaptedPrescription.toModelType().getStartDate());
+        assertEquals(prescription.getDuration(), adaptedPrescription.toModelType().getDuration());
+        assertEquals(prescription.getNote(), adaptedPrescription.toModelType().getNote());
     }
 
 }
