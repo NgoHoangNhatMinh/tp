@@ -52,6 +52,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.appointments.setAppointments(appointments);
     }
 
+    /**
+     * TODO: add javadoc
+     * @param newData
+     */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
         setPersons(newData.getPersonList());
@@ -59,6 +63,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     //// person-level operations
+    /**
+     * TODO: add javadoc
+     * @param person
+     * @return
+     */
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
@@ -78,6 +87,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     //// appointment-level operations
+    /**
+     * TODO: add javadoc
+     * @param appointment
+     * @return
+     */
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
         return appointments.contains(appointment);

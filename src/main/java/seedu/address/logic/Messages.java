@@ -53,15 +53,10 @@ public class Messages {
      * Formats the {@code person} for display to the user.
      */
     public static String format(Prescription prescription) {
-        return "PatientId: " +
-                prescription.getPatientId() +
-                "; Medication: " +
-                prescription.getMedicationName() +
-                "; Dosage: " +
-                prescription.getDosage() +
-                "; Frequency: " +
-                prescription.getFrequency() +
-                "; Duration: " +
-                prescription.getDosage();
+        return "PatientId: " + prescription.getPatientId()
+                + "; Medication: " + prescription.getMedicationName()
+                + "; Dosage: " + prescription.getDosage()
+                + "; Frequency: " + prescription.getFrequency()
+                + "; Duration: " + prescription.getDosage();
     }
 }

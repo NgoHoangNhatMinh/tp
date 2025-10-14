@@ -1,27 +1,42 @@
 package seedu.address.logic.parser;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddPrescriptionCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.prescription.Prescription;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DOSAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FREQUENCY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARTDATE;
 
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.logic.commands.AddPrescriptionCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.prescription.Prescription;
 
+/**
+ * Parses input arguments and creates a new AddPrescriptionCommand object
+ */
 public class AddPrescriptionCommandParser implements Parser<AddPrescriptionCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddPrescriptionCommand
+     * and returns an AddPrescriptionCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public AddPrescriptionCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_PATIENT, PREFIX_MEDICATION, PREFIX_DOSAGE, PREFIX_FREQUENCY, PREFIX_DURATION);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_PATIENT,
+                PREFIX_MEDICATION, PREFIX_DOSAGE, PREFIX_FREQUENCY, PREFIX_DURATION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_PATIENT, PREFIX_MEDICATION, PREFIX_DOSAGE, PREFIX_FREQUENCY, PREFIX_DURATION)
+        if (!arePrefixesPresent(argMultimap, PREFIX_PATIENT, PREFIX_MEDICATION, PREFIX_DOSAGE,
+                PREFIX_FREQUENCY, PREFIX_DURATION)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPrescriptionCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddPrescriptionCommand.MESSAGE_USAGE));
         }
 
         String patientId = argMultimap.getValue(PREFIX_PATIENT).orElse("");
@@ -37,7 +52,8 @@ public class AddPrescriptionCommandParser implements Parser<AddPrescriptionComma
         LocalDateTime startDate = startDateStr.isEmpty() ? null : LocalDateTime.parse(startDateStr);
         Integer duration = durationStr.isEmpty() ? null : Integer.parseInt(durationStr);
 
-        return new AddPrescriptionCommand(new Prescription(patientId, medicationName, dosage, frequency, startDate, duration, note));
+        return new AddPrescriptionCommand(new Prescription(patientId, medicationName,
+                dosage, frequency, startDate, duration, note));
     }
 
     /**

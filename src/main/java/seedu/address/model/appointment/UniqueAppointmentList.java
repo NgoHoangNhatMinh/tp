@@ -19,11 +19,20 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     private final ObservableList<Appointment> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    /**
+     * TODO: add javadoc
+     * @param toCheck
+     * @return
+     */
     public boolean contains(Appointment toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::equals);
     }
 
+    /**
+     * TODO: add javadoc
+     * @param toAdd
+     */
     public void add(Appointment toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
@@ -32,6 +41,10 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         internalList.add(toAdd);
     }
 
+    /**
+     * TODO: add javadoc
+     * @param appointments
+     */
     public void setAppointments(List<Appointment> appointments) {
         requireNonNull(appointments);
         if (!appointmentsAreUnique(appointments)) {
@@ -44,6 +57,10 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         return internalUnmodifiableList;
     }
 
+    /**
+     * TODO: add javadoc
+     * @param toRemove
+     */
     public void remove(Appointment toRemove) {
         requireNonNull(toRemove);
         internalList.remove(toRemove);

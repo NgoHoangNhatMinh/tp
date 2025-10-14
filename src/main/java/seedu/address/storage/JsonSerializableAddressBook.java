@@ -26,6 +26,11 @@ public class JsonSerializableAddressBook {
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedAppointment> appointments = new ArrayList<>();
 
+    /**
+     * TODO: add javadoc
+     * @param persons
+     * @param appointments
+     */
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
                                        @JsonProperty("appointments") List<JsonAdaptedAppointment> appointments) {
@@ -37,6 +42,10 @@ public class JsonSerializableAddressBook {
         }
     }
 
+    /**
+     * TODO: add javadoc
+     * @param source
+     */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream()
                 .map(JsonAdaptedPerson::new)

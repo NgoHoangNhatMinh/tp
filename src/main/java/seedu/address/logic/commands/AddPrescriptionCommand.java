@@ -1,11 +1,14 @@
 package seedu.address.logic.commands;
 
-import seedu.address.commons.core.index.Index;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DOSAGE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FREQUENCY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
+
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.prescription.Prescription;
-
-import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * Prescribe medication for an existing patient
