@@ -164,5 +164,32 @@ public class AddressBookTest {
         assertFalse(addressBook.hasPrescription(prescription));
     }
 
+    @Test
+    public void setPrescription_nullEditedPrescription_throwsNullPointerException() {
+        addressBook.addPrescription(prescription);
+        assertThrows(NullPointerException.class, () -> addressBook.setPrescription(prescription, null));
+    }
+
+    @Test
+    public void setPrescription_prescriptionNotInAddressBook_throwsPrescriptionNotFoundException() {
+        Prescription anotherPrescription = new PrescriptionBuilder().withMedicationName("Ibuprofen").build();
+        assertThrows(seedu.address.model.prescription.exceptions.PrescriptionNotFoundException.class, () ->
+            addressBook.setPrescription(anotherPrescription, prescription));
+    }
+
+    @Test
+    public void setPrescription_success() {
+        addressBook.addPrescription(prescription);
+
+        Prescription editedPrescription = new PrescriptionBuilder(prescription)
+            .withDosage(750f)
+            .build();
+        addressBook.setPrescription(prescription, editedPrescription);
+
+        assertTrue(addressBook.hasPrescription(editedPrescription));
+        assertFalse(addressBook.hasPrescription(prescription));
+    }
+
+
 
 }
