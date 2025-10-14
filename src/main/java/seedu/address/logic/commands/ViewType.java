@@ -1,4 +1,9 @@
 package seedu.address.logic.commands;
 
-public class ViewType {
+/**
+ * Type of view after command is typed in
+ */
+public enum ViewType {
+    PERSON_LIST,
+    PRESCRIPTION_LIST
 }

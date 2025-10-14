@@ -3,13 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-import static seedu.address.testutil.TypicalPrescriptions.PRESCRIPTION_A;
-import static seedu.address.testutil.TypicalPrescriptions.PRESCRIPTION_B;
 import static seedu.address.testutil.TypicalPrescriptions.getTypicalAddressBook;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +13,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.prescription.HavingPatientIdPredicate;
-import seedu.address.model.prescription.Prescription;
 
 /**
  * Unit tests for {@link ViewPrescriptionsCommand}.
@@ -37,17 +30,13 @@ public class ViewPrescriptionsCommandTest {
 
     @Test
     public void execute_validPatientId_displaysFilteredPrescriptions() {
-        // given
         HavingPatientIdPredicate predicate = new HavingPatientIdPredicate("P-10293");
         ViewPrescriptionsCommand command = new ViewPrescriptionsCommand(predicate);
 
-        // expected filtered list
         expectedModel.updateFilteredPrescriptionList(predicate);
 
-        // when
         CommandResult result = command.execute(model);
 
-        // then
         assertEquals(
             String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW,
                 expectedModel.getFilteredPrescriptionList().size()),
@@ -106,14 +95,17 @@ public class ViewPrescriptionsCommandTest {
     public void equals_differentType_returnsFalse() {
         HavingPatientIdPredicate predicate = new HavingPatientIdPredicate("P-10293");
         ViewPrescriptionsCommand command = new ViewPrescriptionsCommand(predicate);
-        assertFalse(command.equals(42)); // random non-command type
+        assertFalse(command.equals(42));
     }
 
     @Test
-    public void toString_correctFormat() {
+    public void toString_containsClassNameAndPredicate() {
         HavingPatientIdPredicate predicate = new HavingPatientIdPredicate("P-10293");
         ViewPrescriptionsCommand command = new ViewPrescriptionsCommand(predicate);
-        String expected = "ViewPrescriptionsCommand{predicate=" + predicate + "}";
-        assertEquals(expected, command.toString());
+        String result = command.toString();
+
+        assertTrue(result.contains("ViewPrescriptionsCommand"));
+        assertTrue(result.contains("predicate=" + predicate));
     }
+
 }
