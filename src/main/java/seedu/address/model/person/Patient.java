@@ -7,44 +7,36 @@ import java.util.Set;
 
 import seedu.address.model.tag.Tag;
 
+
 /*
-Command format: patient add /patient <PATIENT_ID> /name "<FULL_NAME>" /dob <BIRTHDATE> /gender <GENDER>
- /phone <PHONE> /email <EMAIL> /address "<ADDRESS>" /emergency “<EMERGENCY>" /id <IDENTITY_NUMBER>
- /language <LANG>
+Command format: patient add /n "<FULL_NAME>" /dob <BIRTHDATE> /gender <GENDER>
+ /phone <PHONE> /email <EMAIL> /addr "<ADDRESS>" /em “<EMERGENCY>" /id <IDENTITY_NUMBER>
+ /lang <LANG>
 */
+
+
 
 /**
  * Represents a Patient in the hospital system.
  */
 public class Patient extends Person {
-    private final String patientId;
     private final Birthday birthday;
     private final String gender;
     private final String emergency;
     private final String id;
     private final String lang;
 
-    /**
-     * Constructs a {@code Patient}.
-     *
-     * @param patientId The patient's unique ID.
-     */
-    public Patient(String patientId, Name name, Birthday birthday, String gender, Phone phone, Email email,
+    public Patient(Name name, Birthday birthday, String gender, Phone phone, Email email,
                     Address address, String emergency, String id, String lang, Set<Tag> tags) {
         super(name, phone, email, address, tags);
 
-        requireAllNonNull(patientId, birthday, gender, emergency, id, lang);
+        requireAllNonNull(birthday, gender, emergency, id, lang);
 
-        this.patientId = patientId;
         this.birthday = birthday;
         this.gender = gender;
         this.emergency = emergency;
         this.id = id;
         this.lang = lang;
-    }
-
-    public String getPatientId() {
-        return patientId;
     }
 
     public Birthday getBirthday() {
@@ -82,8 +74,7 @@ public class Patient extends Person {
 
         final Patient otherPatient = (Patient) other;
 
-        return patientId.equals(otherPatient.patientId)
-                && id.equals(otherPatient.id)
+        return id.equals(otherPatient.id)
                 && gender.equals(otherPatient.gender)
                 && birthday.equals(otherPatient.birthday);
         // Not checking for language or emergency, since they may change over time.
@@ -92,13 +83,13 @@ public class Patient extends Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), patientId, id, gender, birthday);
+        return Objects.hash(super.hashCode(), id, gender, birthday);
     }
 
     @Override
     public String toString() {
         return String.format("Patient[" + super.getName() + birthday + "gender=%s, patientId=%s, id=%s, "
                         + super.getPhone() + super.getEmail() + super.getAddress() + "emergency=%s, language=%s]",
-                gender, patientId, id, emergency, lang);
+                gender, id, emergency, lang);
     }
 }
