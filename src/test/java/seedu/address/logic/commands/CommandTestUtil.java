@@ -65,9 +65,9 @@ public class CommandTestUtil {
     public static final String VALID_PATIENT_ID_P20485 = "P-20485";
     public static final String INVALID_PATIENT_ID = "10293";
 
-    public static final String PATIENT_DESC_P10293 = " /patient " + VALID_PATIENT_ID_P10293;
-    public static final String PATIENT_DESC_P20485 = " /patient " + VALID_PATIENT_ID_P20485;
-    public static final String INVALID_PATIENT_DESC = " /patient " + INVALID_PATIENT_ID;
+    public static final String PATIENT_DESC_P10293 = " pat/ " + VALID_PATIENT_ID_P10293;
+    public static final String PATIENT_DESC_P20485 = " pat/ " + VALID_PATIENT_ID_P20485;
+    public static final String INVALID_PATIENT_DESC = " pat/ " + INVALID_PATIENT_ID;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
