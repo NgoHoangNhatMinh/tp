@@ -45,7 +45,8 @@ public class NameContainsKeywordsPredicateTest {
     @Test
     public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
-        NameContainsAnyKeywordsPredicate predicate = new NameContainsAnyKeywordsPredicate(Collections.singletonList("Alice"));
+        NameContainsAnyKeywordsPredicate predicate =
+            new NameContainsAnyKeywordsPredicate(Collections.singletonList("Alice"));
         assertTrue(predicate.test(new PatientBuilder().withName("Alice Bob").build()));
 
         // Multiple keywords
@@ -74,7 +75,7 @@ public class NameContainsKeywordsPredicateTest {
         // Keywords match phone, email and address, but does not match name
         predicate =
             new NameContainsAnyKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-            assertFalse(predicate.test(new PatientBuilder().withName("Alice").withPhone("12345")
+        assertFalse(predicate.test(new PatientBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 
