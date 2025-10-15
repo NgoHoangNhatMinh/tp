@@ -9,13 +9,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.storage.JsonSerializableAddressBook.MESSAGE_DUPLICATE_PRESCRIPTION;
 
+import java.util.Optional;
+
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.prescription.Prescription;
-
-import java.util.Optional;
 
 /**
  * Prescribe medication for an existing patient
