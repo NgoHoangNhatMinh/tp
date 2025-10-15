@@ -20,9 +20,10 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * TODO: add javadoc
-     * @param toCheck
-     * @return
+     * Checks if the specified appointment exists in the internal list.
+     *
+     * @param toCheck the {@link Appointment} to check for
+     * @return {@code true} if the internal list contains the specified appointment, {@code false} otherwise
      */
     public boolean contains(Appointment toCheck) {
         requireNonNull(toCheck);
@@ -30,8 +31,9 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     /**
-     * TODO: add javadoc
-     * @param toAdd
+     * Adds the specified appointment to the internal list.
+     *
+     * @param toAdd the {@link Appointment} to add
      */
     public void add(Appointment toAdd) {
         requireNonNull(toAdd);
@@ -58,8 +60,10 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     /**
-     * TODO: add javadoc
-     * @param toRemove
+     * Removes the specified appointment from the internal list.
+     * If the appointment does not exist, no action is taken.
+     *
+     * @param toRemove the {@link Appointment} to remove
      */
     public void remove(Appointment toRemove) {
         requireNonNull(toRemove);
