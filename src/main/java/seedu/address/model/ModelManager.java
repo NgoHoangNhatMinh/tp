@@ -187,4 +187,24 @@ public class ModelManager implements Model {
         requireNonNull(appointment);
         addressBook.removeAppointment(appointment);
     }
+
+    //=========== Prescriptions =============================================================
+
+    @Override
+    public boolean hasPrescription(Prescription prescription) {
+        requireNonNull(prescription);
+        return addressBook.hasPrescription(prescription);
+    }
+
+    @Override
+    public void addPrescription(Prescription prescription) {
+        requireNonNull(prescription);
+        addressBook.addPrescription(prescription);
+    }
+
+    @Override
+    public void deletePrescription(Prescription prescription) {
+        requireNonNull(prescription);
+        addressBook.removePrescription(prescription);
+    }
 }
