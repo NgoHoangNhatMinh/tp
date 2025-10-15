@@ -12,6 +12,13 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    public static final Prefix PREFIX_APPT_PATIENT = new Prefix("p/");
+    public static final Prefix PREFIX_APPT_DOCTOR = new Prefix("d/");
+    public static final Prefix PREFIX_APPT_TIME = new Prefix("t/");
+    public static final Prefix PREFIX_APPT_NOTE = new Prefix("note/");
+
+    // Custom prefixes
+    public static final Prefix PREFIX_PATIENT = new Prefix("/patient");
     // Custom prefixes for prescription
     public static final Prefix PREFIX_PATIENT = new Prefix("/pat");
     public static final Prefix PREFIX_MEDICATION = new Prefix("/med");

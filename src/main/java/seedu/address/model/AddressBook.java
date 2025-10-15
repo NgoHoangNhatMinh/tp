@@ -44,13 +44,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
-    //// list overwrite operations
-
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the current list of persons with the provided list.
      *
-     * @param persons the list of persons to set
+     * @param persons the new list of {@link Person} objects to set
      */
     public void setPersons(List<Person> persons) {
         this.persons.setPersons(persons);

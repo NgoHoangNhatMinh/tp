@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.person.Person;
 import seedu.address.model.prescription.Prescription;
 
@@ -167,4 +168,23 @@ public class ModelManager implements Model {
                 && filteredPrescriptions.equals(otherModelManager.filteredPrescriptions);
     }
 
+    //=========== Appointments =============================================================
+
+    @Override
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return addressBook.hasAppointment(appointment);
+    }
+
+    @Override
+    public void addAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        addressBook.addAppointment(appointment);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        addressBook.removeAppointment(appointment);
+    }
 }
