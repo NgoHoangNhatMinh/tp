@@ -15,7 +15,7 @@ import seedu.address.model.prescription.Prescription;
  */
 public class AddPrescriptionCommand extends Command {
 
-    public static final String COMMAND_WORD = "add-prescription";
+    public static final String COMMAND_WORD = "p-add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Prescribes medication to a patient. "
