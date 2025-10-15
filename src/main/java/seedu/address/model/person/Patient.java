@@ -36,13 +36,13 @@ public class Patient {
      */
     public Patient(String patientId, Name name, Birthday birthday, String gender, Phone phone, Email email,
                     Address address, String emergency, String id, String lang, Set<Tag> tags) {
-    
+
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        
+
         requireAllNonNull(patientId, birthday, gender, emergency, id, lang);
 
         this.patientId = patientId;
