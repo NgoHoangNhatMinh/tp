@@ -11,7 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.person.Person;
+import seedu.address.model.prescription.Prescription;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,6 +24,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Prescription> filteredPrescriptions;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,6 +37,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPrescriptions = new FilteredList<>(this.addressBook.getPrescriptionList());
     }
 
     public ModelManager() {
@@ -128,6 +132,24 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //=========== Filtered Prescription List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Prescription} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Prescription> getFilteredPrescriptionList() {
+        return filteredPrescriptions;
+    }
+
+    @Override
+    public void updateFilteredPrescriptionList(Predicate<Prescription> predicate) {
+        requireNonNull(predicate);
+        filteredPrescriptions.setPredicate(predicate);
+    }
+
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -142,7 +164,27 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return addressBook.equals(otherModelManager.addressBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+                && filteredPersons.equals(otherModelManager.filteredPersons)
+                && filteredPrescriptions.equals(otherModelManager.filteredPrescriptions);
     }
 
+    //=========== Appointments =============================================================
+
+    @Override
+    public boolean hasAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        return addressBook.hasAppointment(appointment);
+    }
+
+    @Override
+    public void addAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        addressBook.addAppointment(appointment);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment appointment) {
+        requireNonNull(appointment);
+        addressBook.removeAppointment(appointment);
+    }
 }

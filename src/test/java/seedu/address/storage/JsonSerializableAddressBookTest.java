@@ -5,12 +5,14 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.AddressBook;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.testutil.TypicalPersons;
 
 public class JsonSerializableAddressBookTest {
@@ -44,4 +46,18 @@ public class JsonSerializableAddressBookTest {
                 dataFromFile::toModelType);
     }
 
+    @Test
+    public void toModelType_validAppointments_success() throws Exception {
+        Appointment appt = new Appointment("P001",
+                LocalDateTime.of(2025, 10, 10, 10, 0),
+                "Dr Tan", "Review");
+
+        AddressBook ab = new AddressBook();
+        ab.addAppointment(appt);
+
+        JsonSerializableAddressBook jsonAb = new JsonSerializableAddressBook(ab);
+        AddressBook converted = jsonAb.toModelType();
+
+        assertEquals(ab.getAppointmentList(), converted.getAppointmentList());
+    }
 }
