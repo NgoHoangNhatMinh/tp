@@ -5,24 +5,19 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsAnyKeywordsPredicate;
+import seedu.address.model.person.NameMatchesPredicate;
 
-/**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
- * Keyword matching is case insensitive.
- */
-public class FindCommand extends Command {
+public class ViewPatientCommand extends Command{
+    public static final String COMMAND_WORD = "i-view";
 
-    public static final String COMMAND_WORD = "find";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contains "
+            + "the entire keyword (case-insensitive) and displays them as a list with index numbers.\n"
+            + "Parameters: KEYWORD\n"
+            + "Example: " + COMMAND_WORD + " alice kay";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+    private final NameMatchesPredicate predicate;
 
-    private final NameContainsAnyKeywordsPredicate predicate;
-
-    public FindCommand(NameContainsAnyKeywordsPredicate predicate) {
+    public ViewPatientCommand(NameMatchesPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -45,8 +40,8 @@ public class FindCommand extends Command {
             return false;
         }
 
-        FindCommand otherFindCommand = (FindCommand) other;
-        return predicate.equals(otherFindCommand.predicate);
+        ViewPatientCommand otherViewPatientCommand = (ViewPatientCommand) other;
+        return predicate.equals(otherViewPatientCommand.predicate);
     }
 
     @Override

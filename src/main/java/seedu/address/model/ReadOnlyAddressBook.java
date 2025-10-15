@@ -2,13 +2,13 @@ package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Patient;
 
 /**
  * Unmodifiable view of an address book.
  */
 public interface ReadOnlyAddressBook {
-    ObservableList<Person> getPersonList();
+    ObservableList<Patient> getPatientList();
 
     /**
      * Returns an unmodifiable view of the appointment list.

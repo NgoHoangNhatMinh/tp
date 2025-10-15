@@ -12,7 +12,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Patient;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -20,14 +20,14 @@ import seedu.address.model.person.Person;
 @JsonRootName(value = "addressbook")
 public class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_PERSON = "Patients list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_APPOINTMENT = "Appointments list contains duplicate appointment(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedPatient> persons = new ArrayList<>();
     private final List<JsonAdaptedAppointment> appointments = new ArrayList<>();
 
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPatient> persons,
                                        @JsonProperty("appointments") List<JsonAdaptedAppointment> appointments) {
         if (persons != null) {
             this.persons.addAll(persons);
@@ -38,8 +38,8 @@ public class JsonSerializableAddressBook {
     }
 
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        persons.addAll(source.getPersonList().stream()
-                .map(JsonAdaptedPerson::new)
+        persons.addAll(source.getPatientList().stream()
+                .map(JsonAdaptedPatient::new)
                 .collect(Collectors.toList()));
         appointments.addAll(source.getAppointmentList().stream()
                 .map(JsonAdaptedAppointment::new)
@@ -54,12 +54,12 @@ public class JsonSerializableAddressBook {
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
 
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
+        for (JsonAdaptedPatient jsonAdaptedPatient : persons) {
+            Patient person = jsonAdaptedPatient.toModelType();
+            if (addressBook.hasPatient(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addPerson(person);
+            addressBook.addPatient(person);
         }
 
         for (JsonAdaptedAppointment jsonAdaptedAppointment : appointments) {

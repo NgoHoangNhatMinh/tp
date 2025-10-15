@@ -8,20 +8,20 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.UniqueAppointmentList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.Patient;
+import seedu.address.model.person.UniquePatientList;
 
 /**
  * Wraps all data at the address-book level.
- * Duplicates are not allowed (by .isSamePerson comparison for persons, and equality for appointments).
+ * Duplicates are not allowed (by .isSamePatient comparison for persons, and equality for appointments).
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    private final UniquePatientList persons;
     private final UniqueAppointmentList appointments;
 
     {
-        persons = new UniquePersonList();
+        persons = new UniquePatientList();
         appointments = new UniqueAppointmentList();
     }
 
@@ -40,8 +40,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// list overwrite operations
 
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public void setPatients(List<Patient> persons) {
+        this.persons.setPatients(persons);
     }
 
     /**
@@ -54,26 +54,26 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
-        setPersons(newData.getPersonList());
+        setPatients(newData.getPatientList());
         setAppointments(newData.getAppointmentList());
     }
 
     //// person-level operations
-    public boolean hasPerson(Person person) {
+    public boolean hasPatient(Patient person) {
         requireNonNull(person);
         return persons.contains(person);
     }
 
-    public void addPerson(Person p) {
+    public void addPatient(Patient p) {
         persons.add(p);
     }
 
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
-        persons.setPerson(target, editedPerson);
+    public void setPatient(Patient target, Patient editedPatient) {
+        requireNonNull(editedPatient);
+        persons.setPatient(target, editedPatient);
     }
 
-    public void removePerson(Person key) {
+    public void removePatient(Patient key) {
         persons.remove(key);
     }
 
@@ -92,7 +92,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Person> getPersonList() {
+    public ObservableList<Patient> getPatientList() {
         return persons.asUnmodifiableObservableList();
     }
 
