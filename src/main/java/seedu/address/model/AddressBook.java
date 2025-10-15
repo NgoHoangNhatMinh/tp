@@ -236,7 +236,6 @@ public class AddressBook implements ReadOnlyAddressBook {
             .toString();
     }
 
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {

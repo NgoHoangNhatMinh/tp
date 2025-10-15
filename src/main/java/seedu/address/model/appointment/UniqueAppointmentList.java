@@ -43,6 +43,10 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         internalList.add(toAdd);
     }
 
+    /**
+     * TODO: add javadoc
+     * @param appointments
+     */
     public void setAppointments(List<Appointment> appointments) {
         requireNonNull(appointments);
         if (!appointmentsAreUnique(appointments)) {
