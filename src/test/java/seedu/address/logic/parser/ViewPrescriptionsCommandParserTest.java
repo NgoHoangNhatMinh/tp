@@ -49,7 +49,7 @@ public class ViewPrescriptionsCommandParserTest {
 
         // repeated patient prefix
         assertParseFailure(parser, PATIENT_DESC_P10293 + PATIENT_DESC_P10293,
-            "Multiple values specified for the following single-valued field(s): /patient");
+            "Multiple values specified for the following single-valued field(s): pat/");
     }
 
 }
