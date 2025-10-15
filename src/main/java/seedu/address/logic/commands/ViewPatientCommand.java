@@ -7,6 +7,10 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameMatchesPredicate;
 
+/**
+ * Finds and lists all patients in address book whose name matches the argument keyword.
+ * Keyword matching is case insensitive.
+ */
 public class ViewPatientCommand extends Command {
     public static final String COMMAND_WORD = "i-view";
 
