@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -20,6 +19,12 @@ public class Patient {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final String patientId;
+    private final Birthday birthday;
+    private final String gender;
+    private final String emergency;
+    private final String id;
+    private final String lang;
 
     // Data fields
     private final Address address;
@@ -28,13 +33,38 @@ public class Patient {
     /**
      * Every field must be present and not null.
      */
-    public Patient(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Patient(String patientId, Name name, Birthday birthday, String gender, Phone phone, Email email,
+                    Address address, String emergency, String id, String lang, Set<Tag> tags) {
+    
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        
+        requireAllNonNull(patientId, birthday, gender, emergency, id, lang);
+
+        this.patientId = patientId;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.emergency = emergency;
+        this.id = id;
+        this.lang = lang;
+    }
+
+    public Patient(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+
+        this.patientId = null;
+        this.birthday = null;
+        this.gender = null;
+        this.emergency = null;
+        this.id = null;
+        this.lang = null;
     }
 
     public Name getName() {
@@ -53,6 +83,30 @@ public class Patient {
         return address;
     }
 
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public Birthday getBirthday() {
+        return birthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getEmergency() {
+        return emergency;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -62,20 +116,20 @@ public class Patient {
     }
 
     /**
-     * Returns true if both persons have the same name.
+     * Returns true if both patients have the same name.
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePatient(Patient otherPatient) {
-        if (otherPatient == this) {
+    public boolean isSamePatient(Patient otherPerson) {
+        if (otherPerson == this) {
             return true;
         }
 
-        return otherPatient != null
-                && otherPatient.getName().equals(getName());
+        return otherPerson != null
+                && otherPerson.getName().equals(getName());
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
+     * Returns true if both patients have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */
     @Override
@@ -83,35 +137,33 @@ public class Patient {
         if (other == this) {
             return true;
         }
-
-        // instanceof handles nulls
         if (!(other instanceof Patient)) {
             return false;
         }
 
-        Patient otherPatient = (Patient) other;
-        return name.equals(otherPatient.name)
-                && phone.equals(otherPatient.phone)
-                && email.equals(otherPatient.email)
-                && address.equals(otherPatient.address)
-                && tags.equals(otherPatient.tags);
+        if (!super.equals(other)) {
+            return false;
+        }
+
+        final Patient otherPatient = (Patient) other;
+
+        return patientId.equals(otherPatient.patientId)
+                && id.equals(otherPatient.id)
+                && gender.equals(otherPatient.gender)
+                && birthday.equals(otherPatient.birthday);
+        // Not checking for language or emergency, since they may change over time.
     }
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, patientId, id, gender, birthday);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("phone", phone)
-                .add("email", email)
-                .add("address", address)
-                .add("tags", tags)
-                .toString();
+        return String.format("Patient[" + getName() + birthday + "gender=%s, patientId=%s, id=%s, "
+                        + getPhone() + getEmail() + getAddress() + "emergency=%s, language=%s]",
+                gender, patientId, id, emergency, lang);
     }
 
 }
