@@ -14,16 +14,16 @@ import seedu.address.model.person.Person;
  */
 public class AddAppointmentCommand extends Command {
 
-    public static final String COMMAND_WORD = "appt add";
+    public static final String COMMAND_WORD = "a-add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment. "
-        + "Parameters: "
-        + "pa/PATIENT_NAME "
-        + "d/DOCTOR_NAME "
-        + "t/DATE_TIME(yyyy-MM-dd HH:mm) "
-        + "[note/NOTE]\n"
-        + "Example: " + COMMAND_WORD + " "
-        + "pa/John Doe d/Dr Wee t/2025-11-11 14:00 note/Follow-up";
+            + "Parameters: "
+            + "p/PATIENT_NAME "
+            + "d/DOCTOR_NAME "
+            + "t/DATE_TIME(yyyy-MM-dd HH:mm) "
+            + "[note/NOTE]\n"
+            + "Example: " + COMMAND_WORD + " "
+            + "p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Follow-up";
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
     public static final String MESSAGE_PATIENT_NOT_FOUND = "Patient '%1$s' does not exist in the address book.";
@@ -33,11 +33,10 @@ public class AddAppointmentCommand extends Command {
     private final String patientName;
 
     /**
-     * Constructs an {@code AddAppointmentCommand} to add the specified appointment
-     * for the given patient.
+     * Constructs an {@code AddAppointmentCommand} with the specified patient name and appointment details.
      *
-     * @param patientName the name of the patient to whom the appointment will be added
-     * @param appointment the {@link Appointment} to add
+     * @param patientName The name of the patient to whom the appointment will be added. Must not be {@code null}.
+     * @param appointment The {@code Appointment} object containing the appointment details. Must not be {@code null}.
      */
     public AddAppointmentCommand(String patientName, Appointment appointment) {
         requireNonNull(patientName);
@@ -65,7 +64,6 @@ public class AddAppointmentCommand extends Command {
         }
 
         model.addAppointment(toAdd);
-
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

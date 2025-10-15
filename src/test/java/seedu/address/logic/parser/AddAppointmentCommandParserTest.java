@@ -22,20 +22,22 @@ public class AddAppointmentCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() throws Exception {
-        String userInput = " p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Follow-up";
+        String userInput = " p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp";
 
-        Appointment expected = new Appointment("John Doe",
+        Appointment expectedAppointment = new Appointment("John Doe",
                 LocalDateTime.of(2025, 11, 11, 14, 0),
-                "Dr Wee", "Follow-up");
+                "Dr Wee", "Fp");
 
-        AddAppointmentCommand command = parser.parse(userInput);
-        AddAppointmentCommand expectedCommand = new AddAppointmentCommand("John Doe", expected);
-        assertEquals(expectedCommand, command);
+        AddAppointmentCommand expectedCommand =
+                new AddAppointmentCommand("John Doe", expectedAppointment);
+
+        AddAppointmentCommand actualCommand = parser.parse(userInput);
+        assertEquals(expectedCommand, actualCommand);
     }
 
     @Test
     public void parse_missingRequiredPrefix_throwsParseException() {
-        String invalidInput = " d/Dr Wee t/2025-11-11 14:00";
+        String invalidInput = " d/Dr Wee t/2025-11-11 14:00 note/Fp";
         assertThrows(ParseException.class, () ->
                 parser.parse(invalidInput),
                 MESSAGE_INVALID_COMMAND_FORMAT + MESSAGE_USAGE);
