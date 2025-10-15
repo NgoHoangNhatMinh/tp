@@ -5,7 +5,9 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.person.Patient;
+import seedu.address.model.prescription.Prescription;
 
 /**
  * The API of the Model component.
@@ -84,5 +86,25 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
-    
+
+    boolean hasAppointment(Appointment appointment);
+
+    void addAppointment(Appointment appointment);
+
+    void deleteAppointment(Appointment appointment);
+
+    boolean hasPrescription(Prescription prescription);
+
+    void addPrescription(Prescription prescription);
+
+    void deletePrescription(Prescription prescription);
+
+    /** Returns an unmodifiable view of the filtered prescriptions list */
+    ObservableList<Prescription> getFilteredPrescriptionList();
+
+    /**
+     * Updates the filter of the filtered prescription list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPrescriptionList(Predicate<Prescription> predicate);
 }

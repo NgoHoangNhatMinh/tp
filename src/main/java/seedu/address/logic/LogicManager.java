@@ -16,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Patient;
+import seedu.address.model.prescription.Prescription;
 import seedu.address.storage.Storage;
 
 /**
@@ -69,6 +70,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Patient> getFilteredPatientList() {
         return model.getFilteredPatientList();
+    }
+
+    @Override
+    public ObservableList<Prescription> getFilteredPrescriptionList() {
+        return model.getFilteredPrescriptionList();
     }
 
     @Override
