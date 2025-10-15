@@ -2,6 +2,7 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -59,12 +60,12 @@ public class Patient {
         this.address = address;
         this.tags.addAll(tags);
 
-        this.patientId = null;
-        this.birthday = null;
-        this.gender = null;
-        this.emergency = null;
-        this.id = null;
-        this.lang = null;
+        this.patientId ="";
+        this.birthday = new Birthday(LocalDateTime.now());
+        this.gender = "";
+        this.emergency = "";
+        this.id = "";
+        this.lang = "";
     }
 
     public Name getName() {
