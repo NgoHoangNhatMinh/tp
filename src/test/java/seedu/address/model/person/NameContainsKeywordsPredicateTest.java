@@ -19,14 +19,17 @@ public class NameContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        NameContainsAnyKeywordsPredicate firstPredicate = new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
-        NameContainsAnyKeywordsPredicate secondPredicate = new NameContainsAnyKeywordsPredicate(secondPredicateKeywordList);
+        NameContainsAnyKeywordsPredicate firstPredicate = 
+            new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
+        NameContainsAnyKeywordsPredicate secondPredicate = 
+            new NameContainsAnyKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        NameContainsAnyKeywordsPredicate firstPredicateCopy = new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
+        NameContainsAnyKeywordsPredicate firstPredicateCopy = 
+            new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -69,8 +72,9 @@ public class NameContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PatientBuilder().withName("Alice Bob").build()));
 
         // Keywords match phone, email and address, but does not match name
-        predicate = new NameContainsAnyKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new PatientBuilder().withName("Alice").withPhone("12345")
+        predicate = 
+            new NameContainsAnyKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+            assertFalse(predicate.test(new PatientBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 
