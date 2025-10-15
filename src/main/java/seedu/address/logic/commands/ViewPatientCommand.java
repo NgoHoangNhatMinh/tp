@@ -7,7 +7,7 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameMatchesPredicate;
 
-public class ViewPatientCommand extends Command{
+public class ViewPatientCommand extends Command {
     public static final String COMMAND_WORD = "i-view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contains "

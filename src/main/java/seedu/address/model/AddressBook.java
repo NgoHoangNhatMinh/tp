@@ -112,7 +112,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Replaces the given patient {@code target} in the list with {@code editedPatient}.
      *
      * @param target the patient to be replaced
-     * @param editedPerson the replacement person
+     * @param editedPatient the replacement patient
      */
     public void setPatient(Patient target, Patient editedPatient) {
         requireNonNull(editedPatient);

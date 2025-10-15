@@ -53,6 +53,9 @@ public class Patient {
         this.lang = lang;
     }
 
+    /**
+     * Temporary constructor to not break the tests.
+     */
     public Patient(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         this.name = name;
         this.phone = phone;
@@ -60,7 +63,7 @@ public class Patient {
         this.address = address;
         this.tags.addAll(tags);
 
-        this.patientId ="";
+        this.patientId = "";
         this.birthday = new Birthday(LocalDateTime.now());
         this.gender = "";
         this.emergency = "";

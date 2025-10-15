@@ -8,7 +8,7 @@ import seedu.address.commons.util.ToStringBuilder;
 /**
  * Tests that a {@code Patient}'s {@code Name} matches the entire keyword given.
  */
-public class NameMatchesPredicate implements Predicate<Patient>{
+public class NameMatchesPredicate implements Predicate<Patient> {
     private final String keyword;
 
     public NameMatchesPredicate(String keyword) {

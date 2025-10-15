@@ -23,7 +23,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-        private final FilteredList<Patient> filteredPatients;
+    private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Prescription> filteredPrescriptions;
 
     /**
