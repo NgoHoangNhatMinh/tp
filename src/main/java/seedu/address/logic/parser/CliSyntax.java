@@ -19,4 +19,12 @@ public class CliSyntax {
 
     // Custom prefixes
     public static final Prefix PREFIX_PATIENT = new Prefix("/patient");
+    // Custom prefixes for prescription
+    public static final Prefix PREFIX_PATIENT = new Prefix("/pat");
+    public static final Prefix PREFIX_MEDICATION = new Prefix("/med");
+    public static final Prefix PREFIX_DOSAGE = new Prefix("/dose");
+    public static final Prefix PREFIX_FREQUENCY = new Prefix("/freq");
+    public static final Prefix PREFIX_STARTDATE = new Prefix("/start");
+    public static final Prefix PREFIX_DURATION = new Prefix("/dur");
+    public static final Prefix PREFIX_NOTE = new Prefix("/note");
 }
