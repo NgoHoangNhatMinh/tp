@@ -18,18 +18,16 @@ import seedu.address.model.tag.Tag;
 public class Patient {
 
     // all references to Tag are removed
-
     private final Name name;
     private final Phone phone;
     private final Email email;
-    //private final String patientId;
     private final Birthday birthday;
     private final String gender;
     private final String emergency;
     private final String id;
     private final String lang;
     private final Address address;
-    // private final Set<Tag> tags = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
