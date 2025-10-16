@@ -178,6 +178,7 @@ public class AddCommandTest {
         public void deleteAppointment(Appointment appointment) {
             throw new AssertionError("This method should not be called.");
         }
+
         public void updateFilteredPrescriptionList(Predicate<Prescription> predicate) {
             throw new AssertionError("This method should not be called.");
         }

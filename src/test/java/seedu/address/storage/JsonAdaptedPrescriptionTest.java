@@ -23,12 +23,12 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_validPrescription_returnsPrescription() throws Exception {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
-            VALID_START_DATE, VALID_DURATION, VALID_NOTE);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
+                VALID_START_DATE, VALID_DURATION, VALID_NOTE);
 
         Prescription expectedPrescription = new Prescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
-            VALID_START_DATE, VALID_DURATION, VALID_NOTE);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
+                VALID_START_DATE, VALID_DURATION, VALID_NOTE);
 
         assertEquals(expectedPrescription, prescription.toModelType());
     }
@@ -36,8 +36,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullPatientId_throwsNullPointerException() {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            null, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
-            VALID_START_DATE, VALID_DURATION, VALID_NOTE);
+                null, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
+                VALID_START_DATE, VALID_DURATION, VALID_NOTE);
 
         assertThrows(NullPointerException.class, prescription::toModelType);
     }
@@ -45,8 +45,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullMedicationName_throwsNullPointerException() {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, null, VALID_DOSAGE, VALID_FREQUENCY,
-            VALID_START_DATE, VALID_DURATION, VALID_NOTE);
+                VALID_PATIENT_ID, null, VALID_DOSAGE, VALID_FREQUENCY,
+                VALID_START_DATE, VALID_DURATION, VALID_NOTE);
 
         assertThrows(NullPointerException.class, prescription::toModelType);
     }
@@ -54,8 +54,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullDosage_throwsNullPointerException() {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, null, VALID_FREQUENCY,
-            VALID_START_DATE, VALID_DURATION, VALID_NOTE);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, null, VALID_FREQUENCY,
+                VALID_START_DATE, VALID_DURATION, VALID_NOTE);
 
         assertThrows(NullPointerException.class, prescription::toModelType);
     }
@@ -63,8 +63,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullFrequency_throwsNullPointerException() {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, null,
-            VALID_START_DATE, VALID_DURATION, VALID_NOTE);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, null,
+                VALID_START_DATE, VALID_DURATION, VALID_NOTE);
 
         assertThrows(NullPointerException.class, prescription::toModelType);
     }
@@ -72,8 +72,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullDuration_throwsNullPointerException() {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
-            VALID_START_DATE, null, VALID_NOTE);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
+                VALID_START_DATE, null, VALID_NOTE);
 
         assertThrows(NullPointerException.class, prescription::toModelType);
     }
@@ -81,8 +81,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullStartDate_returnsPrescriptionWithNullStartDate() throws Exception {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
-            null, VALID_DURATION, VALID_NOTE);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
+                null, VALID_DURATION, VALID_NOTE);
 
         Prescription modelPrescription = prescription.toModelType();
 
@@ -98,8 +98,8 @@ public class JsonAdaptedPrescriptionTest {
     @Test
     public void toModelType_nullNote_returnsPrescriptionWithNullNote() throws Exception {
         JsonAdaptedPrescription prescription = new JsonAdaptedPrescription(
-            VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
-            VALID_START_DATE, VALID_DURATION, null);
+                VALID_PATIENT_ID, VALID_MEDICATION_NAME, VALID_DOSAGE, VALID_FREQUENCY,
+                VALID_START_DATE, VALID_DURATION, null);
 
         Prescription modelPrescription = prescription.toModelType();
 

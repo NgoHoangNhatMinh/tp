@@ -21,17 +21,17 @@ public class ViewPrescriptionsCommandParserTest {
     public void parse_validPatientId_success() {
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + PATIENT_DESC_P10293,
-            new ViewPrescriptionsCommand(new HavingPatientIdPredicate("P-10293")));
+                new ViewPrescriptionsCommand(new HavingPatientIdPredicate("P-10293")));
 
         // another valid patient id
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + PATIENT_DESC_P20485,
-            new ViewPrescriptionsCommand(new HavingPatientIdPredicate("P-20485")));
+                new ViewPrescriptionsCommand(new HavingPatientIdPredicate("P-20485")));
     }
 
     @Test
     public void parse_missingPatientPrefix_failure() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            ViewPrescriptionsCommand.MESSAGE_USAGE);
+                ViewPrescriptionsCommand.MESSAGE_USAGE);
 
         // missing prefix
         assertParseFailure(parser, "P-10293", expectedMessage);
@@ -49,7 +49,7 @@ public class ViewPrescriptionsCommandParserTest {
 
         // repeated patient prefix
         assertParseFailure(parser, PATIENT_DESC_P10293 + PATIENT_DESC_P10293,
-            "Multiple values specified for the following single-valued field(s): pat/");
+                "Multiple values specified for the following single-valued field(s): pat/");
     }
 
 }

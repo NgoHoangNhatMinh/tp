@@ -20,16 +20,16 @@ public class NameContainsKeywordsPredicateTest {
         List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
         NameContainsAnyKeywordsPredicate firstPredicate =
-            new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
+                new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
         NameContainsAnyKeywordsPredicate secondPredicate =
-            new NameContainsAnyKeywordsPredicate(secondPredicateKeywordList);
+                new NameContainsAnyKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
         NameContainsAnyKeywordsPredicate firstPredicateCopy =
-            new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
+                new NameContainsAnyKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -46,7 +46,7 @@ public class NameContainsKeywordsPredicateTest {
     public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
         NameContainsAnyKeywordsPredicate predicate =
-            new NameContainsAnyKeywordsPredicate(Collections.singletonList("Alice"));
+                new NameContainsAnyKeywordsPredicate(Collections.singletonList("Alice"));
         assertTrue(predicate.test(new PatientBuilder().withName("Alice Bob").build()));
 
         // Multiple keywords
@@ -74,7 +74,7 @@ public class NameContainsKeywordsPredicateTest {
 
         // Keywords match phone, email and address, but does not match name
         predicate =
-            new NameContainsAnyKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+                new NameContainsAnyKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new PatientBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }

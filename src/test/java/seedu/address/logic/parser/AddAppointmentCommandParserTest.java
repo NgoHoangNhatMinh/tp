@@ -39,7 +39,7 @@ public class AddAppointmentCommandParserTest {
     public void parse_missingRequiredPrefix_throwsParseException() {
         String invalidInput = " d/Dr Wee t/2025-11-11 14:00 note/Fp";
         assertThrows(ParseException.class, () ->
-                parser.parse(invalidInput),
+                        parser.parse(invalidInput),
                 MESSAGE_INVALID_COMMAND_FORMAT + MESSAGE_USAGE);
     }
 

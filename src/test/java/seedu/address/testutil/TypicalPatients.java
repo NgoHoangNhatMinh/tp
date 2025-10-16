@@ -16,7 +16,7 @@
 //import seedu.address.model.AddressBook;
 //import seedu.address.model.person.Patient;
 //
-///**
+/// **
 // * A utility class containing a list of {@code Patient} objects to be used in tests.
 // */
 //public class TypicalPatients {
@@ -166,7 +166,8 @@ public class TypicalPatients {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalPatients() {} // prevents instantiation
+    private TypicalPatients() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical patients.
