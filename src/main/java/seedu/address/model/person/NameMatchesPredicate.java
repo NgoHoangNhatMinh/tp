@@ -17,7 +17,7 @@ public class NameMatchesPredicate implements Predicate<Patient> {
 
     @Override
     public boolean test(Patient patient) {
-        return StringUtil.containsWordIgnoreCase(patient.getName().fullName, keyword);
+        return StringUtil.containsPhraseIgnoreCase(patient.getName().fullName, keyword);
     }
 
     @Override
