@@ -92,6 +92,13 @@ public interface Model {
     void addAppointment(Appointment appointment);
 
     void deleteAppointment(Appointment appointment);
+
+    boolean hasPrescription(Prescription prescription);
+
+    void addPrescription(Prescription prescription);
+
+    void deletePrescription(Prescription prescription);
+
     /** Returns an unmodifiable view of the filtered prescriptions list */
     ObservableList<Prescription> getFilteredPrescriptionList();
 

@@ -1,13 +1,20 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.AddAppointmentCommand.MESSAGE_PATIENT_NOT_FOUND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DOSAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FREQUENCY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
+import static seedu.address.storage.JsonSerializableAddressBook.MESSAGE_DUPLICATE_PRESCRIPTION;
+
+import java.util.Optional;
 
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Person;
 import seedu.address.model.prescription.Prescription;
 
 /**
@@ -28,15 +35,32 @@ public class AddPrescriptionCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New prescription added: %1$s";
 
-    private final Prescription prescription;
+    private final Prescription toAdd;
 
     public AddPrescriptionCommand(Prescription prescription) {
-        this.prescription = prescription;
+        this.toAdd = prescription;
     }
 
     @Override
-    public CommandResult execute(Model model) {
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(prescription)));
+    public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+
+        Optional<Person> matchedPatient = model.getAddressBook()
+                .getPersonList()
+                .stream()
+                .filter(p -> p.getName().fullName.equals(toAdd.getPatientId()))
+                .findFirst();
+
+        if (matchedPatient.isEmpty()) {
+            throw new CommandException(String.format(MESSAGE_PATIENT_NOT_FOUND, toAdd.getPatientId()));
+        }
+
+        if (model.hasPrescription(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_PRESCRIPTION);
+        }
+
+        model.addPrescription(toAdd);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
     @Override
@@ -49,6 +73,6 @@ public class AddPrescriptionCommand extends Command {
             return false;
         }
 
-        return prescription.equals(c.prescription);
+        return toAdd.equals(c.toAdd);
     }
 }
