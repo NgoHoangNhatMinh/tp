@@ -25,4 +25,12 @@ public class CliSyntax {
     public static final Prefix PREFIX_STARTDATE = new Prefix("start/");
     public static final Prefix PREFIX_DURATION = new Prefix("dur/");
     public static final Prefix PREFIX_NOTE = new Prefix("note/");
+
+    // Other custom prefixes for patient information
+
+    public static final Prefix PREFIX_DOB = new Prefix("dob/"); // For birthday
+    public static final Prefix PREFIX_GENDER = new Prefix("g/");
+    public static final Prefix PREFIX_EMERGENCY = new Prefix("em/"); // Suitable?
+    public static final Prefix PREFIX_ID = new Prefix("id/");
+    public static final Prefix PREFIX_LANG = new Prefix("lang/");
 }
