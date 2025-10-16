@@ -182,6 +182,21 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void addPrescription(Prescription prescription) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasPrescription(Prescription prescription) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deletePrescription(Prescription prescription) {
+            throw new AssertionError("This method should not be called.");
+        }
+
 
     }
 
