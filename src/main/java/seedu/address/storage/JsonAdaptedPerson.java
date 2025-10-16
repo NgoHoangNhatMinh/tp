@@ -54,9 +54,7 @@ class JsonAdaptedPatient {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+
     }
 
     /**
@@ -103,7 +101,7 @@ class JsonAdaptedPatient {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Patient(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Patient(modelName, modelPhone, modelEmail, modelAddress);
     }
 
 }

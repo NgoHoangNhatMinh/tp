@@ -31,10 +31,6 @@ public class Patient {
     private final Address address;
     // private final Set<Tag> tags = new HashSet<>();
 
-    // Data fields
-    private final Address address;
-    private final Set<Tag> tags = new HashSet<>();
-
     /**
      * Every field must be present and not null.
      */
