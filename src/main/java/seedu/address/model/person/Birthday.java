@@ -12,8 +12,8 @@ import java.time.format.DateTimeParseException;
  */
 public class Birthday {
 
-    public static final String MESSAGE_CONSTRAINTS = "Birthday must be a date in the past, and must be in " +
-            "yyyy-MM-dd format.";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday must be a date in the past, and must be in "
+            + "yyyy-MM-dd format.";
     public static final String VALIDATION_REGEX = "\\d{4}-\\d{2}-\\d{2}"; // only accept this format for now
     //private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -45,7 +45,8 @@ public class Birthday {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
 
-        LocalDateTime parsedDate = LocalDateTime.parse(birthdayString + "T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        LocalDateTime parsedDate = LocalDateTime.parse(birthdayString + "T00:00:00",
+                DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         if (parsedDate.isAfter(LocalDateTime.now())) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
@@ -61,7 +62,8 @@ public class Birthday {
         }
 
         try {
-            LocalDateTime parsedDate = LocalDateTime.parse(birthday + "T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            LocalDateTime parsedDate = LocalDateTime.parse(birthday + "T00:00:00",
+                    DateTimeFormatter.ISO_LOCAL_DATE_TIME);
             return !parsedDate.isAfter(LocalDateTime.now());
         } catch (DateTimeParseException e) {
             return false;
