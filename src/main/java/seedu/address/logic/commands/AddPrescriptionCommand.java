@@ -14,7 +14,7 @@ import java.util.Optional;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Patient;
 import seedu.address.model.prescription.Prescription;
 
 /**
@@ -45,8 +45,8 @@ public class AddPrescriptionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Optional<Person> matchedPatient = model.getAddressBook()
-                .getPersonList()
+        Optional<Patient> matchedPatient = model.getAddressBook()
+                .getPatientList()
                 .stream()
                 .filter(p -> p.getName().fullName.equals(toAdd.getPatientId()))
                 .findFirst();
