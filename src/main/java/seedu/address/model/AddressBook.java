@@ -8,23 +8,23 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.UniqueAppointmentList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.Patient;
+import seedu.address.model.person.UniquePatientList;
 import seedu.address.model.prescription.Prescription;
 import seedu.address.model.prescription.UniquePrescriptionList;
 
 /**
  * Wraps all data at the address-book level.
- * Duplicates are not allowed (by .isSamePerson comparison for persons, and equality for appointments).
+ * Duplicates are not allowed (by .isSamePatient comparison for persons, and equality for appointments).
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    private final UniquePatientList persons;
     private final UniqueAppointmentList appointments;
     private final UniquePrescriptionList prescriptions;
 
     {
-        persons = new UniquePersonList();
+        persons = new UniquePatientList();
         appointments = new UniqueAppointmentList();
         prescriptions = new UniquePrescriptionList();
     }
@@ -49,8 +49,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      *
      * @param persons the new list of {@link Person} objects to set
      */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public void setPatients(List<Patient> persons) {
+        this.persons.setPatients(persons);
     }
 
     /**
@@ -80,7 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
-        setPersons(newData.getPersonList());
+        setPatients(newData.getPatientList());
         setAppointments(newData.getAppointmentList());
         setPrescriptions(newData.getPrescriptionList());
     }
@@ -93,7 +93,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param person the person to check for
      * @return true if the address book contains the person, false otherwise
      */
-    public boolean hasPerson(Person person) {
+    public boolean hasPatient(Patient person) {
         requireNonNull(person);
         return persons.contains(person);
     }
@@ -104,28 +104,28 @@ public class AddressBook implements ReadOnlyAddressBook {
      *
      * @param p the person to add
      */
-    public void addPerson(Person p) {
+    public void addPatient(Patient p) {
         persons.add(p);
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given patient {@code target} in the list with {@code editedPatient}.
      *
-     * @param target the person to be replaced
-     * @param editedPerson the replacement person
+     * @param target the patient to be replaced
+     * @param editedPatient the replacement patient
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
-        persons.setPerson(target, editedPerson);
+    public void setPatient(Patient target, Patient editedPatient) {
+        requireNonNull(editedPatient);
+        persons.setPatient(target, editedPatient);
     }
 
     /**
-     * Removes the specified person from the address book.
+     * Removes the specified patient from the address book.
      * The person must exist in the address book.
      *
-     * @param key the person to remove
+     * @param key the patient to remove
      */
-    public void removePerson(Person key) {
+    public void removePatient(Patient key) {
         persons.remove(key);
     }
 
@@ -209,7 +209,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// list getters
 
     @Override
-    public ObservableList<Person> getPersonList() {
+    public ObservableList<Patient> getPatientList() {
         return persons.asUnmodifiableObservableList();
     }
 

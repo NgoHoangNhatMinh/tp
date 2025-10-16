@@ -17,7 +17,7 @@ import seedu.address.model.appointment.Appointment;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Patient;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -27,18 +27,18 @@ import seedu.address.model.tag.Tag;
 public class AddAppointmentCommandTest {
 
     private Model model;
-    private Person john;
+    private Patient john;
 
     @BeforeEach
     public void setUp() {
         model = new ModelManager(new seedu.address.model.AddressBook(), new UserPrefs());
-        john = new Person(
+        john = new Patient(
                 new Name("John Doe"),
                 new Phone("12345678"),
                 new Email("john@example.com"),
                 new Address("123, Jurong West Ave 6, #08-111"),
                 Collections.<Tag>emptySet());
-        model.addPerson(john);
+        model.addPatient(john);
     }
 
     @Test

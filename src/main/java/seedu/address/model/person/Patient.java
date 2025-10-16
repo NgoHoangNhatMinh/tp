@@ -4,7 +4,12 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDateTime;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Patient in the address book.
@@ -13,9 +18,11 @@ import java.util.Objects;
 public class Patient {
 
     // all references to Tag are removed
+
     private final Name name;
     private final Phone phone;
     private final Email email;
+    //private final String patientId;
     private final Birthday birthday;
     private final String gender;
     private final String emergency;
@@ -23,6 +30,10 @@ public class Patient {
     private final String lang;
     private final Address address;
     // private final Set<Tag> tags = new HashSet<>();
+
+    // Data fields
+    private final Address address;
+    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
