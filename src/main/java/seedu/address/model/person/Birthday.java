@@ -3,8 +3,8 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
-// this class is almost directly borrowed from seedu.address.model.appointment.AppointmentDateTime
-// should try to make the code reusable
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /**
  * Represents the Birthday of a patient.
@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
  */
 public class Birthday {
 
-    public static final String MESSAGE_CONSTRAINTS = "Birthday mush be a date in the past.";
+    public static final String MESSAGE_CONSTRAINTS = "Birthday must be a date in the past, and must be in yyyy-MM-dd format.";
+    public static final String VALIDATION_REGEX = "\\d{4}-\\d{2}-\\d{2}"; // only accept this format for now
+    //private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private final LocalDateTime value;
 
@@ -30,13 +32,48 @@ public class Birthday {
         this.value = value;
     }
 
+    /**
+     * Constructs an {@code Birthday} from a string.
+     *
+     * @param birthdayString A string in yyyy-MM-dd format.
+     * @throws IllegalArgumentException if the string is invalid or represents a future date.
+     */
+    public Birthday(String birthdayString) {
+        requireNonNull(birthdayString);
+        if (!isValidBirthday(birthdayString)) {
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
+        }
+
+        LocalDateTime parsedDate = LocalDateTime.parse(birthdayString + "T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        if (parsedDate.isAfter(LocalDateTime.now())) {
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
+        }
+        this.value = parsedDate;
+    }
+
+    /**
+     * Returns true if a given string is a valid birthday format.
+     */
+    public static boolean isValidBirthday(String birthday) {
+        if (birthday == null || !birthday.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+
+        try {
+            LocalDateTime parsedDate = LocalDateTime.parse(birthday + "T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            return !parsedDate.isAfter(LocalDateTime.now());
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
     public LocalDateTime getBirthday() {
         return value;
     }
 
     @Override
     public String toString() {
-        return value.toString();
+        return value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     @Override
@@ -44,10 +81,10 @@ public class Birthday {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof seedu.address.model.person.Birthday)) {
+        if (!(other instanceof Birthday)) {
             return false;
         }
-        return value.equals(((seedu.address.model.person.Birthday) other).value);
+        return value.equals(((Birthday) other).value);
     }
 
     @Override
