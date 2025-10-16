@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPatients.ALICE;
 import static seedu.address.testutil.TypicalPatients.getTypicalAddressBook;
@@ -35,13 +35,13 @@ public class AddressBookTest {
     public void setUp() {
         // Sample prescription
         prescription = new PrescriptionBuilder()
-            .withPatientId("P-10293")
-            .withMedicationName("Paracetamol")
-            .withDosage(500f)
-            .withFrequency(3)
-            .withDuration(7)
-            .withNote("Take after meals")
-            .build();
+                .withPatientId("P-10293")
+                .withMedicationName("Paracetamol")
+                .withDosage(500f)
+                .withFrequency(3)
+                .withDuration(7)
+                .withNote("Take after meals")
+                .build();
     }
 
 
@@ -65,7 +65,7 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicatePatients_throwsDuplicatePatientException() {
         // Two persons with the same identity fields
-        Patient editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Patient editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
         List<Patient> newPatients = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newPatients);
@@ -92,7 +92,7 @@ public class AddressBookTest {
     @Test
     public void hasPatient_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addPatient(ALICE);
-        Patient editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Patient editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
         assertTrue(addressBook.hasPatient(editedAlice));
     }
@@ -138,7 +138,7 @@ public class AddressBookTest {
         }
     }
 
-    /////////// Prescription tests ///////////
+    /// //////// Prescription tests ///////////
 
     @Test
     public void hasPrescription_prescriptionNotInAddressBook_returnsFalse() {
@@ -174,7 +174,7 @@ public class AddressBookTest {
     public void setPrescription_prescriptionNotInAddressBook_throwsPrescriptionNotFoundException() {
         Prescription anotherPrescription = new PrescriptionBuilder().withMedicationName("Ibuprofen").build();
         assertThrows(seedu.address.model.prescription.exceptions.PrescriptionNotFoundException.class, () ->
-            addressBook.setPrescription(anotherPrescription, prescription));
+                addressBook.setPrescription(anotherPrescription, prescription));
     }
 
     @Test
@@ -182,14 +182,13 @@ public class AddressBookTest {
         addressBook.addPrescription(prescription);
 
         Prescription editedPrescription = new PrescriptionBuilder(prescription)
-            .withDosage(750f)
-            .build();
+                .withDosage(750f)
+                .build();
         addressBook.setPrescription(prescription, editedPrescription);
 
         assertTrue(addressBook.hasPrescription(editedPrescription));
         assertFalse(addressBook.hasPrescription(prescription));
     }
-
 
 
 }

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,6 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Patient;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
 /**
  * Tests for {@link AddAppointmentCommand}.
@@ -36,8 +34,7 @@ public class AddAppointmentCommandTest {
                 new Name("John Doe"),
                 new Phone("12345678"),
                 new Email("john@example.com"),
-                new Address("123, Jurong West Ave 6, #08-111"),
-                Collections.<Tag>emptySet());
+                new Address("123, Jurong West Ave 6, #08-111"));
         model.addPatient(john);
     }
 

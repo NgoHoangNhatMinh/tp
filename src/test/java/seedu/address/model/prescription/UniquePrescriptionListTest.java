@@ -45,26 +45,26 @@ public class UniquePrescriptionListTest {
     public void add_duplicatePrescription_throwsDuplicatePrescriptionException() {
         uniquePrescriptionList.add(PRESCRIPTION_A);
         assertThrows(DuplicatePrescriptionException.class, () ->
-            uniquePrescriptionList.add(PRESCRIPTION_A));
+                uniquePrescriptionList.add(PRESCRIPTION_A));
     }
 
     @Test
     public void setPrescription_nullTargetPrescription_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
-            uniquePrescriptionList.setPrescription(null, PRESCRIPTION_A));
+                uniquePrescriptionList.setPrescription(null, PRESCRIPTION_A));
     }
 
     @Test
     public void setPrescription_nullEditedPrescription_throwsNullPointerException() {
         uniquePrescriptionList.add(PRESCRIPTION_A);
         assertThrows(NullPointerException.class, () ->
-            uniquePrescriptionList.setPrescription(PRESCRIPTION_A, null));
+                uniquePrescriptionList.setPrescription(PRESCRIPTION_A, null));
     }
 
     @Test
     public void setPrescription_targetPrescriptionNotInList_throwsPrescriptionNotFoundException() {
         assertThrows(PrescriptionNotFoundException.class, () ->
-            uniquePrescriptionList.setPrescription(PRESCRIPTION_A, PRESCRIPTION_A));
+                uniquePrescriptionList.setPrescription(PRESCRIPTION_A, PRESCRIPTION_A));
     }
 
     @Test
@@ -90,13 +90,13 @@ public class UniquePrescriptionListTest {
         uniquePrescriptionList.add(PRESCRIPTION_A);
         uniquePrescriptionList.add(PRESCRIPTION_B);
         assertThrows(DuplicatePrescriptionException.class, () ->
-            uniquePrescriptionList.setPrescription(PRESCRIPTION_A, PRESCRIPTION_B));
+                uniquePrescriptionList.setPrescription(PRESCRIPTION_A, PRESCRIPTION_B));
     }
 
     @Test
     public void remove_nullPrescription_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
-            uniquePrescriptionList.remove(null));
+                uniquePrescriptionList.remove(null));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class UniquePrescriptionListTest {
     @Test
     public void setPrescriptions_nullUniquePrescriptionList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
-            uniquePrescriptionList.setPrescriptions((UniquePrescriptionList) null));
+                uniquePrescriptionList.setPrescriptions((UniquePrescriptionList) null));
     }
 
     @Test
@@ -130,7 +130,7 @@ public class UniquePrescriptionListTest {
     @Test
     public void setPrescriptions_nullList_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
-            uniquePrescriptionList.setPrescriptions((List<Prescription>) null));
+                uniquePrescriptionList.setPrescriptions((List<Prescription>) null));
     }
 
     @Test
@@ -147,18 +147,18 @@ public class UniquePrescriptionListTest {
     public void setPrescriptions_listWithDuplicatePrescriptions_throwsDuplicatePrescriptionException() {
         List<Prescription> listWithDuplicates = Arrays.asList(PRESCRIPTION_A, PRESCRIPTION_A);
         assertThrows(DuplicatePrescriptionException.class, () ->
-            uniquePrescriptionList.setPrescriptions(listWithDuplicates));
+                uniquePrescriptionList.setPrescriptions(listWithDuplicates));
     }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () ->
-            uniquePrescriptionList.asUnmodifiableObservableList().remove(0));
+                uniquePrescriptionList.asUnmodifiableObservableList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
         assertEquals(uniquePrescriptionList.asUnmodifiableObservableList().toString(),
-            uniquePrescriptionList.toString());
+                uniquePrescriptionList.toString());
     }
 }
