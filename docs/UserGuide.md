@@ -74,19 +74,29 @@ Shows a message explaining how to access the help page.
 Format: `help`
 
 
-### Adding a patient: `add`
+### Adding information of a patient: `i-add`
 
 Adds a patient to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
 
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A patient can have any number of tags (including 0)
-</div>
+* Add personal information of a new patient.
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang. 
+* The date for birthday must follow the format YYYY-MM-DD.
+* Currently, the app does not allow duplication in names.
+
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 
+    id/S1234567A lang/English`
+* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321 
+    id/T9876543B lang/Chinese`
+
+### Delete patient appointments: `a-delete`
+
+Delete all patient appointments from address book. 
+
+Format: `a-delete`
 
 ### Listing all patients : `list`
 

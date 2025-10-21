@@ -29,13 +29,11 @@ public class Patient {
     public Patient(Name name, Birthday birthday, String gender, Phone phone, Email email,
                    Address address, String emergency, String id, String lang) {
 
+        requireAllNonNull(name, birthday, gender, phone, emergency, id, lang);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-
-        requireAllNonNull(birthday, gender, emergency, id, lang);
-
         this.birthday = birthday;
         this.gender = gender;
         this.emergency = emergency;
