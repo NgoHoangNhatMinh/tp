@@ -84,6 +84,14 @@ public class DeleteAppointmentCommand extends Command {
                 && dateTime1.getHour() == dateTime2.getHour();
     }
 
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getDateTime() {
+        return dateTimeString;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this
