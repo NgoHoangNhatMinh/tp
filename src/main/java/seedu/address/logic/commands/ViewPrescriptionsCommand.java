@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -16,8 +15,8 @@ public class ViewPrescriptionsCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all prescriptions tagged to "
         + "the specific patient id and displays them as a list.\n"
-        + "Parameters: " + PREFIX_PATIENT + " [patient_id]\n"
-        + "Example: " + COMMAND_WORD + " " + PREFIX_PATIENT + " P-10293";
+        + "Parameters: p/ [patient]\n"
+        + "Example: " + COMMAND_WORD + " p/ Alex Yeoh";
 
     private final HavingPatientIdPredicate predicate;
 

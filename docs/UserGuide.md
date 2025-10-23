@@ -191,6 +191,29 @@ Examples:
 * p-add p/John Doe m/Panadol d/500 f/2 dur/3
 * p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo
 
+### Viewing all prescriptions for a given patient: `p-view`
+
+Checks a patient's prescription information.
+
+Format: `p-view p/PATIENT_NAME`
+
+Views all prescriptions listed in a similar UI style to Patients in `list`
+
+Examples:
+
+* `p-view p/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
+
+### Delete a prescription: `p-delete`
+
+Format: `p-delete INDEX`
+
+* Deletes the prescription whose position is at the provided index from the list of prescriptions after a `p-view`
+* Can only be used if a list of prescriptions is displayed
+
+Examples:
+
+* `p-delete 1` Deletes the first prescription in the list
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.

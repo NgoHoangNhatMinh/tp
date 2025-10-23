@@ -7,7 +7,7 @@ import java.util.Objects;
 
 /**
  * Represents an Appointment in the hospital system.
- * Guarantees: details are present and not null.
+ * Guarantees: all fields are non-null and immutable once created.
  */
 public class Appointment {
 
@@ -19,20 +19,26 @@ public class Appointment {
     /**
      * Constructs an {@code Appointment}.
      *
-     * @param patientName The patient's unique ID.
-     * @param dateTime The date and time of the appointment.
-     * @param doctor The doctor's name.
-     * @param reason The reason for the appointment.
+     * @param patientName The patient's unique ID or Name.
+     * @param dateTime  The date and time of the appointment.
+     * @param doctor    The doctor's name.
+     * @param reason    The reason or notes for the appointment.
+     * @throws IllegalArgumentException if any string field is empty.
      */
     public Appointment(String patientName, LocalDateTime dateTime, String doctor, String reason) {
         requireNonNull(patientName);
         requireNonNull(dateTime);
         requireNonNull(doctor);
         requireNonNull(reason);
-        this.patientName = patientName;
+
+        if (patientName.isBlank() || doctor.isBlank()) {
+            throw new IllegalArgumentException("Patient Name and Doctor cannot be blank.");
+        }
+
+        this.patientName = patientName.trim();
         this.dateTime = dateTime;
-        this.doctor = doctor;
-        this.reason = reason;
+        this.doctor = doctor.trim();
+        this.reason = reason.trim();
     }
 
     public String getPatientName() {
@@ -73,7 +79,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return String.format("Appointment[patient=%s, dateTime=%s, doctor=%s, reason=%s]",
+        return String.format("Appointment[patient='%s', dateTime=%s, doctor='%s', reason='%s']",
                 patientName, dateTime, doctor, reason);
     }
 }
