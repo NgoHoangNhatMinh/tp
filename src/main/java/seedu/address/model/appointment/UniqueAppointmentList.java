@@ -34,6 +34,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
      * Adds the specified appointment to the internal list.
      *
      * @param toAdd the {@link Appointment} to add
+     * @throws DuplicateAppointmentException if the appointment already exists
      */
     public void add(Appointment toAdd) {
         requireNonNull(toAdd);
@@ -44,8 +45,11 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     /**
-     * TODO: add javadoc
-     * @param appointments
+     * Replaces the current list of appointments with the provided list.
+     * The provided list must not contain duplicates.
+     *
+     * @param appointments list of appointments to replace the existing contents
+     * @throws DuplicateAppointmentException if the provided list contains duplicates
      */
     public void setAppointments(List<Appointment> appointments) {
         requireNonNull(appointments);
@@ -55,6 +59,9 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         internalList.setAll(appointments);
     }
 
+    /**
+     * Returns an unmodifiable view of the internal appointment list.
+     */
     public ObservableList<Appointment> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
@@ -87,6 +94,9 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
         return internalList.hashCode();
     }
 
+    /**
+     * Returns true if all appointments in the given list are unique.
+     */
     private boolean appointmentsAreUnique(List<Appointment> appointments) {
         for (int i = 0; i < appointments.size() - 1; i++) {
             for (int j = i + 1; j < appointments.size(); j++) {

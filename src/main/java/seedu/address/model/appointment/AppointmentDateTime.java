@@ -17,15 +17,15 @@ public class AppointmentDateTime {
     /**
      * Constructs an {@code AppointmentDateTime}.
      *
-     * @param value The {@code LocalDateTime} of the appointment.
-     * @throws IllegalArgumentException if {@code value} is before the current time.
+     * @param dateTime The {@code LocalDateTime} of the appointment.
+     * @throws IllegalArgumentException if {@code dateTime} is before the current time.
      */
-    public AppointmentDateTime(LocalDateTime value) {
-        requireNonNull(value);
-        if (value.isBefore(LocalDateTime.now())) {
+    public AppointmentDateTime(LocalDateTime dateTime) {
+        requireNonNull(dateTime);
+        if (isPast(dateTime)) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
-        this.value = value;
+        this.value = dateTime;
     }
 
     public LocalDateTime getValue() {
@@ -51,5 +51,12 @@ public class AppointmentDateTime {
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    /**
+     * Helper to check if a date is before the current time.
+     */
+    private boolean isPast(LocalDateTime dateTime) {
+        return dateTime.isBefore(LocalDateTime.now());
     }
 }
