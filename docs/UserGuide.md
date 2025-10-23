@@ -196,7 +196,7 @@ Examples:
 
 * `p-view p/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
 
-### Delete a prescription
+### Delete a prescription: `p-delete`
 
 Format: `p-delete INDEX`
 
