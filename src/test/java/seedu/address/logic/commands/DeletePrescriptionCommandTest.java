@@ -1,8 +1,12 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPrescriptions.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
@@ -41,5 +45,38 @@ public class DeletePrescriptionCommandTest {
         DeletePrescriptionCommand deletePrescriptionCommand = new DeletePrescriptionCommand(outOfBoundIndex);
         assertCommandFailure(deletePrescriptionCommand, model,
             Messages.MESSAGE_INVALID_PRESCRIPTION_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void equals() {
+        DeletePrescriptionCommand deleteFirstCommand = new DeletePrescriptionCommand(INDEX_FIRST_PERSON);
+        DeletePrescriptionCommand deleteSecondCommand = new DeletePrescriptionCommand(INDEX_SECOND_PERSON);
+
+        // same object -> returns true
+        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+
+        // same values -> returns true
+        DeletePrescriptionCommand deleteFirstCommandCopy = new DeletePrescriptionCommand(INDEX_FIRST_PERSON);
+        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(deleteFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(deleteFirstCommand.equals(null));
+
+        // different prescription -> returns false
+        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+
+        // instanceof check with different command type -> returns false
+        assertFalse(deleteFirstCommand.equals(new DeleteCommand(INDEX_FIRST_PERSON)));
+    }
+
+    @Test
+    public void toStringMethod() {
+        Index targetIndex = Index.fromOneBased(1);
+        DeletePrescriptionCommand deletePrescriptionCommand = new DeletePrescriptionCommand(targetIndex);
+        String expected = DeletePrescriptionCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
+        assertEquals(expected, deletePrescriptionCommand.toString());
     }
 }
