@@ -108,9 +108,4 @@ public interface Model {
      */
     void updateFilteredPrescriptionList(Predicate<Prescription> predicate);
 
-    void addPrescription(Prescription prescription);
-
-    boolean hasPrescription(Prescription prescription);
-
-    void deletePrescription(Prescription prescription);
 }
