@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -25,6 +26,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Prescription> filteredPrescriptions;
+    private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -38,6 +40,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
         filteredPrescriptions = new FilteredList<>(this.addressBook.getPrescriptionList());
+        filteredAppointments = new FilteredList<>(this.addressBook.getAppointmentList());
     }
 
     public ModelManager() {
@@ -149,7 +152,6 @@ public class ModelManager implements Model {
         filteredPrescriptions.setPredicate(predicate);
     }
 
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -188,6 +190,10 @@ public class ModelManager implements Model {
         addressBook.removeAppointment(appointment);
     }
 
+    @Override
+    public List<Appointment> getFilteredAppointmentList() {
+        return filteredAppointments;
+    }
 
     //=========== Prescriptions =============================================================
 
