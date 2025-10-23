@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -107,4 +108,7 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPrescriptionList(Predicate<Prescription> predicate);
+
+    /** Returns an unmodifiable view of the filtered Appointment list */
+    List<Appointment> getFilteredAppointmentList();
 }

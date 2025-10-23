@@ -149,7 +149,7 @@ Examples:
 
 Schedules a new appointment for a patient with a doctor.
 
-Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]`
+Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
 
 * Creates a new appointment record for the specified patient and doctor.
 * The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
@@ -157,14 +157,21 @@ Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]`
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp
-* a-add p/Betsy Crowe d/Dr Tan dt/2025-12-01 09:30 note/Annual check-up
+* a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
+* a-add p/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
 
 ### Delete patient appointments: `a-delete`
 
-Delete all patient appointments from address book.
+Delete an existing patient appointment from address book.
 
-Format: `a-delete`
+Format: `a-delete p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
+
+* Delete an existing patient appointment by patient name and appointment time. 
+* Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
+
+Examples:
+* a-delete p/John Doe t/2025-11-11 14
+* a-delete p/Betsy Crowe t/2025-12-01 09
 
 ### Adding a prescription: `p-add`
 
