@@ -46,10 +46,10 @@ public class PrescriptionCard extends UiPart<Region> {
         dosage.setText(String.format("%.1f mg", prescription.getDosage()));
         frequency.setText(prescription.getFrequency() + "×/day");
         duration.setText(prescription.getDuration() + " days");
-//        startDate.setText(prescription.getStartDate().toLocalDate().toString());
-//        note.setText(prescription.getNote() == null || prescription.getNote().isBlank()
-//            ? "(no additional notes)"
-//            : prescription.getNote());
+        //        startDate.setText(prescription.getStartDate().toLocalDate().toString());
+        //        note.setText(prescription.getNote() == null || prescription.getNote().isBlank()
+        //            ? "(no additional notes)"
+        //            : prescription.getNote());
         patientId.setText("Patient ID: " + prescription.getPatientId());
     }
 }
