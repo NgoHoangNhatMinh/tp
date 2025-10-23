@@ -107,4 +107,5 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPrescriptionList(Predicate<Prescription> predicate);
+
 }

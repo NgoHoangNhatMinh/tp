@@ -188,6 +188,7 @@ public class ModelManager implements Model {
         addressBook.removeAppointment(appointment);
     }
 
+
     //=========== Prescriptions =============================================================
 
     @Override
@@ -207,4 +208,5 @@ public class ModelManager implements Model {
         requireNonNull(prescription);
         addressBook.removePrescription(prescription);
     }
+
 }
