@@ -17,6 +17,7 @@ import seedu.address.logic.commands.AddAppointmentCommand;
 //import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeletePrescriptionCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPatientDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -94,6 +95,11 @@ public class AddressBookParserTest {
     public void parseCommand_addAppointment_returnsAddAppointmentCommand() throws Exception {
         assertTrue(parser.parseCommand("a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp")
                 instanceof AddAppointmentCommand);
+    }
+
+    @Test
+    public void parseCommand_deletePrescription_returnsDeletePrescriptionCommand() throws Exception {
+        assertTrue(parser.parseCommand("p-delete 1") instanceof DeletePrescriptionCommand);
     }
 
     @Test
