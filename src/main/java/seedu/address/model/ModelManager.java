@@ -12,7 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Patient;
 import seedu.address.model.prescription.Prescription;
 
 /**
@@ -23,7 +23,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Prescription> filteredPrescriptions;
 
     /**
@@ -36,7 +36,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
         filteredPrescriptions = new FilteredList<>(this.addressBook.getPrescriptionList());
     }
 
@@ -92,44 +92,44 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasPerson(Person person) {
+    public boolean hasPatient(Patient person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return addressBook.hasPatient(person);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+    public void deletePatient(Patient target) {
+        addressBook.removePatient(target);
     }
 
     @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addPatient(Patient person) {
+        addressBook.addPatient(person);
+        updateFilteredPatientList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
+    public void setPatient(Patient target, Patient editedPatient) {
+        requireAllNonNull(target, editedPatient);
 
-        addressBook.setPerson(target, editedPerson);
+        addressBook.setPatient(target, editedPatient);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Patient List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Patient} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public ObservableList<Patient> getFilteredPatientList() {
+        return filteredPatients;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredPatientList(Predicate<Patient> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredPatients.setPredicate(predicate);
     }
 
     //=========== Filtered Prescription List Accessors =============================================================
@@ -164,7 +164,7 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return addressBook.equals(otherModelManager.addressBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons)
+                && filteredPatients.equals(otherModelManager.filteredPatients)
                 && filteredPrescriptions.equals(otherModelManager.filteredPrescriptions);
     }
 
@@ -188,7 +188,9 @@ public class ModelManager implements Model {
         addressBook.removeAppointment(appointment);
     }
 
-    //=========== Appointments =============================================================
+
+    //=========== Prescriptions =============================================================
+
     @Override
     public boolean hasPrescription(Prescription prescription) {
         requireNonNull(prescription);
@@ -198,7 +200,7 @@ public class ModelManager implements Model {
     @Override
     public void addPrescription(Prescription prescription) {
         requireNonNull(prescription);
-        addressBook.removePrescription(prescription);
+        addressBook.addPrescription(prescription);
     }
 
     @Override

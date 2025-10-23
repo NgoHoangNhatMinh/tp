@@ -18,11 +18,19 @@ public class CliSyntax {
     public static final Prefix PREFIX_APPT_NOTE = new Prefix("note/");
 
     // Custom prefixes for prescription
-    public static final Prefix PREFIX_PATIENT = new Prefix("pat/");
-    public static final Prefix PREFIX_MEDICATION = new Prefix("med/");
-    public static final Prefix PREFIX_DOSAGE = new Prefix("dose/");
-    public static final Prefix PREFIX_FREQUENCY = new Prefix("freq/");
-    public static final Prefix PREFIX_STARTDATE = new Prefix("start/");
+    public static final Prefix PREFIX_PATIENT = new Prefix("p/");
+    public static final Prefix PREFIX_MEDICATION = new Prefix("m/");
+    public static final Prefix PREFIX_DOSAGE = new Prefix("d/");
+    public static final Prefix PREFIX_FREQUENCY = new Prefix("f/");
+    public static final Prefix PREFIX_STARTDATE = new Prefix("s/");
     public static final Prefix PREFIX_DURATION = new Prefix("dur/");
-    public static final Prefix PREFIX_NOTE = new Prefix("note/");
+    public static final Prefix PREFIX_NOTE = new Prefix("n/");
+
+    // Other custom prefixes for patient information
+
+    public static final Prefix PREFIX_DOB = new Prefix("dob/"); // For birthday
+    public static final Prefix PREFIX_GENDER = new Prefix("g/");
+    public static final Prefix PREFIX_EMERGENCY = new Prefix("em/"); // Suitable?
+    public static final Prefix PREFIX_ID = new Prefix("id/");
+    public static final Prefix PREFIX_LANG = new Prefix("lang/");
 }

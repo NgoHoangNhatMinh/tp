@@ -3,7 +3,8 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to help manage patient details in a high-volume patient environment**. We leverage the optimised nature of AB3 on the Command Line Interface (CLI) so if you can type fast, AB3 retrieves your patient details faster than traditional GUI apps. There still remains the benefits of a Graphical User Interface.
+
 
 * Table of Contents
 {:toc}
@@ -72,47 +73,63 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+### Listing all patients : `list`
 
-### Adding a person: `add`
-
-Adds a person to the address book.
-
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
-</div>
-
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
-### Listing all persons : `list`
-
-Shows a list of all persons in the address book.
+Shows a list of all patients in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Adding information of a patient: `i-add`
 
-Edits an existing person in the address book.
+Adds a patient to the address book.
+
+Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
+
+* Add personal information of a new patient.
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang. 
+* The date for birthday must follow the format YYYY-MM-DD.
+* Currently, the app does not allow duplication in names.
+
+Examples:
+* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 
+    id/S1234567A lang/English`
+* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321 
+    id/T9876543B lang/Chinese`
+
+### Editing a patient : `edit`
+
+Edits an existing patient in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+* When editing tags, the existing tags of the patient will be removed i.e adding of tags is not cumulative.
+* You can remove all the patient’s tags by typing `t/` without
+  specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Deleting a patient : `delete`
 
-Finds persons whose names contain any of the given keywords.
+Deletes the specified patient from the address book.
+
+Format: `delete INDEX`
+
+* Deletes the patient at the specified `INDEX`.
+* The index refers to the index number shown in the displayed patient list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `delete 2` deletes the 2nd patient in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
+
+### Locating patients by name: `find`
+
+Finds patients whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -120,7 +137,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* patients matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
@@ -128,19 +145,44 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
+### Adding an appointment : `a-add`
 
-Deletes the specified person from the address book.
+Schedules a new appointment for a patient with a doctor.
 
-Format: `delete INDEX`
+Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Creates a new appointment record for the specified patient and doctor.
+* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
+* The date and time must follow the format YYYY-MM-DD HH:MM.
+* The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp
+* a-add p/Betsy Crowe d/Dr Tan dt/2025-12-01 09:30 note/Annual check-up
+
+### Delete patient appointments: `a-delete`
+
+Delete all patient appointments from address book.
+
+Format: `a-delete`
+
+### Adding a prescription: `p-add`
+
+Prescribe medication for a patient.
+
+Format: `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]`
+
+* Creates a new medication record for the specified patient.
+* The DOSAGE is in milligrams.
+* The DURATION is in days.
+* The STARTDATE and NOTE field is optional.
+* The STARTDATE field includes the day of starting medication and must follow the format YYYY-MM-DD HH:MM.
+* The NOTE field include remarks such as medication reason or notes on special health conditions.
+* The patient must already exist in the address book before scheduling an appointment.
+
+Examples:
+* p-add p/John Doe m/Panadol d/500 f/2 dur/3
+* p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo
 
 ### Clearing all entries : `clear`
 
@@ -189,6 +231,7 @@ _Details coming soon ..._
 
 ## Command summary
 
+### General basic commands
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
@@ -198,3 +241,8 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+
+### Appointment commands
+Action | Format, Examples
+--------|------------------
+**Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp`

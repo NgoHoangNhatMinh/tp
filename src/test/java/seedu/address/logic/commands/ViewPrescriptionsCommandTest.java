@@ -38,9 +38,9 @@ public class ViewPrescriptionsCommandTest {
         CommandResult result = command.execute(model);
 
         assertEquals(
-            String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW,
-                expectedModel.getFilteredPrescriptionList().size()),
-            result.getFeedbackToUser());
+                String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW,
+                        expectedModel.getFilteredPrescriptionList().size()),
+                result.getFeedbackToUser());
 
         assertEquals(expectedModel.getFilteredPrescriptionList(), model.getFilteredPrescriptionList());
     }
@@ -54,8 +54,8 @@ public class ViewPrescriptionsCommandTest {
         CommandResult result = command.execute(model);
 
         assertEquals(
-            String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW, 0),
-            result.getFeedbackToUser());
+                String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW, 0),
+                result.getFeedbackToUser());
         assertTrue(model.getFilteredPrescriptionList().isEmpty());
     }
 
