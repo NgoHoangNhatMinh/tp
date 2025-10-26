@@ -27,7 +27,7 @@ public class JsonAdaptedAppointmentTest {
         JsonAdaptedAppointment json = new JsonAdaptedAppointment("P002",
                 "2025-11-11T09:00", "Dr Lee", "Consultation");
         Appointment model = json.toModelType();
-        assertEquals("P002", model.getPatientId());
+        assertEquals("P002", model.getPatientName());
         assertEquals("Dr Lee", model.getDoctor());
         assertEquals("Consultation", model.getReason());
     }

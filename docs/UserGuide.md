@@ -73,26 +73,28 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-
-### Adding a patient: `add`
-
-Adds a patient to the address book.
-
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A patient can have any number of tags (including 0)
-</div>
-
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
 ### Listing all patients : `list`
 
 Shows a list of all patients in the address book.
 
 Format: `list`
+
+### Adding information of a patient: `i-add`
+
+Adds a patient to the address book.
+
+Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
+
+* Add personal information of a new patient.
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang. 
+* The date for birthday must follow the format YYYY-MM-DD.
+* Currently, the app does not allow duplication in names.
+
+Examples:
+* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 
+    id/S1234567A lang/English`
+* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321 
+    id/T9876543B lang/Chinese`
 
 ### Editing a patient : `edit`
 
@@ -105,11 +107,25 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the patient will be removed i.e adding of tags is not cumulative.
 * You can remove all the patient’s tags by typing `t/` without
-    specifying any tags after it.
+  specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
+
+### Deleting a patient : `delete`
+
+Deletes the specified patient from the address book.
+
+Format: `delete INDEX`
+
+* Deletes the patient at the specified `INDEX`.
+* The index refers to the index number shown in the displayed patient list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `delete 2` deletes the 2nd patient in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
 
 ### Locating patients by name: `find`
 
@@ -129,19 +145,74 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a patient : `delete`
+### Adding an appointment : `a-add`
 
-Deletes the specified patient from the address book.
+Schedules a new appointment for a patient with a doctor.
 
-Format: `delete INDEX`
+Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
 
-* Deletes the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed patient list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Creates a new appointment record for the specified patient and doctor.
+* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
+* The date and time must follow the format YYYY-MM-DD HH:MM.
+* The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd patient in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
+* a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
+* a-add p/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
+
+### Delete patient appointments: `a-delete`
+
+Delete an existing patient appointment from address book.
+
+Format: `a-delete p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
+
+* Delete an existing patient appointment by patient name and appointment time. 
+* Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
+
+Examples:
+* a-delete p/John Doe t/2025-11-11 14
+* a-delete p/Betsy Crowe t/2025-12-01 09
+
+### Adding a prescription: `p-add`
+
+Prescribe medication for a patient.
+
+Format: `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]`
+
+* Creates a new medication record for the specified patient.
+* The DOSAGE is in milligrams.
+* The DURATION is in days.
+* The STARTDATE and NOTE field is optional.
+* The STARTDATE field includes the day of starting medication and must follow the format YYYY-MM-DD HH:MM.
+* The NOTE field include remarks such as medication reason or notes on special health conditions.
+* The patient must already exist in the address book before scheduling an appointment.
+
+Examples:
+* p-add p/John Doe m/Panadol d/500 f/2 dur/3
+* p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo
+
+### Viewing all prescriptions for a given patient: `p-view`
+
+Checks a patient's prescription information.
+
+Format: `p-view p/PATIENT_NAME`
+
+Views all prescriptions listed in a similar UI style to Patients in `list`
+
+Examples:
+
+* `p-view p/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
+
+### Delete a prescription: `p-delete`
+
+Format: `p-delete INDEX`
+
+* Deletes the prescription whose position is at the provided index from the list of prescriptions after a `p-view`
+* Can only be used if a list of prescriptions is displayed
+
+Examples:
+
+* `p-delete 1` Deletes the first prescription in the list
 
 ### Clearing all entries : `clear`
 
@@ -154,21 +225,6 @@ Format: `clear`
 Exits the program.
 
 Format: `exit`
-
-### Adding an appointment : `a-add`
-
-Schedules a new appointment for a patient with a doctor.
-
-Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]`
-
-* Creates a new appointment record for the specified patient and doctor.
-* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
-* The date and time must follow the format YYYY-MM-DD HH:MM.
-* The patient must already exist in the address book before scheduling an appointment.
-
-Examples:
-* a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp
-* a-add p/Betsy Crowe d/Dr Tan dt/2025-12-01 09:30 note/Annual check-up
 
 ### Saving the data
 
