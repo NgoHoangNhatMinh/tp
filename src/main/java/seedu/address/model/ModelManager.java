@@ -4,11 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
@@ -25,6 +27,8 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Prescription> filteredPrescriptions;
+    private final FilteredList<Appointment> filteredAppointments;
+    private final SortedList<Appointment> sortedAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -38,6 +42,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
         filteredPrescriptions = new FilteredList<>(this.addressBook.getPrescriptionList());
+        filteredAppointments = new FilteredList<>(this.addressBook.getAppointmentList());
+        sortedAppointments = new SortedList<>(filteredAppointments);
     }
 
     public ModelManager() {
@@ -186,6 +192,24 @@ public class ModelManager implements Model {
     public void deleteAppointment(Appointment appointment) {
         requireNonNull(appointment);
         addressBook.removeAppointment(appointment);
+    }
+
+    //=========== Filtered Appointments =====================================================
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return sortedAppointments; // expose sorted view
+    }
+
+    @Override
+    public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+        requireNonNull(predicate);
+        filteredAppointments.setPredicate(predicate);
+    }
+
+    @Override
+    public void setAppointmentListComparator(Comparator<Appointment> comparator) {
+        sortedAppointments.setComparator(comparator);
     }
 
     //=========== Prescriptions =============================================================
