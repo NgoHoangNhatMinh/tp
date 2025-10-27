@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Appointment {
 
-    private final String patientId;
+    private final String patientName;
     private final LocalDateTime dateTime;
     private final String doctor;
     private final String reason;
@@ -19,30 +19,30 @@ public class Appointment {
     /**
      * Constructs an {@code Appointment}.
      *
-     * @param patientId The patient's unique identifier or name.
+     * @param patientName The patient's unique ID or Name.
      * @param dateTime  The date and time of the appointment.
      * @param doctor    The doctor's name.
      * @param reason    The reason or notes for the appointment.
      * @throws IllegalArgumentException if any string field is empty.
      */
-    public Appointment(String patientId, LocalDateTime dateTime, String doctor, String reason) {
-        requireNonNull(patientId);
+    public Appointment(String patientName, LocalDateTime dateTime, String doctor, String reason) {
+        requireNonNull(patientName);
         requireNonNull(dateTime);
         requireNonNull(doctor);
         requireNonNull(reason);
 
-        if (patientId.isBlank() || doctor.isBlank()) {
-            throw new IllegalArgumentException("Patient ID and Doctor cannot be blank.");
+        if (patientName.isBlank() || doctor.isBlank()) {
+            throw new IllegalArgumentException("Patient Name and Doctor cannot be blank.");
         }
 
-        this.patientId = patientId.trim();
+        this.patientName = patientName.trim();
         this.dateTime = dateTime;
         this.doctor = doctor.trim();
         this.reason = reason.trim();
     }
 
-    public String getPatientId() {
-        return patientId;
+    public String getPatientName() {
+        return patientName;
     }
 
     public LocalDateTime getDateTime() {
@@ -66,7 +66,7 @@ public class Appointment {
             return false;
         }
         final Appointment otherAppointment = (Appointment) other;
-        return patientId.equals(otherAppointment.patientId)
+        return patientName.equals(otherAppointment.patientName)
                 && dateTime.equals(otherAppointment.dateTime)
                 && doctor.equals(otherAppointment.doctor)
                 && reason.equals(otherAppointment.reason);
@@ -74,12 +74,12 @@ public class Appointment {
 
     @Override
     public int hashCode() {
-        return Objects.hash(patientId, dateTime, doctor, reason);
+        return Objects.hash(patientName, dateTime, doctor, reason);
     }
 
     @Override
     public String toString() {
         return String.format("Appointment[patient='%s', dateTime=%s, doctor='%s', reason='%s']",
-                patientId, dateTime, doctor, reason);
+                patientName, dateTime, doctor, reason);
     }
 }

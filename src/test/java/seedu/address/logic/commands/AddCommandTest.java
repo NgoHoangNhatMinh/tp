@@ -211,6 +211,11 @@ public class AddCommandTest {
         public void deletePrescription(Prescription prescription) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

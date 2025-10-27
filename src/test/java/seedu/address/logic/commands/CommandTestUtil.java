@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -65,9 +66,9 @@ public class CommandTestUtil {
     public static final String VALID_PATIENT_ID_P20485 = "P-20485";
     public static final String INVALID_PATIENT_ID = "10293";
 
-    public static final String PATIENT_DESC_P10293 = " pat/ " + VALID_PATIENT_ID_P10293;
-    public static final String PATIENT_DESC_P20485 = " pat/ " + VALID_PATIENT_ID_P20485;
-    public static final String INVALID_PATIENT_DESC = " pat/ " + INVALID_PATIENT_ID;
+    public static final String PATIENT_DESC_P10293 = " " + PREFIX_PATIENT + " " + VALID_PATIENT_ID_P10293;
+    public static final String PATIENT_DESC_P20485 = " " + PREFIX_PATIENT + " " + VALID_PATIENT_ID_P20485;
+    public static final String INVALID_PATIENT_DESC = " " + PREFIX_PATIENT + " " + INVALID_PATIENT_ID;
 
     static {
         DESC_AMY = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY)

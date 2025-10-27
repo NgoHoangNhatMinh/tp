@@ -155,7 +155,6 @@ public class ModelManager implements Model {
         filteredPrescriptions.setPredicate(predicate);
     }
 
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -231,4 +230,5 @@ public class ModelManager implements Model {
         requireNonNull(prescription);
         addressBook.removePrescription(prescription);
     }
+
 }
