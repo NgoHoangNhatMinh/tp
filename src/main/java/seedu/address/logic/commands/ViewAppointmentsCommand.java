@@ -73,7 +73,7 @@ public class ViewAppointmentsCommand extends Command {
 
         // Filter predicate: match patient + optional range
         model.updateFilteredAppointmentList(appt -> {
-            if (!appt.getPatientId().equals(patientName)) {
+            if (!appt.getPatientName().equals(patientName)) {
                 return false;
             }
             LocalDateTime dt = appt.getDateTime();
