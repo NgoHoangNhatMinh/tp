@@ -4,5 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml">
-    <ListView fx:id="appointmentListView" prefWidth="320.0" prefHeight="600.0"/>
+    <ListView fx:id="appointmentListView" AnchorPane.topAnchor="0.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0"/>
 </AnchorPane>
