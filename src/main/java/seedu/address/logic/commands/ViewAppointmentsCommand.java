@@ -37,6 +37,14 @@ public class ViewAppointmentsCommand extends Command {
     private final Optional<LocalDate> fromDate;
     private final Optional<LocalDate> toDate;
 
+    /**
+     * Creates a {@code ViewAppointmentsCommand} to view all appointments associated with a given patient,
+     *
+     * @param patientName The name of the patient whose appointments are to be viewed. Not {@code null}.
+     * @param fromDate    The optional start date for filtering appointments.
+     * @param toDate      The optional end date for filtering appointments.
+     * @throws NullPointerException if {@code patientName} is {@code null}.
+     */
     public ViewAppointmentsCommand(String patientName,
                                    Optional<LocalDate> fromDate,
                                    Optional<LocalDate> toDate) {
@@ -87,9 +95,12 @@ public class ViewAppointmentsCommand extends Command {
             String fromStr = fromDate.map(LocalDate::toString).orElse("-");
             String toStr = toDate.map(LocalDate::toString).orElse("-");
             return new CommandResult(String.format(
-                    MESSAGE_SUCCESS_WITH_RANGE, count, patientName, fromStr, toStr));
+                MESSAGE_SUCCESS_WITH_RANGE, count, patientName, fromStr, toStr),
+                false, false, ViewType.APPOINTMENT_LIST);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS_NO_RANGE, count, patientName));
+        return new CommandResult(String.format(
+            MESSAGE_SUCCESS_NO_RANGE, count, patientName),
+            false, false, ViewType.APPOINTMENT_LIST);
     }
 
     @Override

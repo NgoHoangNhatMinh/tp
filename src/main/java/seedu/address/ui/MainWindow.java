@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.commands.ViewType.APPOINTMENT_LIST;
 import static seedu.address.logic.commands.ViewType.PERSON_LIST;
 import static seedu.address.logic.commands.ViewType.PRESCRIPTION_LIST;
 
@@ -34,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
+    private AppointmentListPanel appointmentListPanel;
     private PatientListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -190,6 +192,9 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             switch (commandResult.getViewType()) {
+            case APPOINTMENT_LIST:
+                showAppointmentListPanel();
+                break;
             case PRESCRIPTION_LIST:
                 showPrescriptionListPanel();
                 break;
@@ -207,6 +212,15 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    /**
+     * Displays the appointment list panel in the placeholder area.
+     */
+    private void showAppointmentListPanel() {
+        personListPanelPlaceholder.getChildren().clear();
+        appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
+        personListPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
     }
 
     private void showPrescriptionListPanel() {
