@@ -52,6 +52,10 @@ public class CommandResult {
         this(feedbackToUser, false, false, PERSON_LIST);
     }
 
+    public CommandResult(String feedbackToUser, ViewType viewType) {
+        this(feedbackToUser, false, false, viewType);
+    }
+
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
