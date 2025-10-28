@@ -18,7 +18,7 @@ import seedu.address.model.person.Patient;
 import seedu.address.model.prescription.Prescription;
 
 /**
- * Prescribe medication for an existing patient
+ * Prescribe medication for an existing patient.
  */
 public class AddPrescriptionCommand extends Command {
 
