@@ -1,13 +1,16 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.DeletePatientInfoCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.util.stream.Stream;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.util.stream.Stream;
+
+import seedu.address.logic.commands.DeletePatientInfoCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+/**
+ * Parses input arguments and creates a new DeletePatientInfoCommand object
+ */
 public class DeletePatientInfoCommandParser implements Parser<DeletePatientInfoCommand> {
 
     @Override
@@ -15,7 +18,10 @@ public class DeletePatientInfoCommandParser implements Parser<DeletePatientInfoC
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeletePatientInfoCommand.MESSAGE_USAGE));
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                            DeletePatientInfoCommand.MESSAGE_USAGE)
+            );
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
