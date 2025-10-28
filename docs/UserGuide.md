@@ -86,14 +86,14 @@ Adds a patient to the address book.
 Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
 
 * Add personal information of a new patient.
-* Compulsory fields: name, birthday, gender, phone, emergency, id, lang. 
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang.
 * The date for birthday must follow the format YYYY-MM-DD.
 * Currently, the app does not allow duplication in names.
 
 Examples:
-* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 
+* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567
     id/S1234567A lang/English`
-* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321 
+* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321
     id/T9876543B lang/Chinese`
 
 ### Editing a patient : `edit`
@@ -173,7 +173,7 @@ Format: `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]`
 
 Examples:
 * `a-view p/John Doe` Displays all appointments for John Doe.
-* `a-view p/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled 
+* `a-view p/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
 * between 1 January 2025 and 31 December 2025
 
 ### Delete patient appointments: `a-delete`
