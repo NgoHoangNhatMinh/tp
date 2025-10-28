@@ -24,6 +24,8 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListPrescriptionsCommand;
+import seedu.address.logic.commands.ViewPrescriptionsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsAnyKeywordsPredicate;
 import seedu.address.model.person.Patient;
@@ -95,6 +97,16 @@ public class AddressBookParserTest {
     public void parseCommand_addAppointment_returnsAddAppointmentCommand() throws Exception {
         assertTrue(parser.parseCommand("a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp")
                 instanceof AddAppointmentCommand);
+    }
+
+    @Test
+    public void parseCommand_viewPrescriptions_returnsViewPrescriptionsCommand() throws Exception {
+        assertTrue(parser.parseCommand("p-view p/Alex Yeoh") instanceof ViewPrescriptionsCommand);
+    }
+
+    @Test
+    public void parseCommand_listPrescriptions_returnsListPrescriptionsCommand() throws Exception {
+        assertTrue(parser.parseCommand("p-list") instanceof ListPrescriptionsCommand);
     }
 
     @Test
