@@ -183,6 +183,12 @@ Examples:
 * p-add p/John Doe m/Panadol d/500 f/2 dur/3
 * p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo
 
+### Listing all prescriptions: `p-list`
+
+Format: `p-list`
+
+* Lists all prescriptions for any patient
+
 ### Viewing all prescriptions for a given patient: `p-view`
 
 Checks a patient's prescription information.
