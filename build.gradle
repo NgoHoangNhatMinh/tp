@@ -20,6 +20,10 @@ checkstyle {
     toolVersion = '11.0.0'
 }
 
+tasks.named('run') {
+    jvmArgs '-ea'
+}
+
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport

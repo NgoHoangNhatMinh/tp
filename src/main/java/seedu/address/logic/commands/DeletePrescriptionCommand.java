@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.ViewType.PRESCRIPTION_LIST;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class DeletePrescriptionCommand extends Command {
         Prescription prescriptionToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deletePrescription(prescriptionToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PRESCRIPTION_SUCCESS,
-            Messages.format(prescriptionToDelete)));
+            Messages.format(prescriptionToDelete)), PRESCRIPTION_LIST);
     }
 
     @Override
