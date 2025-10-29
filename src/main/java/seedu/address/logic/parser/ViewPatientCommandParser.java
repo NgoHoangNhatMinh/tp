@@ -19,7 +19,7 @@ public class ViewPatientCommandParser {
      * Parses the given {@code String} of arguments in the context of the
      * ViewPatientCommand
      * and returns a ViewPatientCommand object for execution.
-     * 
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public ViewPatientCommand parse(String args) throws ParseException {
