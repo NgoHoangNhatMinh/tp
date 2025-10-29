@@ -283,5 +283,7 @@ Action | Format, Examples
 ### Prescription commands
 Action | Format, Examples
 --------|------------------
-**Add Prescription**
-**View Prescription** | `p-view p/PATIENT_NAME` <br> `e.g., p-view p/Alex Yeoh`
+**Add Prescription** | `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]` <br> `e.g., p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo`
+**View Prescription (for a patient)** | `p-view p/PATIENT_NAME` <br> `e.g., p-view p/Alex Yeoh`
+**List all Prescriptions** | `p-list`
+**Delete Prescription** | `p-delete INDEX`<br> e.g., `delete 3`
