@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -49,12 +50,12 @@ public class DeletePatientInfoCommand extends Command {
             throw new CommandException(String.format(MESSAGE_PATIENT_NOT_FOUND, patientName));
         }
 
-        model.deletePatient(patientToDelete);
-        model.updateFilteredPrescriptionList(new HavingPatientIdPredicate(patientToDelete.getId()));
-        List<Prescription> prescriptionList = model.getFilteredPrescriptionList();
-        for (Prescription p : prescriptionList) {
+        model.updateFilteredPrescriptionList(new HavingPatientIdPredicate(patientToDelete.getName().fullName));
+        List<Prescription> prescriptionsToDelete = new ArrayList<>(model.getFilteredPrescriptionList());
+        for (Prescription p : prescriptionsToDelete) {
             model.deletePrescription(p);
         }
+        model.deletePatient(patientToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PATIENT_SUCCESS, patientToDelete));
     }
 
