@@ -10,6 +10,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Patient;
+import seedu.address.model.prescription.HavingPatientIdPredicate;
+import seedu.address.model.prescription.Prescription;
 
 /**
  * Deletes a patient identified using the patient name.
@@ -23,6 +25,7 @@ public class DeletePatientInfoCommand extends Command {
 
     public static final String MESSAGE_DELETE_PATIENT_SUCCESS = "Patient delete: %1$s";
     public static final String MESSAGE_PATIENT_NOT_FOUND = "No patient found with name '%1$s'";
+    public static final int FIRST_ELEMENT_INDEX_ZERO_BASED = 0;
 
     private final String patientName;
 
@@ -48,6 +51,11 @@ public class DeletePatientInfoCommand extends Command {
         }
 
         model.deletePatient(patientToDelete);
+        model.updateFilteredPrescriptionList(new HavingPatientIdPredicate(patientToDelete.getId()));
+        List<Prescription> prescriptionList = model.getFilteredPrescriptionList();
+        while (!prescriptionList.isEmpty()) {
+            model.deletePrescription(prescriptionList.get(FIRST_ELEMENT_INDEX_ZERO_BASED));
+        }
         return new CommandResult(String.format(MESSAGE_DELETE_PATIENT_SUCCESS, patientToDelete));
     }
 
