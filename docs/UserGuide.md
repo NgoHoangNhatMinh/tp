@@ -96,14 +96,14 @@ Adds a patient to the address book.
 Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
 
 * Add personal information of a new patient.
-* Compulsory fields: name, birthday, gender, phone, emergency, id, lang. 
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang.
 * The date for birthday must follow the format YYYY-MM-DD.
 * Currently, the app does not allow duplication in names.
 
 Examples:
-* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 
+* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567
     id/S1234567A lang/English`
-* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321 
+* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321
     id/T9876543B lang/Chinese`
 
 ### Editing a patient : `edit`
@@ -158,7 +158,7 @@ Delete an existing patient appointment from address book.
 
 Format: `a-delete p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
 
-* Delete an existing patient appointment by patient name and appointment time. 
+* Delete an existing patient appointment by patient name and appointment time.
 * Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
 
 Examples:
@@ -214,7 +214,7 @@ View the list of doctors available
 
 Examples:
 
-* `doctors` 
+* `doctors`
 
 ### Clearing all entries : `clear`
 
