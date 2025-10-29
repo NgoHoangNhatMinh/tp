@@ -15,7 +15,7 @@
 
 .list-cell:empty {
   /* Empty cells will not have alternating colours */
-  -fx-background: linear-gradient(to bottom, #2a2a2a 0%, #222222 100%);
+  -fx-background-color: #252525;
 }
 
 .tag-selector {
@@ -35,7 +35,7 @@
 .tooltip-text {
   -fx-text-fill: white;
   -fx-font-size: 12pt;
-  -fx-background-color: linear-gradient(to bottom, #353535 0%, #2a2a2a 100%);
+  -fx-background-color: #2f2f2f;
   -fx-background-radius: 6;
   -fx-border-radius: 6;
   -fx-border-color: #555555;
@@ -51,13 +51,7 @@
 
 /* Divider styling */
 .separator-line {
-  -fx-background-color: linear-gradient(
-    to right,
-    transparent 0%,
-    #4a4a4a 20%,
-    #4a4a4a 80%,
-    transparent 100%
-  );
+  -fx-background-color: #4a4a4a;
   -fx-pref-height: 1;
   -fx-padding: 4 0 4 0;
 }

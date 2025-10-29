@@ -106,7 +106,7 @@
 }
 
 .list-cell:filled:selected {
-  -fx-background-color: linear-gradient(to right, #4a5f7a 0%, #3d5268 100%);
+  -fx-background-color: #4a5f7a;
 }
 
 .list-cell:filled:selected #cardPane {
@@ -121,11 +121,11 @@
 }
 
 .list-cell:filled:selected:hover {
-  -fx-background-color: linear-gradient(to right, #526f8a 0%, #45607a 100%);
+  -fx-background-color: #526f8a;
 }
 
 .list-cell .label {
-  -fx-text-fill: white;
+  -fx-text-fill: #ffffff !important;
 }
 
 .cell_big_label {
