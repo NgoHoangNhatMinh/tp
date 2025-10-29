@@ -79,6 +79,16 @@ Shows a list of all patients in the address book.
 
 Format: `list`
 
+### View information of a patient: `i-view`
+
+Format: `i-view p/PATIENT_NAME`
+
+Views all information about a patient by the provided keyword.
+
+Examples:
+
+* `i-view p/Alex Yeoh` Views information for patient with the keyword "Alex Yeoh" in their name
+
 ### Adding information of a patient: `i-add`
 
 Adds a patient to the address book.
@@ -126,24 +136,6 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd patient in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
-
-### Locating patients by name: `find`
-
-Finds patients whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* patients matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Adding an appointment : `a-add`
 
@@ -212,7 +204,17 @@ Format: `p-delete INDEX`
 
 Examples:
 
-* `p-delete 1` Deletes the first prescription in the list
+* p-delete 1: Deletes the first prescription in the list
+
+### View doctors: `doctors`
+
+Format: `doctors`
+
+View the list of doctors available
+
+Examples:
+
+* `doctors` 
 
 ### Clearing all entries : `clear`
 
