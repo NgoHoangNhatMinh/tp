@@ -1,5 +1,5 @@
 .background {
-  -fx-background-color: derive(#1d1d1d, 20%);
+  -fx-background-color: linear-gradient(to bottom, #282828 0%, #1d1d1d 100%);
   background-color: #383838; /* Used in the default.html file */
 }
 
@@ -87,34 +87,41 @@
 .list-view {
   -fx-background-insets: 0;
   -fx-padding: 0;
-  -fx-background-color: derive(#1d1d1d, 20%);
+  -fx-background-color: linear-gradient(to bottom, #232323 0%, #1a1a1a 100%);
+  -fx-background-radius: 0;
 }
 
 .list-cell {
   -fx-label-padding: 0 0 0 0;
   -fx-graphic-text-gap: 0;
-  -fx-padding: 0 0 0 0;
+  -fx-padding: 2 4 2 4;
 }
 
 .list-cell:filled:even {
-  -fx-background-color: #2a2d2e;
+  -fx-background-color: #2d3135;
 }
 
 .list-cell:filled:odd {
-  -fx-background-color: #353839;
+  -fx-background-color: #383c41;
 }
 
 .list-cell:filled:selected {
-  -fx-background-color: #4a5f7a;
+  -fx-background-color: linear-gradient(to right, #4a5f7a 0%, #3d5268 100%);
 }
 
 .list-cell:filled:selected #cardPane {
   -fx-border-color: #6ba3d4;
-  -fx-border-width: 2;
+  -fx-border-width: 0 0 0 4;
+  -fx-effect: dropshadow(gaussian, rgba(107, 163, 212, 0.4), 6, 0, 0, 0);
 }
 
 .list-cell:filled:hover {
-  -fx-background-color: #3d4f5f;
+  -fx-background-color: #404550;
+  -fx-cursor: hand;
+}
+
+.list-cell:filled:selected:hover {
+  -fx-background-color: linear-gradient(to right, #526f8a 0%, #45607a 100%);
 }
 
 .list-cell .label {
@@ -123,15 +130,17 @@
 
 .cell_big_label {
   -fx-font-family: "Segoe UI Semibold";
-  -fx-font-size: 17px;
+  -fx-font-size: 19px;
   -fx-text-fill: #ffffff;
   -fx-font-weight: bold;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 1, 0, 0, 1);
 }
 
 .cell_small_label {
   -fx-font-family: "Segoe UI";
-  -fx-font-size: 13px;
-  -fx-text-fill: #e0e0e0;
+  -fx-font-size: 14px;
+  -fx-text-fill: #d8d8d8;
+  -fx-padding: 2 0 0 0;
 }
 
 .stack-pane {
@@ -139,27 +148,27 @@
 }
 
 .pane-with-border {
-  -fx-background-color: derive(#1d1d1d, 20%);
-  -fx-border-color: derive(#1d1d1d, 10%);
+  -fx-background-color: linear-gradient(to bottom, #282828 0%, #1f1f1f 100%);
+  -fx-border-color: #3a3a3a;
   -fx-border-top-width: 1px;
 }
 
 .status-bar {
-  -fx-background-color: #242424;
+  -fx-background-color: linear-gradient(to bottom, #252525 0%, #1e1e1e 100%);
   -fx-border-color: #3a3a3a;
   -fx-border-width: 1 0 0 0;
 }
 
 .result-display {
-  -fx-background-color: #2b2b2b;
+  -fx-background-color: linear-gradient(to bottom, #2d2d2d 0%, #262626 100%);
   -fx-font-family: "Segoe UI";
-  -fx-font-size: 13pt;
-  -fx-text-fill: #f0f0f0;
-  -fx-background-radius: 5;
-  -fx-border-radius: 5;
+  -fx-font-size: 14pt;
+  -fx-text-fill: #f5f5f5;
+  -fx-background-radius: 6;
+  -fx-border-radius: 6;
   -fx-border-color: #4a4a4a;
   -fx-border-width: 1;
-  -fx-padding: 10;
+  -fx-padding: 14;
 }
 
 .result-display .label {
@@ -203,7 +212,7 @@
 }
 
 .menu-bar {
-  -fx-background-color: #242424;
+  -fx-background-color: linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%);
   -fx-border-color: #3a3a3a;
   -fx-border-width: 0 0 1 0;
 }
@@ -225,49 +234,54 @@
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 .button {
-  -fx-padding: 5 22 5 22;
-  -fx-border-color: #e2e2e2;
-  -fx-border-width: 2;
-  -fx-background-radius: 0;
-  -fx-background-color: #1d1d1d;
+  -fx-padding: 8 24 8 24;
+  -fx-border-color: #4a4a4a;
+  -fx-border-width: 1;
+  -fx-background-radius: 5;
+  -fx-border-radius: 5;
+  -fx-background-color: linear-gradient(to bottom, #3a3a3a 0%, #2a2a2a 100%);
   -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   -fx-font-size: 11pt;
-  -fx-text-fill: #d8d8d8;
-  -fx-background-insets: 0 0 0 0, 0, 1, 2;
+  -fx-text-fill: #e8e8e8;
+  -fx-background-insets: 0;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 1);
 }
 
 .button:hover {
-  -fx-background-color: #3a3a3a;
+  -fx-background-color: linear-gradient(to bottom, #4a4a4a 0%, #3a3a3a 100%);
+  -fx-border-color: #6ba3d4;
+  -fx-text-fill: #ffffff;
 }
 
 .button:pressed,
 .button:default:hover:pressed {
-  -fx-background-color: white;
-  -fx-text-fill: #1d1d1d;
+  -fx-background-color: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+  -fx-text-fill: #ffffff;
+  -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 1);
 }
 
 .button:focused {
-  -fx-border-color: white, white;
-  -fx-border-width: 1, 1;
-  -fx-border-style: solid, segments(1, 1);
-  -fx-border-radius: 0, 0;
-  -fx-border-insets: 1 1 1 1, 0;
+  -fx-border-color: #6ba3d4;
+  -fx-border-width: 2;
+  -fx-effect: dropshadow(gaussian, rgba(107, 163, 212, 0.5), 6, 0, 0, 0);
 }
 
 .button:disabled,
 .button:default:disabled {
-  -fx-opacity: 0.4;
-  -fx-background-color: #1d1d1d;
-  -fx-text-fill: white;
+  -fx-opacity: 0.5;
+  -fx-background-color: #2a2a2a;
+  -fx-text-fill: #666666;
 }
 
 .button:default {
-  -fx-background-color: -fx-focus-color;
+  -fx-background-color: linear-gradient(to bottom, #5a8db8 0%, #4a7c9e 100%);
   -fx-text-fill: #ffffff;
+  -fx-border-color: #6ba3d4;
 }
 
 .button:default:hover {
-  -fx-background-color: derive(-fx-focus-color, 30%);
+  -fx-background-color: linear-gradient(to bottom, #6a9dc8 0%, #5a8cae 100%);
+  -fx-border-color: #7bb3e4;
 }
 
 .dialog-pane {
@@ -300,8 +314,17 @@
 }
 
 .scroll-bar .thumb {
-  -fx-background-color: derive(#1d1d1d, 50%);
+  -fx-background-color: #4a4a4a;
   -fx-background-insets: 3;
+  -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+  -fx-background-color: #5a5a5a;
+}
+
+.scroll-bar .thumb:pressed {
+  -fx-background-color: #6a6a6a;
 }
 
 .scroll-bar .increment-button,
@@ -326,10 +349,11 @@
 }
 
 #cardPane {
-  -fx-background-color: transparent;
+  -fx-background-color: rgba(255, 255, 255, 0.02);
   -fx-border-width: 0;
-  -fx-padding: 8;
-  -fx-background-radius: 5;
+  -fx-padding: 12;
+  -fx-background-radius: 6;
+  -fx-border-radius: 6;
 }
 
 #commandTypeLabel {
@@ -338,16 +362,16 @@
 }
 
 #commandTextField {
-  -fx-background-color: #2b2b2b;
+  -fx-background-color: linear-gradient(to bottom, #303030 0%, #282828 100%);
   -fx-font-family: "Segoe UI";
-  -fx-font-size: 14pt;
+  -fx-font-size: 15pt;
   -fx-text-fill: white;
-  -fx-prompt-text-fill: derive(white, 30%);
-  -fx-background-radius: 5;
-  -fx-border-radius: 5;
+  -fx-prompt-text-fill: #777777;
+  -fx-background-radius: 8;
+  -fx-border-radius: 8;
   -fx-border-color: #4a4a4a;
-  -fx-border-width: 1;
-  -fx-padding: 8 12 8 12;
+  -fx-border-width: 1.5;
+  -fx-padding: 12 16 12 16;
 }
 
 #commandTextField:focused {
@@ -373,10 +397,16 @@
 
 #tags .label {
   -fx-text-fill: white;
-  -fx-background-color: #4a7c9e;
-  -fx-padding: 4 8 4 8;
-  -fx-border-radius: 3;
-  -fx-background-radius: 3;
+  -fx-background-color: linear-gradient(to bottom, #5a8db8 0%, #4a7c9e 100%);
+  -fx-padding: 6 12 6 12;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
   -fx-font-size: 11pt;
-  -fx-font-weight: 500;
+  -fx-font-weight: 600;
+  -fx-border-color: rgba(255, 255, 255, 0.1);
+  -fx-border-width: 1;
+}
+
+#tags .label:hover {
+  -fx-background-color: linear-gradient(to bottom, #6a9dc8 0%, #5a8cae 100%);
 }

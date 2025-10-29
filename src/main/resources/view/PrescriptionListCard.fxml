@@ -13,26 +13,45 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
         </columnConstraints>
 
-        <VBox alignment="CENTER_LEFT" minHeight="100" GridPane.columnIndex="0" spacing="4">
+        <VBox alignment="CENTER_LEFT" minHeight="100" GridPane.columnIndex="0" spacing="5">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="15" />
+                <Insets top="12" right="12" bottom="12" left="15" />
             </padding>
 
             <!-- Top line: index + medication name -->
-            <HBox spacing="5" alignment="CENTER_LEFT">
+            <HBox spacing="8" alignment="CENTER_LEFT">
                 <Label fx:id="id" styleClass="cell_big_label" />
+                <Label text="⚕" styleClass="icon-label" />
                 <Label fx:id="medicationName" styleClass="cell_big_label" />
             </HBox>
 
             <!-- Core prescription info -->
-            <Label fx:id="dosage" styleClass="cell_small_label" />
-            <Label fx:id="frequency" styleClass="cell_small_label" />
-            <Label fx:id="duration" styleClass="cell_small_label" />
-            <Label fx:id="startDate" styleClass="cell_small_label" />
-            <Label fx:id="note" wrapText="true" styleClass="cell_small_label" />
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="⊕" styleClass="icon-label" />
+                <Label fx:id="dosage" styleClass="cell_small_label" />
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="⟳" styleClass="icon-label" />
+                <Label fx:id="frequency" styleClass="cell_small_label" />
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="⧗" styleClass="icon-label" />
+                <Label fx:id="duration" styleClass="cell_small_label" />
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="◷" styleClass="icon-label" />
+                <Label fx:id="startDate" styleClass="cell_small_label" />
+            </HBox>
+            <HBox spacing="8" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                <Label text="◈" styleClass="icon-label" />
+                <Label fx:id="note" wrapText="true" styleClass="cell_small_label" />
+            </HBox>
 
             <!-- Patient ID (for clarity when viewing all prescriptions) -->
-            <Label fx:id="patientId" styleClass="cell_small_label" />
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="◉" styleClass="icon-label" />
+                <Label fx:id="patientId" styleClass="cell_small_label" />
+            </HBox>
         </VBox>
     </GridPane>
 </HBox>
