@@ -46,7 +46,9 @@
 
 /* Card styling improvements */
 #cardPane:hover {
-  -fx-background-color: rgba(255, 255, 255, 0.08);
+  -fx-background-color: rgba(255, 255, 255, 0.05);
+  -fx-border-color: rgba(107, 163, 212, 0.4);
+  -fx-border-width: 0 0 0 2;
 }
 
 /* Divider styling */
@@ -58,9 +60,9 @@
 
 /* Icon and badge styles */
 .icon-label {
-  -fx-font-size: 15pt;
-  -fx-padding: 0 4 0 0;
-  -fx-min-width: 24;
+  -fx-font-size: 16pt;
+  -fx-padding: 0 6 0 0;
+  -fx-min-width: 28;
   -fx-alignment: center;
   -fx-text-fill: #6ba3d4;
   -fx-font-weight: bold;
@@ -95,9 +97,4 @@
 .list-cell,
 .tag-selector {
   -fx-transition: all 0.2s ease;
-}
-
-/* Focus indicator improvements */
-*:focused {
-  -fx-effect: dropshadow(gaussian, rgba(107, 163, 212, 0.5), 6, 0, 0, 0);
 }

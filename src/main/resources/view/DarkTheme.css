@@ -94,7 +94,7 @@
 .list-cell {
   -fx-label-padding: 0 0 0 0;
   -fx-graphic-text-gap: 0;
-  -fx-padding: 2 4 2 4;
+  -fx-padding: 5 6 5 6;
 }
 
 .list-cell:filled:even {
@@ -112,7 +112,6 @@
 .list-cell:filled:selected #cardPane {
   -fx-border-color: #6ba3d4;
   -fx-border-width: 0 0 0 4;
-  -fx-effect: dropshadow(gaussian, rgba(107, 163, 212, 0.4), 6, 0, 0, 0);
 }
 
 .list-cell:filled:hover {
@@ -130,10 +129,9 @@
 
 .cell_big_label {
   -fx-font-family: "Segoe UI Semibold";
-  -fx-font-size: 19px;
+  -fx-font-size: 20px;
   -fx-text-fill: #ffffff;
   -fx-font-weight: bold;
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 1, 0, 0, 1);
 }
 
 .cell_small_label {
@@ -244,7 +242,6 @@
   -fx-font-size: 11pt;
   -fx-text-fill: #e8e8e8;
   -fx-background-insets: 0;
-  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 1);
 }
 
 .button:hover {
@@ -257,13 +254,11 @@
 .button:default:hover:pressed {
   -fx-background-color: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
   -fx-text-fill: #ffffff;
-  -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 1);
 }
 
 .button:focused {
   -fx-border-color: #6ba3d4;
   -fx-border-width: 2;
-  -fx-effect: dropshadow(gaussian, rgba(107, 163, 212, 0.5), 6, 0, 0, 0);
 }
 
 .button:disabled,
@@ -377,12 +372,6 @@
 #commandTextField:focused {
   -fx-border-color: #6ba3d4;
   -fx-border-width: 2;
-}
-
-#filterField,
-#personListPanel,
-#personWebpage {
-  -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
 }
 
 #resultDisplay .content {
