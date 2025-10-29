@@ -279,3 +279,9 @@ Action | Format, Examples
 --------|------------------
 **Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp`
 
+
+### Prescription commands
+Action | Format, Examples
+--------|------------------
+**Add Prescription**
+**View Prescription** | `p-view p/PATIENT_NAME` <br> `e.g., p-view p/Alex Yeoh`
