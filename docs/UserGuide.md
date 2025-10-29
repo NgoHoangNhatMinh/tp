@@ -278,3 +278,4 @@ Action | Format, Examples
 Action | Format, Examples
 --------|------------------
 **Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp`
+
