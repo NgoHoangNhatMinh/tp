@@ -10,6 +10,7 @@ import static seedu.address.testutil.TypicalPatients.ALICE;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -179,6 +180,19 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        public ObservableList<Appointment> getFilteredAppointmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointmentListComparator(Comparator<Appointment> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public void updateFilteredPrescriptionList(Predicate<Prescription> predicate) {
             throw new AssertionError("This method should not be called.");
         }
@@ -195,11 +209,6 @@ public class AddCommandTest {
 
         @Override
         public void deletePrescription(Prescription prescription) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public ObservableList<Appointment> getFilteredAppointmentList() {
             throw new AssertionError("This method should not be called.");
         }
     }

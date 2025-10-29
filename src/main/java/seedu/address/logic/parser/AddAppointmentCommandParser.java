@@ -25,7 +25,6 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
 
     @Override
     public AddAppointmentCommand parse(String raw) throws ParseException {
-        // ✅ Key fix: prepend space for correct tokenization
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
                 " " + raw, PREFIX_APPT_PATIENT, PREFIX_APPT_DOCTOR, PREFIX_APPT_TIME, PREFIX_APPT_NOTE);
 
