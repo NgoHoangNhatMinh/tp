@@ -13,9 +13,9 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
         </columnConstraints>
 
-        <VBox alignment="CENTER_LEFT" minHeight="100" GridPane.columnIndex="0">
+        <VBox alignment="CENTER_LEFT" minHeight="100" GridPane.columnIndex="0" spacing="4">
             <padding>
-                <Insets top="5" right="5" bottom="5" left="15" />
+                <Insets top="10" right="10" bottom="10" left="15" />
             </padding>
 
             <!-- Top line: index + medication name -->
