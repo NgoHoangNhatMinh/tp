@@ -307,6 +307,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Add a prescription for a patient**
+
+**MSS**
+
+1. User requests to prescribe medication to a patient.
+2. HospitalContactsXPM prompts the user for the required details: patient, medication, dosage, frequency, and duration.
+3. User provides all required details in the correct format.
+4. HospitalContactsXPM adds the prescription to the patient's record.
+5. HospitalContactsXPM displays a success message confirming the prescription has been added.
+
+Use case ends.
+
+**Extensions**
+
+* 2a. The patient list is empty.
+
+Use case ends.
+
+* 3a. The command format is invalid (e.g., missing parameters or incorrect prefixes).
+  * 3a1. HospitalContactsXPM shows an error message indicating the correct command format:
+  p-add: Prescribes medication to a patient. Parameters: p/ PATIENT m/ MEDICATION d/ DOSAGE f/ FREQUENCY dur/ DURATION.
+  Use case resumes at step 2.
+
+* 3b. The specified patient does not exist.
+  * 3b1. HospitalContactsXPM shows an error message indicating an invalid patient ID.
+  Use case resumes at step 2.
+
+* 3c. The same prescription already exists for the patient.
+  * 3c1. HospitalContactsXPM notifies the user that the prescription already exists.
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -322,7 +353,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Patient**: A patient that use healthcare services of the hospital
-* **Hospital Admin Manager**: A patient that has full access to patient's database
+* **Hospital Admin Manager**: A person that has full access to patient's database
 
 --------------------------------------------------------------------------------------------------------------------
 
