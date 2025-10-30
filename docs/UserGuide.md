@@ -305,7 +305,6 @@ _Details coming soon ..._
 | **Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp` |
 
 ### Prescription commands
-
 | Action | Format, Examples |
 |--------|------------------|
 | **Add Prescription** | `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]` <br> e.g., `p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo` |
