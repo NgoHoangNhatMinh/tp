@@ -289,6 +289,7 @@ _Details coming soon ..._
 ## Command summary
 
 ### General basic commands
+
 | Action | Format, Examples |
 |---|---|
 | **Clear** | `clear` |
@@ -301,6 +302,7 @@ _Details coming soon ..._
 ---
 
 ### Patient information commands
+
 | Action | Format, Examples |
 |---|---|
 | **Add Patient Information** | `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 id/S1234567A lang/English` |
@@ -310,6 +312,7 @@ _Details coming soon ..._
 ---
 
 ### Appointment commands
+
 | Action | Format, Examples |
 |---|---|
 | **Add Appointment** | `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]` <br> e.g., `a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp` |
@@ -319,6 +322,7 @@ _Details coming soon ..._
 ---
 
 ### Prescription commands
+
 | Action | Format, Examples |
 |---|---|
 | **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE note/NOTE]` <br> e.g., `p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365 note/Yo` |
