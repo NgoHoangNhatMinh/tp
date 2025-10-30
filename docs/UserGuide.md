@@ -16,15 +16,24 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+
+![Ui_list](images/UI_list_patients.png)
+*list patients
+
+![Ui_pres](images/UI_list_prescriptions.png)
+*list prescriptions*
+
+![Ui_appt](images/UI_view_appointments.png)
+*view appointments*
+
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -37,7 +46,7 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -51,13 +60,10 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g `n/PATIENT_NAME [note/NOTE]` can be used as `n/John Doe note/follow-up` or as `n/John Doe`.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `n/PATIENT_NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/PATIENT_NAME` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -81,13 +87,13 @@ Format: `list`
 
 ### View information of a patient: `i-view`
 
-Format: `i-view p/PATIENT_NAME`
+Format: `i-view n/PATIENT_NAME`
 
 Views all information about a patient by the provided keyword.
 
 Examples:
 
-* `i-view p/Alex Yeoh` Views information for patient with the keyword "Alex Yeoh" in their name
+* `i-view n/Alex Yeoh` Views information for patient with the keyword "Alex Yeoh" in their name
 
 ### Adding information of a patient: `i-add`
 
@@ -110,18 +116,14 @@ Examples:
 
 Edits an existing patient in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]`
 
 * Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the patient will be removed i.e adding of tags is not cumulative.
-* You can remove all the patient’s tags by typing `t/` without
-  specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
 
 ### Deleting a patient : `delete`
 
@@ -141,7 +143,7 @@ Examples:
 
 Schedules a new appointment for a patient with a doctor.
 
-Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
+Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
 
 * Creates a new appointment record for the specified patient and doctor.
 * The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
@@ -149,14 +151,14 @@ Format: `a-add p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
-* a-add p/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
+* a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
+* a-add n/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
 
 ### Viewing appointments: `a-view`
 
 Displays all appointments scheduled for a specific patient, optionally filtered by a date range.
 
-Format: `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]`
+Format: `a-view n/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]`
 
 * Shows all appointments associated with the specified patient.
 * Optional to include a from and/or to date to filter appointments within a specific date range.
@@ -164,40 +166,37 @@ Format: `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]`
 * The patient must already exist in the address book.
 
 Examples:
-* `a-view p/John Doe` Displays all appointments for John Doe.
-* `a-view p/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
+* `a-view n/John Doe` Displays all appointments for John Doe.
+* `a-view n/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
 * between 1 January 2025 and 31 December 2025
 
 ### Delete patient appointments: `a-delete`
 
 Delete an existing patient appointment from address book.
 
-Format: `a-delete p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
+Format: `a-delete n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
 
 * Delete an existing patient appointment by patient name and appointment time.
 * Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
 
 Examples:
-* a-delete p/John Doe t/2025-11-11 14
-* a-delete p/Betsy Crowe t/2025-12-01 09
+* a-delete n/John Doe t/2025-11-11 14
+* a-delete n/Betsy Crowe t/2025-12-01 09
 
 ### Adding a prescription: `p-add`
 
 Prescribe medication for a patient.
 
-Format: `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]`
+Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION`
 
 * Creates a new medication record for the specified patient.
 * The DOSAGE is in milligrams.
 * The DURATION is in days.
-* The STARTDATE and NOTE field is optional.
-* The STARTDATE field includes the day of starting medication and must follow the format YYYY-MM-DD HH:MM.
-* The NOTE field include remarks such as medication reason or notes on special health conditions.
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* p-add p/John Doe m/Panadol d/500 f/2 dur/3
-* p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo
+* p-add n/John Doe m/Panadol d/500 f/2 dur/3
+* p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365 
 
 ### Listing all prescriptions: `p-list`
 
@@ -209,13 +208,13 @@ Format: `p-list`
 
 Checks a patient's prescription information.
 
-Format: `p-view p/PATIENT_NAME`
+Format: `p-view n/PATIENT_NAME`
 
 Views all prescriptions listed in a similar UI style to Patients in `list`
 
 Examples:
 
-* `p-view p/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
+* `p-view n/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
 
 ### Delete a prescription: `p-delete`
 
@@ -290,15 +289,15 @@ _Details coming soon ..._
 
 ### General basic commands
 
-| Action     | Format, Examples |
-|------------|--|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear**  | `clear` |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., ` |
-| **List**   | `list` |
-| **Help**   | `help` |
+| Action     | Format, Examples                                                                                                                                             |
+|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS`  <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**  | `clear`                                                                                                                                                      |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                          |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                            |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]` <br> e.g.,                                                                                                                    |
+| **List**   | `list`                                                                                                                                                       |
+| **Help**   | `help`                                                                                                                                                       |
 
 ---
 
