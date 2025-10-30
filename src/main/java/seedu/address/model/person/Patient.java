@@ -142,8 +142,8 @@ public class Patient {
     @Override
     public String toString() {
         return String.format("Patient[Name: " + getName() + ", Birthday: " + birthday + ", Gender: %s, ID: %s, Phone: "
-                        + getPhone() + ", Email: " + getEmail() + ", Address: " + getAddress() + ", Emergency: %s, Language: %s.]",
-                gender, id, emergency, lang);
+                        + getPhone() + ", Email: " + getEmail() + ", Address: " + getAddress()
+                        + ", Emergency: %s, Language: %s.]", gender, id, emergency, lang);
     }
 
 }

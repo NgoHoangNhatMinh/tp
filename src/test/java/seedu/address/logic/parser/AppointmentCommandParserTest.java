@@ -17,12 +17,12 @@ public class AppointmentCommandParserTest {
 
     @Test
     public void parse_addSubcommand_success() throws Exception {
-        String input = "add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Test";
+        String input = "add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Test";
         assertTrue(parser.parse(input) instanceof AddAppointmentCommand);
     }
 
     @Test
     public void parse_unknownSubcommand_throwsParseException() {
-        assertThrows(ParseException.class, () -> parser.parse("delete p/John Doe"));
+        assertThrows(ParseException.class, () -> parser.parse("delete n/John Doe"));
     }
 }

@@ -20,7 +20,7 @@ public class ViewAppointmentsCommandParserTest {
 
     @Test
     public void parse_minimumValidArgs_success() throws Exception {
-        String input = " p/John Doe";
+        String input = " n/John Doe";
         ViewAppointmentsCommand expected =
                 new ViewAppointmentsCommand("John Doe", Optional.empty(), Optional.empty());
         assertEquals(expected, parser.parse(input));
@@ -28,7 +28,7 @@ public class ViewAppointmentsCommandParserTest {
 
     @Test
     public void parse_withFromAndTo_success() throws Exception {
-        String input = " p/John Doe from/2025-01-01 to/2025-12-31";
+        String input = " n/John Doe from/2025-01-01 to/2025-12-31";
         ViewAppointmentsCommand expected =
                 new ViewAppointmentsCommand("John Doe",
                         Optional.of(LocalDate.of(2025, 1, 1)),
@@ -38,13 +38,13 @@ public class ViewAppointmentsCommandParserTest {
 
     @Test
     public void parse_invalidDateFormat_throwsParseException() {
-        String input = " p/John Doe from/01-01-2025";
+        String input = " n/John Doe from/01-01-2025";
         assertThrows(ParseException.class, () -> parser.parse(input));
     }
 
     @Test
     public void parse_fromAfterTo_throwsParseException() {
-        String input = " p/John Doe from/2025-12-31 to/2025-01-01";
+        String input = " n/John Doe from/2025-12-31 to/2025-01-01";
         assertThrows(ParseException.class, () -> parser.parse(input));
     }
 

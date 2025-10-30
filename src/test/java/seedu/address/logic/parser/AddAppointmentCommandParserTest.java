@@ -22,7 +22,7 @@ public class AddAppointmentCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() throws Exception {
-        String userInput = " p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp";
+        String userInput = " n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp";
 
         Appointment expectedAppointment = new Appointment("John Doe",
                 LocalDateTime.of(2025, 11, 11, 14, 0),
@@ -45,7 +45,7 @@ public class AddAppointmentCommandParserTest {
 
     @Test
     public void parse_invalidDateTimeFormat_throwsParseException() {
-        String invalidDate = " p/John Doe d/Dr Wee t/11-11-2025 note/test";
+        String invalidDate = " n/John Doe d/Dr Wee t/11-11-2025 note/test";
         assertThrows(ParseException.class, () -> parser.parse(invalidDate));
     }
 }

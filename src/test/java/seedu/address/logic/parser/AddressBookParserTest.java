@@ -95,13 +95,13 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_addAppointment_returnsAddAppointmentCommand() throws Exception {
-        assertTrue(parser.parseCommand("a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp")
+        assertTrue(parser.parseCommand("a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp")
                 instanceof AddAppointmentCommand);
     }
 
     @Test
     public void parseCommand_viewPrescriptions_returnsViewPrescriptionsCommand() throws Exception {
-        assertTrue(parser.parseCommand("p-view p/Alex Yeoh") instanceof ViewPrescriptionsCommand);
+        assertTrue(parser.parseCommand("p-view n/Alex Yeoh") instanceof ViewPrescriptionsCommand);
     }
 
     @Test
