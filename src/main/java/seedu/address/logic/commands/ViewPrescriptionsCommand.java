@@ -15,8 +15,8 @@ public class ViewPrescriptionsCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all prescriptions tagged to "
         + "the specific patient name and displays them as a list.\n"
-        + "Parameters: p/ PATIENT_NAME \n"
-        + "Example: " + COMMAND_WORD + " p/ Alex Yeoh";
+        + "Parameters: n/PATIENT_NAME \n"
+        + "Example: " + COMMAND_WORD + " n/Alex Yeoh";
 
     private final HavingPatientIdPredicate predicate;
 
