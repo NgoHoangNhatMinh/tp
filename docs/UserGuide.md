@@ -326,7 +326,7 @@ _Details coming soon ..._
 
 | Action | Format, Examples |
 |---|---|
-| **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE note/NOTE]` <br> e.g., `p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365 note/Yo` |
+| **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE]` <br> e.g., `p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365` |
 | **View Prescription (for a patient)** | `p-view n/PATIENT_NAME` <br> e.g., `p-view n/Alex Yeoh` |
 | **List all Prescriptions** | `p-list` |
 | **Delete Prescription** | `p-delete INDEX` <br> e.g., `p-delete 3` |
