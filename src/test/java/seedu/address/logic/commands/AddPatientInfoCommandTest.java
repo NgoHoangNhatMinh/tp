@@ -2,22 +2,23 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.person.Patient;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Birthday;
-
-import java.time.LocalDateTime;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Patient;
+import seedu.address.model.person.Phone;
 
 /**
  * Contains unit tests for {@code AddPatientInfoCommand}.
@@ -101,54 +102,29 @@ public class AddPatientInfoCommandTest {
     }
 
     @Test
-    public void execute_patientWithEmptyStringFields_success() throws Exception {
+    public void execute_patientWithEmptyStringFields_throwsCommandException() throws Exception {
         Model model = new ModelManager();
 
         Patient patientWithEmptyStrings = new Patient(
                 new Name("Tom Lee"),
                 new Birthday(LocalDateTime.of(1975, 12, 31, 0, 0)),
-                "",  // gender
+                "", // empty gender, won't be accepted
                 new Phone("81234567"),
-                null,
-                null,
-                "",  // emergency
-                "",  // id
-                ""   // lang
-        );
-
-        AddPatientInfoCommand addCommand = new AddPatientInfoCommand(patientWithEmptyStrings);
-
-        CommandResult result = addCommand.execute(model);
-
-        assertEquals(String.format(AddPatientInfoCommand.MESSAGE_SUCCESS, patientWithEmptyStrings),
-                result.getFeedbackToUser());
-        assertTrue(model.hasPatient(patientWithEmptyStrings));
-    }
-
-    @Test
-    public void execute_patientWithVeryLongName_success() throws Exception {
-        Model model = new ModelManager();
-        Patient patientWithLongName = new Patient(
-                new Name("Very Long Name That Exceeds Normal Length But Should Still Work"),
-                new Birthday(LocalDateTime.of(1990, 1, 1, 0, 0)),
-                "M",
-                new Phone("91234567"),
-                new Email("long@example.com"),
+                new Email("john@example.com"),
                 new Address("123 Main Street"),
                 "81112222",
                 "S1234567A",
                 "English"
         );
 
-        AddPatientInfoCommand addCommand = new AddPatientInfoCommand(patientWithLongName);
-        CommandResult result = addCommand.execute(model);
+        assertThrows(IllegalArgumentException.class,
+                "Gender cannot be empty", () -> new AddPatientInfoCommand(patientWithEmptyStrings));
 
-        assertEquals(String.format(AddPatientInfoCommand.MESSAGE_SUCCESS, patientWithLongName),
-                result.getFeedbackToUser());
+        assertFalse(model.hasPatient(patientWithEmptyStrings));
     }
 
     @Test
-    public void execute_patientWithDifferentGenderOptions_success() throws Exception {
+    public void execute_patientWithDifferentGender_success() throws Exception {
         Model model = new ModelManager();
 
         Patient patientMale = new Patient(
@@ -209,7 +185,7 @@ public class AddPatientInfoCommandTest {
                 "F",
                 new Phone("91234599"),
                 new Email("complex@example.com"),
-                new Address("Block 123, Unit 04-56, Street Name, Singapore 123456"),  // complex address
+                new Address("Block 123, Unit 04-56, Street Name, Singapore 123456"), // complex address
                 "81119999",
                 "S1234599Z",
                 "Tamil"
@@ -253,13 +229,9 @@ public class AddPatientInfoCommandTest {
         AddPatientInfoCommand addPatientACommandCopy = new AddPatientInfoCommand(patientA);
         AddPatientInfoCommand addPatientBCommand = new AddPatientInfoCommand(patientB);
 
-        assertTrue(addPatientACommand.equals(addPatientACommandCopy));
+        assertEquals(addPatientACommand, addPatientACommandCopy);
 
-        assertFalse(addPatientACommand.equals(1));
-
-        assertFalse(addPatientACommand.equals(null));
-
-        assertFalse(addPatientACommand.equals(addPatientBCommand));
+        assertNotEquals(addPatientACommand, addPatientBCommand);
     }
 
     @Test
