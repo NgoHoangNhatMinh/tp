@@ -15,10 +15,11 @@ import seedu.address.model.prescription.UniquePrescriptionList;
 
 /**
  * Wraps all data at the address-book level.
- * Duplicates are not allowed (by .isSamePatient comparison for patients, and equality
+ * Duplicates are not allowed (by .isSamePatient comparison for patients, and
+ * equality
  * for appointments and prescriptions).
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class HospitalContactsXpm implements ReadOnlyHospitalContactsXpm {
 
     private final UniquePatientList patients;
     private final UniqueAppointmentList appointments;
@@ -31,16 +32,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Constructs an empty {@code AddressBook}.
+     * Constructs an empty {@code HospitalContactsXpm}.
      */
-    public AddressBook() {}
+    public HospitalContactsXpm() {
+    }
 
     /**
-     * Creates an {@code AddressBook} using the data in {@code toBeCopied}.
+     * Creates an {@code HospitalContactsXpm} using the data in {@code toBeCopied}.
      *
-     * @param toBeCopied the ReadOnlyAddressBook containing data to copy
+     * @param toBeCopied the ReadOnlyHospitalContactsXpm containing data to copy
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public HospitalContactsXpm(ReadOnlyHospitalContactsXpm toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -75,11 +77,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code HospitalContactsXpm} with
+     * {@code newData}.
      *
      * @param newData the new data to replace the current data
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyHospitalContactsXpm newData) {
         requireNonNull(newData);
         setPatients(newData.getPatientList());
         setAppointments(newData.getAppointmentList());
@@ -110,9 +113,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the given patient {@code target} in the list with {@code editedPatient}.
+     * Replaces the given patient {@code target} in the list with
+     * {@code editedPatient}.
      *
-     * @param target the patient to be replaced
+     * @param target        the patient to be replaced
      * @param editedPatient the replacement patient
      */
     public void setPatient(Patient target, Patient editedPatient) {
@@ -187,9 +191,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the given prescription {@code target} in the list with {@code editedPrescription}.
+     * Replaces the given prescription {@code target} in the list with
+     * {@code editedPrescription}.
      *
-     * @param target the prescription to be replaced
+     * @param target             the prescription to be replaced
      * @param editedPrescription the replacement prescription
      */
     public void setPrescription(Prescription target, Prescription editedPrescription) {
@@ -229,10 +234,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-            .add("patients", patients)
-            .add("appointments", appointments)
-            .add("prescriptions", prescriptions)
-            .toString();
+                .add("patients", patients)
+                .add("appointments", appointments)
+                .add("prescriptions", prescriptions)
+                .toString();
     }
 
     @Override
@@ -240,13 +245,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof AddressBook)) {
+        if (!(other instanceof HospitalContactsXpm)) {
             return false;
         }
-        AddressBook otherAddressBook = (AddressBook) other;
-        return patients.equals(otherAddressBook.patients)
-            && appointments.equals(otherAddressBook.appointments)
-            && prescriptions.equals(otherAddressBook.prescriptions);
+        HospitalContactsXpm otherHospitalContactsXpm = (HospitalContactsXpm) other;
+        return patients.equals(otherHospitalContactsXpm.patients)
+                && appointments.equals(otherHospitalContactsXpm.appointments)
+                && prescriptions.equals(otherHospitalContactsXpm.prescriptions);
     }
 
     @Override

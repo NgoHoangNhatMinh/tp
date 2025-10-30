@@ -15,11 +15,14 @@ public class PatientCard extends UiPart<Region> {
     private static final String FXML = "PatientListCard.fxml";
 
     /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
+     * Note: Certain keywords such as "location" and "resources" are reserved
+     * keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
      * or an exception will be thrown by JavaFX during runtime.
      *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     * @see <a href=
+     *      "https://github.com/se-edu/hostpitalcontactsxpm-level4/issues/336">The
+     *      issue on HospitalContactsXpm level 4</a>
      */
 
     public final Patient person;
@@ -52,7 +55,8 @@ public class PatientCard extends UiPart<Region> {
     private Label language;
 
     /**
-     * Creates a {@code PatientCode} with the given {@code Patient} and index to display.
+     * Creates a {@code PatientCode} with the given {@code Patient} and index to
+     * display.
      */
     public PatientCard(Patient person, int displayedIndex) {
         super(FXML);
@@ -67,7 +71,6 @@ public class PatientCard extends UiPart<Region> {
         emergency.setText("Emergency: " + person.getEmergency());
         patientId.setText("ID: " + person.getId());
         language.setText("Language: " + person.getLang());
-
 
     }
 }

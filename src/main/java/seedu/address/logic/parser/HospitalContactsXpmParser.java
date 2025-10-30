@@ -33,13 +33,13 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class HospitalContactsXpmParser {
 
     /**
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    private static final Logger logger = LogsCenter.getLogger(AddressBookParser.class);
+    private static final Logger logger = LogsCenter.getLogger(HospitalContactsXpmParser.class);
 
     /**
      * Parses user input into command for execution.
@@ -57,73 +57,74 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
+        // Note to developers: Change the log level in config.json to enable lower level
+        // (i.e., FINE, FINER and lower)
         // log messages such as the one below.
         // Lower level log messages are used sparingly to minimize noise in the code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
 
-        case AddAppointmentCommand.COMMAND_WORD:
-            return new AddAppointmentCommandParser().parse(arguments);
+            case AddAppointmentCommand.COMMAND_WORD:
+                return new AddAppointmentCommandParser().parse(arguments);
 
-        case DeleteAppointmentCommand.COMMAND_WORD:
-            return new DeleteAppointmentCommandParser().parse(arguments);
+            case DeleteAppointmentCommand.COMMAND_WORD:
+                return new DeleteAppointmentCommandParser().parse(arguments);
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+            case AddCommand.COMMAND_WORD:
+                return new AddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            case EditCommand.COMMAND_WORD:
+                return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+            case DeleteCommand.COMMAND_WORD:
+                return new DeleteCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            case ClearCommand.COMMAND_WORD:
+                return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+            case FindCommand.COMMAND_WORD:
+                return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            case ListCommand.COMMAND_WORD:
+                return new ListCommand();
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
 
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
+            case HelpCommand.COMMAND_WORD:
+                return new HelpCommand();
 
-        case ViewDoctorsCommand.COMMAND_WORD:
-            return new ViewDoctorsCommand();
+            case ViewDoctorsCommand.COMMAND_WORD:
+                return new ViewDoctorsCommand();
 
-        case AddPrescriptionCommand.COMMAND_WORD:
-            return new AddPrescriptionCommandParser().parse(arguments);
+            case AddPrescriptionCommand.COMMAND_WORD:
+                return new AddPrescriptionCommandParser().parse(arguments);
 
-        case ViewAppointmentsCommand.COMMAND_WORD:
-            return new ViewAppointmentsCommandParser().parse(arguments);
+            case ViewAppointmentsCommand.COMMAND_WORD:
+                return new ViewAppointmentsCommandParser().parse(arguments);
 
-        case ViewPrescriptionsCommand.COMMAND_WORD:
-            return new ViewPrescriptionsCommandParser().parse(arguments);
+            case ViewPrescriptionsCommand.COMMAND_WORD:
+                return new ViewPrescriptionsCommandParser().parse(arguments);
 
-        case DeletePrescriptionCommand.COMMAND_WORD:
-            return new DeletePrescriptionCommandParser().parse(arguments);
+            case DeletePrescriptionCommand.COMMAND_WORD:
+                return new DeletePrescriptionCommandParser().parse(arguments);
 
-        case ViewPatientCommand.COMMAND_WORD:
-            return new ViewPatientCommandParser().parse(arguments);
+            case ViewPatientCommand.COMMAND_WORD:
+                return new ViewPatientCommandParser().parse(arguments);
 
-        case ListPrescriptionsCommand.COMMAND_WORD:
-            return new ListPrescriptionsCommand();
+            case ListPrescriptionsCommand.COMMAND_WORD:
+                return new ListPrescriptionsCommand();
 
-        case AddPatientInfoCommand.COMMAND_WORD:
-            return new AddPatientInfoCommandParser().parse(arguments);
+            case AddPatientInfoCommand.COMMAND_WORD:
+                return new AddPatientInfoCommandParser().parse(arguments);
 
-        case DeletePatientInfoCommand.COMMAND_WORD:
-            return new DeletePatientInfoCommandParser().parse(arguments);
+            case DeletePatientInfoCommand.COMMAND_WORD:
+                return new DeletePatientInfoCommandParser().parse(arguments);
 
-        default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            default:
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

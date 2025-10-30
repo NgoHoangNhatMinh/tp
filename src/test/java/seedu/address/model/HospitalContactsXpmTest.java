@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 //import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPatients.ALICE;
-import static seedu.address.testutil.TypicalPatients.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPatients.getTypicalHospitalContactsXpm;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,9 +26,9 @@ import seedu.address.model.prescription.Prescription;
 import seedu.address.testutil.PatientBuilder;
 import seedu.address.testutil.PrescriptionBuilder;
 
-public class AddressBookTest {
+public class HospitalContactsXpmTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final HospitalContactsXpm hospitalContactsXpm = new HospitalContactsXpm();
     private Prescription prescription;
 
     @BeforeEach
@@ -44,22 +44,21 @@ public class AddressBookTest {
                 .build();
     }
 
-
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getPatientList());
+        assertEquals(Collections.emptyList(), hospitalContactsXpm.getPatientList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> hospitalContactsXpm.resetData(null));
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+    public void resetData_withValidReadOnlyHospitalContactsXpm_replacesData() {
+        HospitalContactsXpm newData = getTypicalHospitalContactsXpm();
+        hospitalContactsXpm.resetData(newData);
+        assertEquals(newData, hospitalContactsXpm);
     }
 
     @Test
@@ -68,59 +67,60 @@ public class AddressBookTest {
         Patient editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
         List<Patient> newPatients = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newPatients);
+        HospitalContactsXpmStub newData = new HospitalContactsXpmStub(newPatients);
 
-        assertThrows(DuplicatePatientException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicatePatientException.class, () -> hospitalContactsXpm.resetData(newData));
     }
 
     @Test
     public void hasPatient_nullPatient_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasPatient(null));
+        assertThrows(NullPointerException.class, () -> hospitalContactsXpm.hasPatient(null));
     }
 
     @Test
-    public void hasPatient_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasPatient(ALICE));
+    public void hasPatient_personNotInHospitalContactsXpm_returnsFalse() {
+        assertFalse(hospitalContactsXpm.hasPatient(ALICE));
     }
 
     @Test
-    public void hasPatient_personInAddressBook_returnsTrue() {
-        addressBook.addPatient(ALICE);
-        assertTrue(addressBook.hasPatient(ALICE));
+    public void hasPatient_personInHospitalContactsXpm_returnsTrue() {
+        hospitalContactsXpm.addPatient(ALICE);
+        assertTrue(hospitalContactsXpm.hasPatient(ALICE));
     }
 
     @Test
-    public void hasPatient_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addPatient(ALICE);
+    public void hasPatient_personWithSameIdentityFieldsInHospitalContactsXpm_returnsTrue() {
+        hospitalContactsXpm.addPatient(ALICE);
         Patient editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB)
                 .build();
-        assertTrue(addressBook.hasPatient(editedAlice));
+        assertTrue(hospitalContactsXpm.hasPatient(editedAlice));
     }
 
     @Test
     public void getPatientList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getPatientList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> hospitalContactsXpm.getPatientList().remove(0));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = AddressBook.class.getCanonicalName()
-                + "{patients=" + addressBook.getPatientList()
-                + ", appointments=" + addressBook.getAppointmentList()
-                + ", prescriptions=" + addressBook.getPrescriptionList()
+        String expected = HospitalContactsXpm.class.getCanonicalName()
+                + "{patients=" + hospitalContactsXpm.getPatientList()
+                + ", appointments=" + hospitalContactsXpm.getAppointmentList()
+                + ", prescriptions=" + hospitalContactsXpm.getPrescriptionList()
                 + "}";
-        assertEquals(expected, addressBook.toString());
+        assertEquals(expected, hospitalContactsXpm.toString());
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyHospitalContactsXpm whose persons list can violate interface
+     * constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class HospitalContactsXpmStub implements ReadOnlyHospitalContactsXpm {
         private final ObservableList<Patient> persons = FXCollections.observableArrayList();
         private final ObservableList<Appointment> appointments = FXCollections.observableArrayList();
         private final ObservableList<Prescription> prescriptions = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Patient> persons) {
+        HospitalContactsXpmStub(Collection<Patient> persons) {
             this.persons.setAll(persons);
         }
 
@@ -143,54 +143,53 @@ public class AddressBookTest {
     /// //////// Prescription tests ///////////
 
     @Test
-    public void hasPrescription_prescriptionNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasPrescription(prescription));
+    public void hasPrescription_prescriptionNotInHospitalContactsXpm_returnsFalse() {
+        assertFalse(hospitalContactsXpm.hasPrescription(prescription));
     }
 
     @Test
-    public void hasPrescription_prescriptionInAddressBook_returnsTrue() {
-        addressBook.addPrescription(prescription);
-        assertTrue(addressBook.hasPrescription(prescription));
+    public void hasPrescription_prescriptionInHospitalContactsXpm_returnsTrue() {
+        hospitalContactsXpm.addPrescription(prescription);
+        assertTrue(hospitalContactsXpm.hasPrescription(prescription));
     }
 
     @Test
     public void addPrescription_prescriptionIsAdded_success() {
-        addressBook.addPrescription(prescription);
-        assertTrue(addressBook.hasPrescription(prescription));
+        hospitalContactsXpm.addPrescription(prescription);
+        assertTrue(hospitalContactsXpm.hasPrescription(prescription));
     }
 
     @Test
     public void removePrescription_prescriptionIsRemoved_success() {
-        addressBook.addPrescription(prescription);
-        addressBook.removePrescription(prescription);
-        assertFalse(addressBook.hasPrescription(prescription));
+        hospitalContactsXpm.addPrescription(prescription);
+        hospitalContactsXpm.removePrescription(prescription);
+        assertFalse(hospitalContactsXpm.hasPrescription(prescription));
     }
 
     @Test
     public void setPrescription_nullEditedPrescription_throwsNullPointerException() {
-        addressBook.addPrescription(prescription);
-        assertThrows(NullPointerException.class, () -> addressBook.setPrescription(prescription, null));
+        hospitalContactsXpm.addPrescription(prescription);
+        assertThrows(NullPointerException.class, () -> hospitalContactsXpm.setPrescription(prescription, null));
     }
 
     @Test
-    public void setPrescription_prescriptionNotInAddressBook_throwsPrescriptionNotFoundException() {
+    public void setPrescription_prescriptionNotInHospitalContactsXpm_throwsPrescriptionNotFoundException() {
         Prescription anotherPrescription = new PrescriptionBuilder().withMedicationName("Ibuprofen").build();
-        assertThrows(seedu.address.model.prescription.exceptions.PrescriptionNotFoundException.class, () ->
-                addressBook.setPrescription(anotherPrescription, prescription));
+        assertThrows(seedu.address.model.prescription.exceptions.PrescriptionNotFoundException.class,
+                () -> hospitalContactsXpm.setPrescription(anotherPrescription, prescription));
     }
 
     @Test
     public void setPrescription_success() {
-        addressBook.addPrescription(prescription);
+        hospitalContactsXpm.addPrescription(prescription);
 
         Prescription editedPrescription = new PrescriptionBuilder(prescription)
                 .withDosage(750f)
                 .build();
-        addressBook.setPrescription(prescription, editedPrescription);
+        hospitalContactsXpm.setPrescription(prescription, editedPrescription);
 
-        assertTrue(addressBook.hasPrescription(editedPrescription));
-        assertFalse(addressBook.hasPrescription(prescription));
+        assertTrue(hospitalContactsXpm.hasPrescription(editedPrescription));
+        assertFalse(hospitalContactsXpm.hasPrescription(prescription));
     }
-
 
 }

@@ -43,23 +43,24 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getHospitalContactsXpmFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setHospitalContactsXpmFilePath(Path hospitalContactsXpmFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces address book data with the data in {@code hospitalContactsXpm}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setHospitalContactsXpm(ReadOnlyHospitalContactsXpm hospitalContactsXpm);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    /** Returns the HospitalContactsXpm */
+    ReadOnlyHospitalContactsXpm getHospitalContactsXpm();
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if a person with the same identity as {@code person} exists in
+     * the address book.
      */
     boolean hasPatient(Patient person);
 
@@ -78,7 +79,8 @@ public interface Model {
     /**
      * Replaces the given person {@code target} with {@code editedPatient}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPatient} must not be the same as another existing person in the address book.
+     * The person identity of {@code editedPatient} must not be the same as another
+     * existing person in the address book.
      */
     void setPatient(Patient target, Patient editedPatient);
 
@@ -86,7 +88,9 @@ public interface Model {
     ObservableList<Patient> getFilteredPatientList();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered person list to filter by the given
+     * {@code predicate}.
+     * 
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
@@ -107,13 +111,17 @@ public interface Model {
     ObservableList<Prescription> getFilteredPrescriptionList();
 
     /**
-     * Updates the filter of the filtered prescription list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered prescription list to filter by the given
+     * {@code predicate}.
+     * 
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPrescriptionList(Predicate<Prescription> predicate);
 
     ObservableList<Appointment> getFilteredAppointmentList();
+
     void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
     void setAppointmentListComparator(Comparator<Appointment> comparator);
 
 }

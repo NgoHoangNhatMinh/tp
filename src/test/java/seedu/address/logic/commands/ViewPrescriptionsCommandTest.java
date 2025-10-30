@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.testutil.TypicalPrescriptions.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPrescriptions.getTypicalHospitalContactsXpm;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,8 +24,8 @@ public class ViewPrescriptionsCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-        expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalHospitalContactsXpm(), new UserPrefs());
+        expectedModel = new ModelManager(getTypicalHospitalContactsXpm(), new UserPrefs());
     }
 
     @Test

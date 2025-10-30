@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FREQUENCY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MEDICATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
-import static seedu.address.storage.JsonSerializableAddressBook.MESSAGE_DUPLICATE_PRESCRIPTION;
+import static seedu.address.storage.JsonSerializableHospitalContactsXpm.MESSAGE_DUPLICATE_PRESCRIPTION;
 
 import java.util.Optional;
 
@@ -25,13 +25,13 @@ public class AddPrescriptionCommand extends Command {
     public static final String COMMAND_WORD = "p-add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Prescribes medication to a patient. "
-        + "Parameters: "
-        + PREFIX_PATIENT + " PATIENT"
-        + PREFIX_MEDICATION + " MEDICATION"
-        + PREFIX_DOSAGE + " DOSAGE"
-        + PREFIX_FREQUENCY + " FREQUENCY"
-        + PREFIX_DURATION + " DURATION";
+            + ": Prescribes medication to a patient. "
+            + "Parameters: "
+            + PREFIX_PATIENT + " PATIENT"
+            + PREFIX_MEDICATION + " MEDICATION"
+            + PREFIX_DOSAGE + " DOSAGE"
+            + PREFIX_FREQUENCY + " FREQUENCY"
+            + PREFIX_DURATION + " DURATION";
 
     public static final String MESSAGE_SUCCESS = "New prescription added: %1$s";
 
@@ -45,7 +45,7 @@ public class AddPrescriptionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Optional<Patient> matchedPatient = model.getAddressBook()
+        Optional<Patient> matchedPatient = model.getHospitalContactsXpm()
                 .getPatientList()
                 .stream()
                 .filter(p -> p.getName().fullName.equals(toAdd.getPatientId()))

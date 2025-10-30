@@ -28,26 +28,26 @@ public class ViewAppointmentsCommand extends Command {
             + "Example: " + COMMAND_WORD + " n/John Doe from/2025-01-01 to/2025-12-31";
 
     public static final String MESSAGE_PATIENT_NOT_FOUND = "Patient '%1$s' does not exist in the address book.";
-    public static final String MESSAGE_SUCCESS_WITH_RANGE =
-            "Showing %1$d appointment(s) for %2$s from %3$s to %4$s (inclusive).";
-    public static final String MESSAGE_SUCCESS_NO_RANGE =
-            "Showing %1$d appointment(s) for %2$s.";
+    public static final String MESSAGE_SUCCESS_WITH_RANGE = "Showing %1$d appointment(s) for %2$s from %3$s to %4$s (inclusive).";
+    public static final String MESSAGE_SUCCESS_NO_RANGE = "Showing %1$d appointment(s) for %2$s.";
 
     private final String patientName;
     private final Optional<LocalDate> fromDate;
     private final Optional<LocalDate> toDate;
 
     /**
-     * Creates a {@code ViewAppointmentsCommand} to view all appointments associated with a given patient,
+     * Creates a {@code ViewAppointmentsCommand} to view all appointments associated
+     * with a given patient,
      *
-     * @param patientName The name of the patient whose appointments are to be viewed. Not {@code null}.
+     * @param patientName The name of the patient whose appointments are to be
+     *                    viewed. Not {@code null}.
      * @param fromDate    The optional start date for filtering appointments.
      * @param toDate      The optional end date for filtering appointments.
      * @throws NullPointerException if {@code patientName} is {@code null}.
      */
     public ViewAppointmentsCommand(String patientName,
-                                   Optional<LocalDate> fromDate,
-                                   Optional<LocalDate> toDate) {
+            Optional<LocalDate> fromDate,
+            Optional<LocalDate> toDate) {
         requireNonNull(patientName);
         this.patientName = patientName;
         this.fromDate = fromDate;
@@ -58,7 +58,7 @@ public class ViewAppointmentsCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        boolean patientExists = model.getAddressBook().getPatientList()
+        boolean patientExists = model.getHospitalContactsXpm().getPatientList()
                 .stream()
                 .map(Patient::getName)
                 .anyMatch(n -> n.fullName.equals(patientName));
@@ -95,12 +95,12 @@ public class ViewAppointmentsCommand extends Command {
             String fromStr = fromDate.map(LocalDate::toString).orElse("-");
             String toStr = toDate.map(LocalDate::toString).orElse("-");
             return new CommandResult(String.format(
-                MESSAGE_SUCCESS_WITH_RANGE, count, patientName, fromStr, toStr),
-                false, false, ViewType.APPOINTMENT_LIST);
+                    MESSAGE_SUCCESS_WITH_RANGE, count, patientName, fromStr, toStr),
+                    false, false, ViewType.APPOINTMENT_LIST);
         }
         return new CommandResult(String.format(
-            MESSAGE_SUCCESS_NO_RANGE, count, patientName),
-            false, false, ViewType.APPOINTMENT_LIST);
+                MESSAGE_SUCCESS_NO_RANGE, count, patientName),
+                false, false, ViewType.APPOINTMENT_LIST);
     }
 
     @Override

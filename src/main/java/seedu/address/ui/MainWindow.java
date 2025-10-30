@@ -83,6 +83,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     * 
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -121,7 +122,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getHospitalContactsXpmFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
@@ -192,19 +193,18 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             switch (commandResult.getViewType()) {
-            case APPOINTMENT_LIST:
-                showAppointmentListPanel();
-                break;
-            case PRESCRIPTION_LIST:
-                showPrescriptionListPanel();
-                break;
-            case PERSON_LIST:
-                showPersonListPanel();
-                break;
-            default:
-                break;
+                case APPOINTMENT_LIST:
+                    showAppointmentListPanel();
+                    break;
+                case PRESCRIPTION_LIST:
+                    showPrescriptionListPanel();
+                    break;
+                case PERSON_LIST:
+                    showPersonListPanel();
+                    break;
+                default:
+                    break;
             }
-
 
             return commandResult;
         } catch (CommandException | ParseException e) {

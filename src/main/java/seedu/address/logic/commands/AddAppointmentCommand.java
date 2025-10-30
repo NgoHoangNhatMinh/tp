@@ -33,10 +33,13 @@ public class AddAppointmentCommand extends Command {
     private final String patientName;
 
     /**
-     * Constructs an {@code AddAppointmentCommand} with the specified patient name and appointment details.
+     * Constructs an {@code AddAppointmentCommand} with the specified patient name
+     * and appointment details.
      *
-     * @param patientName The name of the patient to whom the appointment will be added. Must not be {@code null}.
-     * @param appointment The {@code Appointment} object containing the appointment details. Must not be {@code null}.
+     * @param patientName The name of the patient to whom the appointment will be
+     *                    added. Must not be {@code null}.
+     * @param appointment The {@code Appointment} object containing the appointment
+     *                    details. Must not be {@code null}.
      */
     public AddAppointmentCommand(String patientName, Appointment appointment) {
         requireNonNull(patientName);
@@ -49,7 +52,7 @@ public class AddAppointmentCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Optional<Patient> matchedPatient = model.getAddressBook()
+        Optional<Patient> matchedPatient = model.getHospitalContactsXpm()
                 .getPatientList()
                 .stream()
                 .filter(p -> p.getName().fullName.equals(patientName))
@@ -71,7 +74,7 @@ public class AddAppointmentCommand extends Command {
     public boolean equals(Object other) {
         return other == this
                 || (other instanceof AddAppointmentCommand
-                && toAdd.equals(((AddAppointmentCommand) other).toAdd)
-                && patientName.equals(((AddAppointmentCommand) other).patientName));
+                        && toAdd.equals(((AddAppointmentCommand) other).toAdd)
+                        && patientName.equals(((AddAppointmentCommand) other).patientName));
     }
 }

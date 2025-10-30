@@ -33,17 +33,18 @@ import seedu.address.testutil.EditPatientDescriptorBuilder;
 import seedu.address.testutil.PatientBuilder;
 import seedu.address.testutil.PatientUtil;
 
-public class AddressBookParserTest {
+public class HospitalContactsXpmParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final HospitalContactsXpmParser parser = new HospitalContactsXpmParser();
 
-    //  Tests are commented out temporarily to be modified later.
-    //    @Test
-    //    public void parseCommand_add() throws Exception {
-    //        Patient person = new PatientBuilder().build();
-    //        AddCommand command = (AddCommand) parser.parseCommand(PatientUtil.getAddCommand(person));
-    //        assertEquals(new AddCommand(person), command);
-    //    }
+    // Tests are commented out temporarily to be modified later.
+    // @Test
+    // public void parseCommand_add() throws Exception {
+    // Patient person = new PatientBuilder().build();
+    // AddCommand command = (AddCommand)
+    // parser.parseCommand(PatientUtil.getAddCommand(person));
+    // assertEquals(new AddCommand(person), command);
+    // }
 
     @Test
     public void parseCommand_clear() throws Exception {
@@ -95,8 +96,8 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_addAppointment_returnsAddAppointmentCommand() throws Exception {
-        assertTrue(parser.parseCommand("a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp")
-                instanceof AddAppointmentCommand);
+        assertTrue(parser
+                .parseCommand("a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp") instanceof AddAppointmentCommand);
     }
 
     @Test
@@ -116,8 +117,8 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-                -> parser.parseCommand(""));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE),
+                () -> parser.parseCommand(""));
     }
 
     @Test

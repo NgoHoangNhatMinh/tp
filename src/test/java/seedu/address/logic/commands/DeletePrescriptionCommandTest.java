@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalPrescriptions.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalPrescriptions.getTypicalHospitalContactsXpm;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ import seedu.address.model.prescription.Prescription;
  * {@code DeletePrescriptionCommand}.
  */
 public class DeletePrescriptionCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalHospitalContactsXpm(), new UserPrefs());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -31,9 +31,9 @@ public class DeletePrescriptionCommandTest {
         DeletePrescriptionCommand deletePrescriptionCommand = new DeletePrescriptionCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(DeletePrescriptionCommand.MESSAGE_DELETE_PRESCRIPTION_SUCCESS,
-            Messages.format(prescriptionToDelete));
+                Messages.format(prescriptionToDelete));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getHospitalContactsXpm(), new UserPrefs());
         expectedModel.deletePrescription(prescriptionToDelete);
 
         assertCommandSuccess(deletePrescriptionCommand, model, expectedMessage, expectedModel);
@@ -44,7 +44,7 @@ public class DeletePrescriptionCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPrescriptionList().size() + 1);
         DeletePrescriptionCommand deletePrescriptionCommand = new DeletePrescriptionCommand(outOfBoundIndex);
         assertCommandFailure(deletePrescriptionCommand, model,
-            Messages.MESSAGE_INVALID_PRESCRIPTION_DISPLAYED_INDEX);
+                Messages.MESSAGE_INVALID_PRESCRIPTION_DISPLAYED_INDEX);
     }
 
     @Test

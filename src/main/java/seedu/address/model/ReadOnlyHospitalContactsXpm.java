@@ -8,7 +8,7 @@ import seedu.address.model.prescription.Prescription;
 /**
  * Unmodifiable view of an address book.
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyHospitalContactsXpm {
     ObservableList<Patient> getPatientList();
 
     /**

@@ -29,7 +29,7 @@ public class AddAppointmentCommandTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new seedu.address.model.AddressBook(), new UserPrefs());
+        model = new ModelManager(new seedu.address.model.HospitalContactsXpm(), new UserPrefs());
         john = new Patient(
                 new Name("John Doe"),
                 new Phone("12345678"),

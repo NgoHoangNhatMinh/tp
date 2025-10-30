@@ -23,7 +23,7 @@ import seedu.address.model.prescription.Prescription;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final HospitalContactsXpm hospitalContactsXpm;
     private final UserPrefs userPrefs;
     private final FilteredList<Patient> filteredPatients;
     private final FilteredList<Prescription> filteredPrescriptions;
@@ -31,26 +31,27 @@ public class ModelManager implements Model {
     private final SortedList<Appointment> sortedAppointments;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given hospitalContactsXpm and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyHospitalContactsXpm hospitalContactsXpm, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(hospitalContactsXpm, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + hospitalContactsXpm + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.hospitalContactsXpm = new HospitalContactsXpm(hospitalContactsXpm);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPatients = new FilteredList<>(this.addressBook.getPatientList());
-        filteredPrescriptions = new FilteredList<>(this.addressBook.getPrescriptionList());
-        filteredAppointments = new FilteredList<>(this.addressBook.getAppointmentList());
+        filteredPatients = new FilteredList<>(this.hospitalContactsXpm.getPatientList());
+        filteredPrescriptions = new FilteredList<>(this.hospitalContactsXpm.getPrescriptionList());
+        filteredAppointments = new FilteredList<>(this.hospitalContactsXpm.getAppointmentList());
         sortedAppointments = new SortedList<>(filteredAppointments);
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new HospitalContactsXpm(), new UserPrefs());
     }
 
-    //=========== UserPrefs ==================================================================================
+    // =========== UserPrefs
+    // ==================================================================================
 
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -75,42 +76,43 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getHospitalContactsXpmFilePath() {
+        return userPrefs.getHospitalContactsXpmFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setHospitalContactsXpmFilePath(Path hospitalContactsXpmFilePath) {
+        requireNonNull(hospitalContactsXpmFilePath);
+        userPrefs.setHospitalContactsXpmFilePath(hospitalContactsXpmFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    // =========== HospitalContactsXpm
+    // ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setHospitalContactsXpm(ReadOnlyHospitalContactsXpm hospitalContactsXpm) {
+        this.hospitalContactsXpm.resetData(hospitalContactsXpm);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyHospitalContactsXpm getHospitalContactsXpm() {
+        return hospitalContactsXpm;
     }
 
     @Override
     public boolean hasPatient(Patient person) {
         requireNonNull(person);
-        return addressBook.hasPatient(person);
+        return hospitalContactsXpm.hasPatient(person);
     }
 
     @Override
     public void deletePatient(Patient target) {
-        addressBook.removePatient(target);
+        hospitalContactsXpm.removePatient(target);
     }
 
     @Override
     public void addPatient(Patient person) {
-        addressBook.addPatient(person);
+        hospitalContactsXpm.addPatient(person);
         updateFilteredPatientList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -118,14 +120,16 @@ public class ModelManager implements Model {
     public void setPatient(Patient target, Patient editedPatient) {
         requireAllNonNull(target, editedPatient);
 
-        addressBook.setPatient(target, editedPatient);
+        hospitalContactsXpm.setPatient(target, editedPatient);
     }
 
-    //=========== Filtered Patient List Accessors =============================================================
+    // =========== Filtered Patient List Accessors
+    // =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Patient} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Patient} backed by the
+     * internal list of
+     * {@code versionedHospitalContactsXpm}
      */
     @Override
     public ObservableList<Patient> getFilteredPatientList() {
@@ -138,11 +142,13 @@ public class ModelManager implements Model {
         filteredPatients.setPredicate(predicate);
     }
 
-    //=========== Filtered Prescription List Accessors =============================================================
+    // =========== Filtered Prescription List Accessors
+    // =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Prescription} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Prescription} backed by
+     * the internal list of
+     * {@code versionedHospitalContactsXpm}
      */
     @Override
     public ObservableList<Prescription> getFilteredPrescriptionList() {
@@ -167,33 +173,35 @@ public class ModelManager implements Model {
         }
 
         ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
+        return hospitalContactsXpm.equals(otherModelManager.hospitalContactsXpm)
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPatients.equals(otherModelManager.filteredPatients)
                 && filteredPrescriptions.equals(otherModelManager.filteredPrescriptions);
     }
 
-    //=========== Appointments =============================================================
+    // =========== Appointments
+    // =============================================================
 
     @Override
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
-        return addressBook.hasAppointment(appointment);
+        return hospitalContactsXpm.hasAppointment(appointment);
     }
 
     @Override
     public void addAppointment(Appointment appointment) {
         requireNonNull(appointment);
-        addressBook.addAppointment(appointment);
+        hospitalContactsXpm.addAppointment(appointment);
     }
 
     @Override
     public void deleteAppointment(Appointment appointment) {
         requireNonNull(appointment);
-        addressBook.removeAppointment(appointment);
+        hospitalContactsXpm.removeAppointment(appointment);
     }
 
-    //=========== Filtered Appointments =====================================================
+    // =========== Filtered Appointments
+    // =====================================================
 
     @Override
     public ObservableList<Appointment> getFilteredAppointmentList() {
@@ -211,24 +219,25 @@ public class ModelManager implements Model {
         sortedAppointments.setComparator(comparator);
     }
 
-    //=========== Prescriptions =============================================================
+    // =========== Prescriptions
+    // =============================================================
 
     @Override
     public boolean hasPrescription(Prescription prescription) {
         requireNonNull(prescription);
-        return addressBook.hasPrescription(prescription);
+        return hospitalContactsXpm.hasPrescription(prescription);
     }
 
     @Override
     public void addPrescription(Prescription prescription) {
         requireNonNull(prescription);
-        addressBook.addPrescription(prescription);
+        hospitalContactsXpm.addPrescription(prescription);
     }
 
     @Override
     public void deletePrescription(Prescription prescription) {
         requireNonNull(prescription);
-        addressBook.removePrescription(prescription);
+        hospitalContactsXpm.removePrescription(prescription);
     }
 
 }
