@@ -13,7 +13,7 @@ import seedu.address.model.person.NameMatchesPredicate;
  */
 public class ViewPatientCommandParser {
 
-    private static final Prefix PREFIX_PATIENT = new Prefix("p/");
+    private static final Prefix PREFIX_PATIENT_NAME = new Prefix("n/");
 
     /**
      * Parses the given {@code String} of arguments in the context of the
@@ -23,13 +23,13 @@ public class ViewPatientCommandParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public ViewPatientCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_PATIENT);
-        if (!arePrefixesPresent(argMultimap, PREFIX_PATIENT) || !argMultimap.getPreamble().isEmpty()) {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_PATIENT_NAME);
+        if (!arePrefixesPresent(argMultimap, PREFIX_PATIENT_NAME) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     ViewPatientCommand.MESSAGE_USAGE));
         }
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT);
-        String keyword = argMultimap.getValue(PREFIX_PATIENT).get();
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_NAME);
+        String keyword = argMultimap.getValue(PREFIX_PATIENT_NAME).get();
 
         return new ViewPatientCommand(new NameMatchesPredicate(keyword));
     }

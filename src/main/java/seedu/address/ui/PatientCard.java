@@ -40,6 +40,16 @@ public class PatientCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label remark;
+    @FXML
+    private Label birthday;
+    @FXML
+    private Label gender;
+    @FXML
+    private Label emergency;
+    @FXML
+    private Label patientId;
+    @FXML
+    private Label language;
 
     /**
      * Creates a {@code PatientCode} with the given {@code Patient} and index to display.
@@ -49,9 +59,15 @@ public class PatientCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
+        phone.setText("Phone: " + person.getPhone().value);
+        address.setText("Address: " + person.getAddress().value);
+        email.setText("Email: " + person.getEmail().value);
+        birthday.setText("Birthday: " + person.getBirthday().toString());
+        gender.setText("Gender: " + person.getGender());
+        emergency.setText("Emergency: " + person.getEmergency());
+        patientId.setText("ID: " + person.getId());
+        language.setText("Language: " + person.getLang());
+
 
     }
 }

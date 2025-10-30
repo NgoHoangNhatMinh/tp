@@ -18,12 +18,12 @@ public class AddAppointmentCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment. "
             + "Parameters: "
-            + "p/PATIENT_NAME "
+            + "n/PATIENT_NAME "
             + "d/DOCTOR_NAME "
             + "t/DATE_TIME(yyyy-MM-dd HH:mm) "
             + "[note/NOTE]\n"
             + "Example: " + COMMAND_WORD + " "
-            + "p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Follow-up";
+            + "n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Follow-up";
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
     public static final String MESSAGE_PATIENT_NOT_FOUND = "Patient '%1$s' does not exist in the address book.";

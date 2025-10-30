@@ -259,7 +259,10 @@ AddressBook data are saved in the hard disk automatically after any command that
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<br>
+<br>
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
@@ -286,27 +289,44 @@ _Details coming soon ..._
 ## Command summary
 
 ### General basic commands
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+
+| Action     | Format, Examples |
+|------------|--|
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**  | `clear` |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., ` |
+| **List**   | `list` |
+| **Help**   | `help` |
+
+---
+
+### Patient information commands
+
+| Action | Format, Examples |
+|---|---|
+| **Add Patient Information** | `i-add n/PATIENT_NAME dob/BIRTHDAY g/GENDER p/PHONE [e/EMAIL a/ADDRESS] em/EMERGENCY id/ID_NUMBER lang/LANGUAGE` <br> e.g., `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 id/S1234567A lang/English` |
+| **View Patient Information** | `i-view KEYWORD [MORE_KEYWORDS]` <br> e.g., `i-view n/alice kay` |
+| **Delete Patient Information** | `i-delete n/PATIENT_NAME` <br> e.g., `i-delete n/John Tan` |
+
+---
 
 ### Appointment commands
-Action | Format, Examples
---------|------------------
-**Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp`
 
+| Action | Format, Examples |
+|---|---|
+| **Add Appointment** | `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]` <br> e.g., `a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp` |
+| **View Appointment** | `a-view n/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]` <br> e.g., `a-view n/John Doe from/2025-01-01 to/2025-12-31` |
+| **Delete Appointment** | `a-delete n/PATIENT_NAME t/YYYY-MM-DD` <br> e.g., `a-delete n/John Tan t/2025-12-25 09` |
+
+---
 
 ### Prescription commands
-Action | Format, Examples
---------|------------------
-**Add Prescription** | `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]` <br> `e.g., p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo`
-**View Prescription (for a patient)** | `p-view p/PATIENT_NAME` <br> `e.g., p-view p/Alex Yeoh`
-**List all Prescriptions** | `p-list`
-**Delete Prescription** | `p-delete INDEX`<br> e.g., `delete 3`
-**View Appointment** | `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]` <br> `e.g., a-view p/John Doe from/2025-01-01 to/2025-12-31`
+
+| Action | Format, Examples |
+|---|---|
+| **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE]` <br> e.g., `p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365` |
+| **View Prescription (for a patient)** | `p-view n/PATIENT_NAME` <br> e.g., `p-view n/Alex Yeoh` |
+| **List all Prescriptions** | `p-list` |
+| **Delete Prescription** | `p-delete INDEX` <br> e.g., `p-delete 3` |
