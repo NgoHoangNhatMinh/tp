@@ -1,20 +1,100 @@
-
 .error {
-    -fx-text-fill: #d06651 !important; /* The error class should always override the default text-fill style */
+  -fx-text-fill: #ff6b6b !important; /* The error class should always override the default text-fill style */
+  -fx-font-weight: bold;
+}
+
+.success {
+  -fx-text-fill: #51cf66 !important;
+  -fx-font-weight: bold;
+}
+
+.warning {
+  -fx-text-fill: #ffd43b !important;
+  -fx-font-weight: bold;
 }
 
 .list-cell:empty {
-    /* Empty cells will not have alternating colours */
-    -fx-background: #383838;
+  /* Empty cells will not have alternating colours */
+  -fx-background-color: #252525;
 }
 
 .tag-selector {
-    -fx-border-width: 1;
-    -fx-border-color: white;
-    -fx-border-radius: 3;
-    -fx-background-radius: 3;
+  -fx-border-width: 1;
+  -fx-border-color: #6ba3d4;
+  -fx-border-radius: 4;
+  -fx-background-radius: 4;
+  -fx-background-color: rgba(107, 163, 212, 0.25);
+  -fx-padding: 2 6 2 6;
+}
+
+.tag-selector:hover {
+  -fx-background-color: rgba(107, 163, 212, 0.35);
+  -fx-border-color: #7bb3e4;
 }
 
 .tooltip-text {
-    -fx-text-fill: white;
+  -fx-text-fill: white;
+  -fx-font-size: 12pt;
+  -fx-background-color: #2f2f2f;
+  -fx-background-radius: 6;
+  -fx-border-radius: 6;
+  -fx-border-color: #555555;
+  -fx-border-width: 1;
+  -fx-padding: 8 12 8 12;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0, 0, 3);
+}
+
+/* Card styling improvements */
+#cardPane:hover {
+  -fx-background-color: rgba(255, 255, 255, 0.05);
+  -fx-border-color: rgba(107, 163, 212, 0.4);
+  -fx-border-width: 0 0 0 2;
+}
+
+/* Divider styling */
+.separator-line {
+  -fx-background-color: #4a4a4a;
+  -fx-pref-height: 1;
+  -fx-padding: 4 0 4 0;
+}
+
+/* Icon and badge styles */
+.icon-label {
+  -fx-font-size: 16pt;
+  -fx-padding: 0 6 0 0;
+  -fx-min-width: 28;
+  -fx-alignment: center;
+  -fx-text-fill: #6ba3d4;
+  -fx-font-weight: bold;
+}
+
+.badge {
+  -fx-background-color: #ff6b6b;
+  -fx-text-fill: white;
+  -fx-font-size: 9pt;
+  -fx-font-weight: bold;
+  -fx-background-radius: 10;
+  -fx-padding: 2 6 2 6;
+  -fx-min-width: 20;
+  -fx-alignment: center;
+}
+
+/* Highlighted text */
+.highlight {
+  -fx-background-color: rgba(255, 212, 59, 0.3);
+  -fx-padding: 2 4 2 4;
+  -fx-background-radius: 2;
+}
+
+/* Separator styling */
+.separator {
+  -fx-background-color: #3a3a3a;
+  -fx-pref-height: 1;
+}
+
+/* Smooth transitions */
+.button,
+.list-cell,
+.tag-selector {
+  -fx-transition: all 0.2s ease;
 }
