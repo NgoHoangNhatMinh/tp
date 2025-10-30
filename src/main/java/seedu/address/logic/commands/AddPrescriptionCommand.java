@@ -32,7 +32,7 @@ public class AddPrescriptionCommand extends Command {
         + PREFIX_DOSAGE + " DOSAGE"
         + PREFIX_FREQUENCY + " FREQUENCY"
         + PREFIX_DURATION + " DURATION" + "\n"
-        + "Example: p-add p/Alex Yeoh m/Methamphetamine d/1000 f/3 dur/365";
+        + "Example: p-add n/Alex Yeoh m/Methamphetamine d/1000 f/3 dur/365";
 
     public static final String MESSAGE_SUCCESS = "New prescription added: %1$s";
 
