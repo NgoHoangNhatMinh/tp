@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -10,6 +11,8 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Patient;
+import seedu.address.model.prescription.HavingPatientIdPredicate;
+import seedu.address.model.prescription.Prescription;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
@@ -40,9 +43,14 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Patient personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePatient(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
+        Patient patientToDelete = lastShownList.get(targetIndex.getZeroBased());
+        model.updateFilteredPrescriptionList(new HavingPatientIdPredicate(patientToDelete.getName().fullName));
+        List<Prescription> prescriptionsToDelete = new ArrayList<>(model.getFilteredPrescriptionList());
+        for (Prescription p : prescriptionsToDelete) {
+            model.deletePrescription(p);
+        }
+        model.deletePatient(patientToDelete);
+        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(patientToDelete)));
     }
 
     @Override
