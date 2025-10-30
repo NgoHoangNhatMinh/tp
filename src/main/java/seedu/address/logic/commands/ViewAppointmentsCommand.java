@@ -23,9 +23,9 @@ public class ViewAppointmentsCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows appointments for a patient, "
             + "sorted by date-time.\n"
-            + "Parameters: p/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]\n"
-            + "Example: " + COMMAND_WORD + " p/John Doe\n"
-            + "Example: " + COMMAND_WORD + " p/John Doe from/2025-01-01 to/2025-12-31";
+            + "Parameters: n/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]\n"
+            + "Example: " + COMMAND_WORD + " n/John Doe\n"
+            + "Example: " + COMMAND_WORD + " n/John Doe from/2025-01-01 to/2025-12-31";
 
     public static final String MESSAGE_PATIENT_NOT_FOUND = "Patient '%1$s' does not exist in the address book.";
     public static final String MESSAGE_SUCCESS_WITH_RANGE =

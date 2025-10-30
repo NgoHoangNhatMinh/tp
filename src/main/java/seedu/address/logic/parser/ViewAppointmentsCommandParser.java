@@ -12,11 +12,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses arguments for {@link ViewAppointmentsCommand}.
  *
- * Format: a-view p/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]
+ * Format: a-view n/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]
  */
 public class ViewAppointmentsCommandParser implements Parser<ViewAppointmentsCommand> {
 
-    private static final Prefix PREFIX_PATIENT = new Prefix("p/");
+    private static final Prefix PREFIX_PATIENT = new Prefix("n/");
     private static final Prefix PREFIX_FROM = new Prefix("from/");
     private static final Prefix PREFIX_TO = new Prefix("to/");
 
