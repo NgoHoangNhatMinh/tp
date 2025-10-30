@@ -16,8 +16,8 @@ public class ViewPatientCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contains "
             + "the entire keyword (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: n/ [KEYWORD]\n"
-            + "Example: " + COMMAND_WORD + " n/ alice kay";
+            + "Parameters:  n/[KEYWORD]\n"
+            + "Example: " + COMMAND_WORD + " n/Alex Yeoh";
 
     private final NameMatchesPredicate predicate;
 

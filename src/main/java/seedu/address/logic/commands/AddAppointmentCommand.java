@@ -16,7 +16,7 @@ public class AddAppointmentCommand extends Command {
 
     public static final String COMMAND_WORD = "a-add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment. \n"
             + "Parameters: "
             + "n/PATIENT_NAME "
             + "d/DOCTOR_NAME "
