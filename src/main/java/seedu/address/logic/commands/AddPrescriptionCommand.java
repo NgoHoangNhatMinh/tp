@@ -27,11 +27,11 @@ public class AddPrescriptionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Prescribes medication to a patient. "
         + "Parameters: "
-        + PREFIX_PATIENT + " PATIENT"
-        + PREFIX_MEDICATION + " MEDICATION"
-        + PREFIX_DOSAGE + " DOSAGE"
-        + PREFIX_FREQUENCY + " FREQUENCY"
-        + PREFIX_DURATION + " DURATION" + "\n"
+        + PREFIX_PATIENT + "PATIENT_NAME "
+        + PREFIX_MEDICATION + "MEDICATION "
+        + PREFIX_DOSAGE + "DOSAGE "
+        + PREFIX_FREQUENCY + "FREQUENCY "
+        + PREFIX_DURATION + "DURATION" + "\n"
         + "Example: p-add n/Alex Yeoh m/Methamphetamine d/1000 f/3 dur/365";
 
     public static final String MESSAGE_SUCCESS = "New prescription added: %1$s";
