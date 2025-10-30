@@ -15,16 +15,17 @@ import seedu.address.model.prescription.UniquePrescriptionList;
 
 /**
  * Wraps all data at the address-book level.
- * Duplicates are not allowed (by .isSamePatient comparison for persons, and equality for appointments).
+ * Duplicates are not allowed (by .isSamePatient comparison for patients, and equality
+ * for appointments and prescriptions).
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePatientList persons;
+    private final UniquePatientList patients;
     private final UniqueAppointmentList appointments;
     private final UniquePrescriptionList prescriptions;
 
     {
-        persons = new UniquePatientList();
+        patients = new UniquePatientList();
         appointments = new UniqueAppointmentList();
         prescriptions = new UniquePrescriptionList();
     }
@@ -45,12 +46,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the current list of persons with the provided list.
+     * Replaces the current list of patients with the provided list.
      *
-     * @param persons the new list of {@link Person} objects to set
+     * @param patients the new list of {@link Patient} objects to set
      */
-    public void setPatients(List<Patient> persons) {
-        this.persons.setPatients(persons);
+    public void setPatients(List<Patient> patients) {
+        this.patients.setPatients(patients);
     }
 
     /**
@@ -85,27 +86,27 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPrescriptions(newData.getPrescriptionList());
     }
 
-    //// person-level operations
+    //// patient-level operations
 
     /**
-     * Checks if the address book contains the specified person.
+     * Checks if the address book contains the specified patient.
      *
-     * @param person the person to check for
-     * @return true if the address book contains the person, false otherwise
+     * @param patient the patient to check for
+     * @return true if the address book contains the patient, false otherwise
      */
-    public boolean hasPatient(Patient person) {
-        requireNonNull(person);
-        return persons.contains(person);
+    public boolean hasPatient(Patient patient) {
+        requireNonNull(patient);
+        return patients.contains(patient);
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds a patient to the address book.
+     * The patient must not already exist in the address book.
      *
-     * @param p the person to add
+     * @param patient the patient to add
      */
-    public void addPatient(Patient p) {
-        persons.add(p);
+    public void addPatient(Patient patient) {
+        patients.add(patient);
     }
 
     /**
@@ -116,17 +117,17 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setPatient(Patient target, Patient editedPatient) {
         requireNonNull(editedPatient);
-        persons.setPatient(target, editedPatient);
+        patients.setPatient(target, editedPatient);
     }
 
     /**
      * Removes the specified patient from the address book.
-     * The person must exist in the address book.
+     * The patient must exist in the address book.
      *
-     * @param key the patient to remove
+     * @param patient the patient to remove
      */
-    public void removePatient(Patient key) {
-        persons.remove(key);
+    public void removePatient(Patient patient) {
+        patients.remove(patient);
     }
 
     //// appointment-level operations
@@ -200,17 +201,17 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Removes the specified prescription from the address book.
      * The prescription must exist in the address book.
      *
-     * @param key the prescription to remove
+     * @param prescription the prescription to remove
      */
-    public void removePrescription(Prescription key) {
-        prescriptions.remove(key);
+    public void removePrescription(Prescription prescription) {
+        prescriptions.remove(prescription);
     }
 
     //// list getters
 
     @Override
     public ObservableList<Patient> getPatientList() {
-        return persons.asUnmodifiableObservableList();
+        return patients.asUnmodifiableObservableList();
     }
 
     @Override
@@ -228,8 +229,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-            .add("persons", persons)
+            .add("patients", patients)
             .add("appointments", appointments)
+            .add("prescriptions", prescriptions)
             .toString();
     }
 
@@ -242,12 +244,13 @@ public class AddressBook implements ReadOnlyAddressBook {
             return false;
         }
         AddressBook otherAddressBook = (AddressBook) other;
-        return persons.equals(otherAddressBook.persons)
-            && appointments.equals(otherAddressBook.appointments);
+        return patients.equals(otherAddressBook.patients)
+            && appointments.equals(otherAddressBook.appointments)
+            && prescriptions.equals(otherAddressBook.prescriptions);
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode() ^ appointments.hashCode();
+        return patients.hashCode() ^ appointments.hashCode() ^ prescriptions.hashCode();
     }
 }
