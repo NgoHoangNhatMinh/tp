@@ -17,15 +17,15 @@ public class AddPatientInfoCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a patient's information.\n"
             + "Parameters: "
-            + "/n \"NAME\" "
-            + "/dob BIRTHDATE "
-            + "/gender GENDER "
-            + "/phone PHONE "
-            + "/email EMAIL "
-            + "/addr \"ADDRESS\" "
-            + "/em \"EMERGENCY_CONTACT\" "
-            + "/id IDENTITY_NUMBER "
-            + "/lang LANGUAGE \n";
+            + "n/NAME "
+            + "dob/BIRTHDATE "
+            + "g/GENDER "
+            + "p/PHONE "
+            + "e/EMAIL "
+            + "a/ADDRESS "
+            + "em/EMERGENCY_CONTACT "
+            + "id/ IDENTITY_NUMBER "
+            + "lang/ LANGUAGE \n";
 
 
     public static final String MESSAGE_SUCCESS = "New patient added: %1$s";
