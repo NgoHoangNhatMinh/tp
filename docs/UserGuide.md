@@ -151,8 +151,8 @@ Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
-* a-add n/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
+* a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp
+* a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
 
 ### Viewing appointments: `a-view`
 
@@ -195,8 +195,8 @@ Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATIO
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* p-add n/John Doe m/Panadol d/500 f/2 dur/3
-* p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365 
+* p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3
+* p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365 
 
 ### Listing all prescriptions: `p-list`
 
@@ -220,7 +220,7 @@ Examples:
 
 Format: `p-delete INDEX`
 
-* Deletes the prescription whose position is at the provided index from the list of prescriptions after a `p-view`
+* Deletes the prescription whose position is at the provided index from the list of prescriptions after a `p-view` or `p-list`
 * Can only be used if a list of prescriptions is displayed
 
 Examples:
@@ -303,29 +303,29 @@ _Details coming soon ..._
 
 ### Patient information commands
 
-| Action | Format, Examples |
-|---|---|
+| Action | Format, Examples                                                                                                                                                                                                                                                         |
+|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add Patient Information** | `i-add n/PATIENT_NAME dob/BIRTHDAY g/GENDER p/PHONE [e/EMAIL a/ADDRESS] em/EMERGENCY id/ID_NUMBER lang/LANGUAGE` <br> e.g., `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 id/S1234567A lang/English` |
-| **View Patient Information** | `i-view KEYWORD [MORE_KEYWORDS]` <br> e.g., `i-view n/alice kay` |
-| **Delete Patient Information** | `i-delete n/PATIENT_NAME` <br> e.g., `i-delete n/John Tan` |
+| **View Patient Information** | `i-view KEYWORD [MORE_KEYWORDS]` <br> e.g., `i-view n/Alex Yeoh`                                                                                                                                                                                                         |
+| **Delete Patient Information** | `i-delete n/PATIENT_NAME` <br> e.g., `i-delete n/Alex Yeoh`                                                                                                                                                                                                              |
 
 ---
 
 ### Appointment commands
 
-| Action | Format, Examples |
-|---|---|
-| **Add Appointment** | `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]` <br> e.g., `a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp` |
-| **View Appointment** | `a-view n/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]` <br> e.g., `a-view n/John Doe from/2025-01-01 to/2025-12-31` |
-| **Delete Appointment** | `a-delete n/PATIENT_NAME t/YYYY-MM-DD` <br> e.g., `a-delete n/John Tan t/2025-12-25 09` |
+| Action | Format, Examples                                                                                                                        |
+|---|-----------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Appointment** | `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]` <br> e.g., `a-add n/Bernice Yu d/Dr Wee t/2025-11-11 14:00 note/Fp` |
+| **View Appointment** | `a-view n/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]` <br> e.g., `a-view n/Bernice Yu from/2025-01-01 to/2025-12-31`                |
+| **Delete Appointment** | `a-delete n/PATIENT_NAME t/YYYY-MM-DD` <br> e.g., `a-delete n/Bernice Yu t/2025-12-25 09`                                               |
 
 ---
 
 ### Prescription commands
 
-| Action | Format, Examples |
-|---|---|
-| **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE]` <br> e.g., `p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365` |
-| **View Prescription (for a patient)** | `p-view n/PATIENT_NAME` <br> e.g., `p-view n/Alex Yeoh` |
-| **List all Prescriptions** | `p-list` |
-| **Delete Prescription** | `p-delete INDEX` <br> e.g., `p-delete 3` |
+| Action | Format, Examples                                                                                                                                                      |
+|---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE]` <br> e.g., `p-add n/Charlotte Oliveiro m/Methamphetamine d/1000 f/3 dur/365` |
+| **View Prescription (for a patient)** | `p-view n/PATIENT_NAME` <br> e.g., `p-view n/Alex Yeoh`                                                                                                               |
+| **List all Prescriptions** | `p-list`                                                                                                                                                              |
+| **Delete Prescription** | `p-delete INDEX` <br> e.g., `p-delete 3`                                                                                                                              |
