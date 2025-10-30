@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_EMPTY_PATIENT_NAME_FIELD;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PATIENT;
 
@@ -29,7 +30,11 @@ public class ViewPrescriptionsCommandParser implements Parser<ViewPrescriptionsC
                 ViewPrescriptionsCommand.MESSAGE_USAGE));
         }
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT);
-        String patientId = argMultimap.getValue(PREFIX_PATIENT).get();
+        String patientId = argMultimap.getValue(PREFIX_PATIENT).orElse("");
+        if (patientId.trim().equals("")) {
+            throw new ParseException(String.format(MESSAGE_EMPTY_PATIENT_NAME_FIELD,
+                ViewPrescriptionsCommand.MESSAGE_USAGE));
+        }
 
         return new ViewPrescriptionsCommand(new HavingPatientIdPredicate(patientId));
     }

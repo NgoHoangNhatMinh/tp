@@ -22,6 +22,7 @@ public class Messages {
     public static final String MESSAGE_PRESCRIPTION_LISTED_OVERVIEW = "%1$d prescriptions listed!";
     public static final String MESSAGE_INVALID_PRESCRIPTION_DISPLAYED_INDEX =
         "The prescription index provided is invalid";
+    public static final String MESSAGE_EMPTY_PATIENT_NAME_FIELD = "Patient Name cannot be empty! \n%1$s";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
