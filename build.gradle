@@ -77,7 +77,7 @@ application {
 }
 
 shadowJar {
-    archiveFileName = 'addressbook.jar'
+    archiveFileName = 'HospitalContactsXPM.jar'
 }
 
 defaultTasks 'clean', 'test'
