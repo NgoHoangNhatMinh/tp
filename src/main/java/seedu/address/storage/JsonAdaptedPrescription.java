@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.prescription.Prescription;
 
 /**
@@ -56,7 +57,34 @@ public class JsonAdaptedPrescription {
     /**
      * Converts this Jackson-friendly object back into the model's {@code Prescription} object.
      */
-    public Prescription toModelType() {
+    public Prescription toModelType() throws IllegalValueException {
+        if (patientId == null) {
+            throw new IllegalValueException("Patient ID is missing");
+        }
+        if (medicationName == null) {
+            throw new IllegalValueException("Medication name is missing");
+        }
+        if (dosage == null) {
+            throw new IllegalValueException("Dosage is missing");
+        }
+        if (frequency == null) {
+            throw new IllegalValueException("Frequency is missing");
+        }
+        if (duration == null) {
+            throw new IllegalValueException("Duration is missing");
+        }
+
+        // Value range validation for numeric fields
+        if (dosage <= 0) {
+            throw new IllegalValueException("Dosage must be positive");
+        }
+        if (frequency <= 0) {
+            throw new IllegalValueException("Frequency must be positive");
+        }
+        if (duration <= 0) {
+            throw new IllegalValueException("Duration must be positive");
+        }
+
         return new Prescription(patientId, medicationName, dosage, frequency,
             startDate, duration, note);
     }
