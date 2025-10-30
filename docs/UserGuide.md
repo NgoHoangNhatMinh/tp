@@ -289,38 +289,20 @@ _Details coming soon ..._
 ## Command summary
 
 ### General basic commands
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+| Action | Format, Examples |
+|--------|------------------|
+| **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear** | `clear` |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
+| **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
+| **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake` |
+| **List** | `list` |
+| **Help** | `help` |
 
 ### Appointment commands
-Action | Format, Examples
---------|------------------
-**Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp`
-
-[//]: # ()
-[//]: # (### Prescription commands)
-
-[//]: # (Action | Format, Examples)
-
-[//]: # (--------|------------------)
-
-[//]: # (**Add Prescription** | `p-add p/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE n/NOTE]` <br> `e.g., p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo`)
-
-[//]: # (**View Prescription &#40;for a patient&#41;** | `p-view p/PATIENT_NAME` <br> `e.g., p-view p/Alex Yeoh`)
-
-[//]: # (**List all Prescriptions** | `p-list`)
-
-[//]: # (**Delete Prescription** | `p-delete INDEX`<br> e.g., `delete 3`)
-
-[//]: # (**View Appointment** | `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]` <br> `e.g., a-view p/John Doe from/2025-01-01 to/2025-12-31`)
-
+| Action | Format, Examples |
+|--------|------------------|
+| **Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp` |
 
 ### Prescription commands
 
