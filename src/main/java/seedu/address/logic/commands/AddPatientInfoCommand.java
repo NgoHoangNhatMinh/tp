@@ -60,4 +60,9 @@ public class AddPatientInfoCommand extends Command {
                 || (other instanceof AddPatientInfoCommand
                 && toAdd.equals(((AddPatientInfoCommand) other).toAdd));
     }
+
+    @Override
+    public String toString() {
+        return getClass().getCanonicalName() + "{toAdd=" + toAdd + "}";
+    }
 }

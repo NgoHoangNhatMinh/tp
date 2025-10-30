@@ -28,6 +28,7 @@ public class Patient {
      */
     public Patient(Name name, Birthday birthday, String gender, Phone phone, Email email,
                    Address address, String emergency, String id, String lang) {
+        // optional fields: email, address
 
         requireAllNonNull(name, birthday, gender, phone, emergency, id, lang);
         this.name = name;
@@ -40,6 +41,7 @@ public class Patient {
         this.id = id;
         this.lang = lang;
     }
+
 
     /**
      * Temporary constructor to not break the tests.
