@@ -21,8 +21,10 @@ public class UniquePrescriptionList implements Iterable<Prescription> {
     private final ObservableList<Prescription> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
 
+    /**
+     * Constructs an empty UniquePrescriptionList.
+     */
     public UniquePrescriptionList() {
-
     }
 
     /**
@@ -92,7 +94,7 @@ public class UniquePrescriptionList implements Iterable<Prescription> {
      */
     public void setPrescriptions(List<Prescription> prescriptions) {
         requireAllNonNull(prescriptions);
-        if (!prescriptionsAreUnique(prescriptions)) {
+        if (!arePrescriptionsUnique(prescriptions)) {
             throw new DuplicatePrescriptionException();
         }
 
@@ -108,9 +110,11 @@ public class UniquePrescriptionList implements Iterable<Prescription> {
 
     /**
      * Returns true if {@code prescriptions} contains only unique prescriptions.
+     *
+     * @param prescriptions the list of prescriptions to check for uniqueness
+     * @return true if all prescriptions in the list are unique
      */
-
-    public boolean prescriptionsAreUnique(List<Prescription> prescriptions) {
+    private boolean arePrescriptionsUnique(List<Prescription> prescriptions) {
         for (int i = 0; i < prescriptions.size() - 1; i++) {
             for (int j = i + 1; j < prescriptions.size(); j++) {
                 if (prescriptions.get(i).equals(prescriptions.get(j))) {
@@ -125,7 +129,6 @@ public class UniquePrescriptionList implements Iterable<Prescription> {
     public Iterator<Prescription> iterator() {
         return internalList.iterator();
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -151,9 +154,4 @@ public class UniquePrescriptionList implements Iterable<Prescription> {
     public String toString() {
         return internalList.toString();
     }
-
-
-
-
-
 }
