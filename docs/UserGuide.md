@@ -151,8 +151,8 @@ Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp
-* a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
+* `a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp`
+* `a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up`
 
 ### Viewing appointments: `a-view`
 
@@ -180,8 +180,8 @@ Format: `a-delete n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
 * Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
 
 Examples:
-* a-delete n/John Doe t/2025-11-11 14
-* a-delete n/Betsy Crowe t/2025-12-01 09
+* `a-delete n/John Doe t/2025-11-11 14`
+* `a-delete n/Betsy Crowe t/2025-12-01 09`
 
 ### Adding a prescription: `p-add`
 
@@ -195,8 +195,8 @@ Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATIO
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
-* p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3
-* p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365 
+* `p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3`
+* `p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365`
 
 ### Listing all prescriptions: `p-list`
 
@@ -225,7 +225,7 @@ Format: `p-delete INDEX`
 
 Examples:
 
-* p-delete 1: Deletes the first prescription in the list
+* `p-delete 1`: Deletes the first prescription in the list
 
 ### View doctors: `doctors`
 
