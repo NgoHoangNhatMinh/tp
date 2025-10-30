@@ -20,7 +20,7 @@ public class JsonAdaptedPrescription {
     private final String note;
 
     /**
-     * Constructs a {@code JsonAdaptedPrescription} with the given person details.
+     * Constructs a {@code JsonAdaptedPrescription} with the given prescription details.
      */
     @JsonCreator
     public JsonAdaptedPrescription(@JsonProperty("patientId") String patientId,
@@ -41,7 +41,7 @@ public class JsonAdaptedPrescription {
     }
 
     /**
-     * Converts a given {@code Appointment} into this class for Jackson use.
+     * Converts a given {@code Prescription} into this class for Jackson use.
      */
     public JsonAdaptedPrescription(Prescription source) {
         this.patientId = source.getPatientId();
@@ -54,7 +54,7 @@ public class JsonAdaptedPrescription {
     }
 
     /**
-     * Converts this Jackson-friendly object back into the model's {@code Appointment} object.
+     * Converts this Jackson-friendly object back into the model's {@code Prescription} object.
      */
     public Prescription toModelType() {
         return new Prescription(patientId, medicationName, dosage, frequency,
