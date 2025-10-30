@@ -28,6 +28,7 @@ public class Patient {
      */
     public Patient(Name name, Birthday birthday, String gender, Phone phone, Email email,
                    Address address, String emergency, String id, String lang) {
+        // optional fields: email, address
 
         requireAllNonNull(name, birthday, gender, phone, emergency, id, lang);
         this.name = name;
@@ -40,6 +41,7 @@ public class Patient {
         this.id = id;
         this.lang = lang;
     }
+
 
     /**
      * Temporary constructor to not break the tests.
@@ -139,9 +141,9 @@ public class Patient {
 
     @Override
     public String toString() {
-        return String.format("Patient[" + getName() + birthday + "gender=%s, id=%s, "
-                        + getPhone() + getEmail() + getAddress() + "emergency=%s, language=%s]",
-                gender, id, emergency, lang);
+        return String.format("Patient[Name: " + getName() + ", Birthday: " + birthday + ", Gender: %s, ID: %s, Phone: "
+                        + getPhone() + ", Email: " + getEmail() + ", Address: " + getAddress()
+                        + ", Emergency: %s, Language: %s.]", gender, id, emergency, lang);
     }
 
 }

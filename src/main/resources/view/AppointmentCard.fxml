@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="cardPane" xmlns:fx="http://javafx.com/fxml"
+      spacing="10" styleClass="cardPane">
+
+    <VBox spacing="3">
+        <Label fx:id="patient" styleClass="cell-big-label"/>
+        <Label fx:id="doctor" styleClass="cell-small-label"/>
+        <Label fx:id="datetime" styleClass="cell-small-label"/>
+        <Label fx:id="note" styleClass="cell-small-label"/>
+    </VBox>
+</HBox>

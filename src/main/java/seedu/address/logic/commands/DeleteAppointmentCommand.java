@@ -21,8 +21,8 @@ public class DeleteAppointmentCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the appointment identified by the patient name and time created used in the "
             + "appointment list.\n"
-            + "Parameters: p/PATIENT_NAME (full name) t/DATE_TIME(yyyy-MM-dd HH)\n"
-            + "Example: " + COMMAND_WORD + " p/John Tan t/2025-11-11 14";
+            + "Parameters: n/PATIENT_NAME (full name) t/DATE_TIME(yyyy-MM-dd HH)\n"
+            + "Example: " + COMMAND_WORD + " n/John Tan t/2025-11-11 14";
 
     public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Appointment deleted: %1$s";
     public static final String MESSAGE_APPOINTMENT_NOT_FOUND = "No appointment found for patient '%1$s' at time '%2$s'";

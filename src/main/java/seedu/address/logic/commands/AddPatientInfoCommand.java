@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -39,6 +40,12 @@ public class AddPatientInfoCommand extends Command {
      */
     public AddPatientInfoCommand(Patient patient) {
         requireNonNull(patient);
+        checkArgument(!patient.getName().fullName.trim().isEmpty(), "Name cannot be empty");
+        checkArgument(!patient.getPhone().value.trim().isEmpty(), "Phone cannot be empty");
+        checkArgument(!patient.getGender().trim().isEmpty(), "Gender cannot be empty");
+        checkArgument(!patient.getEmergency().trim().isEmpty(), "Emergency contact cannot be empty");
+        checkArgument(!patient.getId().trim().isEmpty(), "ID cannot be empty");
+        checkArgument(!patient.getLang().trim().isEmpty(), "Language cannot be empty");
         this.toAdd = patient;
     }
 
@@ -59,5 +66,10 @@ public class AddPatientInfoCommand extends Command {
         return other == this
                 || (other instanceof AddPatientInfoCommand
                 && toAdd.equals(((AddPatientInfoCommand) other).toAdd));
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getCanonicalName() + "{toAdd=" + toAdd + "}";
     }
 }

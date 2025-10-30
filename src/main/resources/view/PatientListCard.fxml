@@ -40,6 +40,26 @@
         <Label text="✉" styleClass="icon-label" />
         <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       </HBox>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="◷" styleClass="icon-label" />
+        <Label fx:id="birthday" styleClass="cell_small_label" text="\$birthday" />
+      </HBox>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="⚥" styleClass="icon-label" />
+        <Label fx:id="gender" styleClass="cell_small_label" text="\$gender" />
+      </HBox>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="⚠" styleClass="icon-label" />
+        <Label fx:id="emergency" styleClass="cell_small_label" text="\$emergency" />
+      </HBox>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="◈" styleClass="icon-label" />
+        <Label fx:id="patientId" styleClass="cell_small_label" text="\$patientId" />
+      </HBox>
+      <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="⊕" styleClass="icon-label" />
+        <Label fx:id="language" styleClass="cell_small_label" text="\$language" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>

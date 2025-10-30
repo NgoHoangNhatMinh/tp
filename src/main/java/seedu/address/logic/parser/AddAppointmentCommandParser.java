@@ -15,7 +15,7 @@ import seedu.address.model.appointment.Appointment;
  */
 public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand> {
 
-    private static final Prefix PREFIX_APPT_PATIENT = new Prefix("p/");
+    private static final Prefix PREFIX_APPT_PATIENT = new Prefix("n/");
     private static final Prefix PREFIX_APPT_DOCTOR = new Prefix("d/");
     private static final Prefix PREFIX_APPT_TIME = new Prefix("t/");
     private static final Prefix PREFIX_APPT_NOTE = new Prefix("note/");
@@ -25,7 +25,6 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
 
     @Override
     public AddAppointmentCommand parse(String raw) throws ParseException {
-        // ✅ Key fix: prepend space for correct tokenization
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
                 " " + raw, PREFIX_APPT_PATIENT, PREFIX_APPT_DOCTOR, PREFIX_APPT_TIME, PREFIX_APPT_NOTE);
 

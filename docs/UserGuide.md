@@ -79,6 +79,16 @@ Shows a list of all patients in the address book.
 
 Format: `list`
 
+### View information of a patient: `i-view`
+
+Format: `i-view p/PATIENT_NAME`
+
+Views all information about a patient by the provided keyword.
+
+Examples:
+
+* `i-view p/Alex Yeoh` Views information for patient with the keyword "Alex Yeoh" in their name
+
 ### Adding information of a patient: `i-add`
 
 Adds a patient to the address book.
@@ -86,14 +96,14 @@ Adds a patient to the address book.
 Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
 
 * Add personal information of a new patient.
-* Compulsory fields: name, birthday, gender, phone, emergency, id, lang. 
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang.
 * The date for birthday must follow the format YYYY-MM-DD.
 * Currently, the app does not allow duplication in names.
 
 Examples:
-* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 
+* `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567
     id/S1234567A lang/English`
-* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321 
+* `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321
     id/T9876543B lang/Chinese`
 
 ### Editing a patient : `edit`
@@ -127,24 +137,6 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd patient in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
 
-### Locating patients by name: `find`
-
-Finds patients whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* patients matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
-
 ### Adding an appointment : `a-add`
 
 Schedules a new appointment for a patient with a doctor.
@@ -160,13 +152,29 @@ Examples:
 * a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
 * a-add p/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
 
+### Viewing appointments: `a-view`
+
+Displays all appointments scheduled for a specific patient, optionally filtered by a date range.
+
+Format: `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]`
+
+* Shows all appointments associated with the specified patient.
+* Optional to include a from and/or to date to filter appointments within a specific date range.
+* If no date range is provided, all appointments for the patient will be shown.
+* The patient must already exist in the address book.
+
+Examples:
+* `a-view p/John Doe` Displays all appointments for John Doe.
+* `a-view p/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
+* between 1 January 2025 and 31 December 2025
+
 ### Delete patient appointments: `a-delete`
 
 Delete an existing patient appointment from address book.
 
 Format: `a-delete p/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
 
-* Delete an existing patient appointment by patient name and appointment time. 
+* Delete an existing patient appointment by patient name and appointment time.
 * Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
 
 Examples:
@@ -191,6 +199,12 @@ Examples:
 * p-add p/John Doe m/Panadol d/500 f/2 dur/3
 * p-add p/Walter White m/Methamphetamine d/1000 f/3 dur/365 n/Yo
 
+### Listing all prescriptions: `p-list`
+
+Format: `p-list`
+
+* Lists all prescriptions for any patient
+
 ### Viewing all prescriptions for a given patient: `p-view`
 
 Checks a patient's prescription information.
@@ -212,7 +226,17 @@ Format: `p-delete INDEX`
 
 Examples:
 
-* `p-delete 1` Deletes the first prescription in the list
+* p-delete 1: Deletes the first prescription in the list
+
+### View doctors: `doctors`
+
+Format: `doctors`
+
+View the list of doctors available
+
+Examples:
+
+* `doctors`
 
 ### Clearing all entries : `clear`
 
@@ -235,7 +259,10 @@ AddressBook data are saved in the hard disk automatically after any command that
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<br>
+<br>
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
@@ -262,17 +289,44 @@ _Details coming soon ..._
 ## Command summary
 
 ### General basic commands
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+
+| Action     | Format, Examples |
+|------------|--|
+| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**  | `clear` |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3` |
+| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com` |
+| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., ` |
+| **List**   | `list` |
+| **Help**   | `help` |
+
+---
+
+### Patient information commands
+
+| Action | Format, Examples |
+|---|---|
+| **Add Patient Information** | `i-add n/PATIENT_NAME dob/BIRTHDAY g/GENDER p/PHONE [e/EMAIL a/ADDRESS] em/EMERGENCY id/ID_NUMBER lang/LANGUAGE` <br> e.g., `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 id/S1234567A lang/English` |
+| **View Patient Information** | `i-view KEYWORD [MORE_KEYWORDS]` <br> e.g., `i-view n/alice kay` |
+| **Delete Patient Information** | `i-delete n/PATIENT_NAME` <br> e.g., `i-delete n/John Tan` |
+
+---
 
 ### Appointment commands
-Action | Format, Examples
---------|------------------
-**Add Appointment** | `a-add p/PATIENT_NAME d/DOCTOR_NAME dt/YYYY-MM-DD HH:MM [note/NOTE]` <br> `e.g., a-add p/John Doe d/Dr Wee dt/2025-11-11 14:00 note/Fp`
+
+| Action | Format, Examples |
+|---|---|
+| **Add Appointment** | `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]` <br> e.g., `a-add n/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp` |
+| **View Appointment** | `a-view n/PATIENT_NAME [from/YYYY-MM-DD] [to/YYYY-MM-DD]` <br> e.g., `a-view n/John Doe from/2025-01-01 to/2025-12-31` |
+| **Delete Appointment** | `a-delete n/PATIENT_NAME t/YYYY-MM-DD` <br> e.g., `a-delete n/John Tan t/2025-12-25 09` |
+
+---
+
+### Prescription commands
+
+| Action | Format, Examples |
+|---|---|
+| **Add Prescription** | `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION [s/STARTDATE]` <br> e.g., `p-add n/Walter White m/Methamphetamine d/1000 f/3 dur/365` |
+| **View Prescription (for a patient)** | `p-view n/PATIENT_NAME` <br> e.g., `p-view n/Alex Yeoh` |
+| **List all Prescriptions** | `p-list` |
+| **Delete Prescription** | `p-delete INDEX` <br> e.g., `p-delete 3` |
