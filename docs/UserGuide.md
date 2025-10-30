@@ -152,6 +152,22 @@ Examples:
 * a-add p/John Doe d/Dr Wee t/2025-11-11 14:00 note/Fp
 * a-add p/Betsy Crowe d/Dr Tan t/2025-12-01 09:30 note/Annual check-up
 
+### Viewing appointments: `a-view`
+
+Displays all appointments scheduled for a specific patient, optionally filtered by a date range.
+
+Format: `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]`
+
+* Shows all appointments associated with the specified patient.
+* Optional to include a from and/or to date to filter appointments within a specific date range.
+* If no date range is provided, all appointments for the patient will be shown.
+* The patient must already exist in the address book.
+
+Examples:
+* `a-view p/John Doe` Displays all appointments for John Doe.
+* `a-view p/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
+* between 1 January 2025 and 31 December 2025
+
 ### Delete patient appointments: `a-delete`
 
 Delete an existing patient appointment from address book.
@@ -293,3 +309,4 @@ Action | Format, Examples
 **View Prescription (for a patient)** | `p-view p/PATIENT_NAME` <br> `e.g., p-view p/Alex Yeoh`
 **List all Prescriptions** | `p-list`
 **Delete Prescription** | `p-delete INDEX`<br> e.g., `delete 3`
+**View Appointment** | `a-view p/<patient_name> [from/<YYYY-MM-DD>] [to/<YYYY-MM-DD>]` <br> `e.g., a-view p/John Doe from/2025-01-01 to/2025-12-31`

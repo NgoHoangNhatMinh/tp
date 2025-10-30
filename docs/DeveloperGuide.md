@@ -81,7 +81,7 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Patient` `Appointment` object residing in the `Model`.
 
 ### Logic component
 
@@ -114,6 +114,9 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+* The appointment commands work by first routing their respective command parsers e.g. `AddAppointmentCommandParse`  to construct `AddAppointmentCommand` and `ViewAppointmentsCommand` objects.
+* On execution, the `AddAppointmentCommand` objects validates the appointment before appending the `Appointment` to the model.
+
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
@@ -126,6 +129,9 @@ The `Model` component,
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+
+* In addition to storing patients, the model now maintains a list of Appointment objects in a UniqueAppointmentList.
+* This list is exposed through a filtered and sorted ObservableList<Appointment>, allowing the UI to automatically update when appointment data changes.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
@@ -276,6 +282,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | delete a patient's appointment                | remove entries that I no longer need                                   |
 | `* * *`  | user                                       | view patient's payment information          |               |
 | `* *`    | user                                       | generate invoice   | can give patients the receipt of their payment               |
+| `* *`      | user | view appointments between specific dates           | focus on recent appointments                                                 |
 | `* *`      | user | export patient's data to Excel           | can have a spreadsheet version of the data                                                 |
 
 *{More to be added}*

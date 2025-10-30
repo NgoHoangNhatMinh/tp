@@ -22,6 +22,10 @@ Class Name
 Class Phone
 Class Tag
 
+Class UniqueAppointmentList
+Class Appointment
+Class AppointmentDateTime
+
 Class I #FFFFFF
 }
 
@@ -47,8 +51,13 @@ Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
 
+AddressBook *--> "1" UniqueAppointmentList
+UniqueAppointmentList --> "~* all" Appointment
+Appointment *--> AppointmentDateTime
+
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
+UniqueAppointmentList -[hidden]right-> Appointment
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
