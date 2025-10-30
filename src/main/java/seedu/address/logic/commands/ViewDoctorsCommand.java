@@ -8,7 +8,7 @@ import seedu.address.model.Model;
  */
 
 public class ViewDoctorsCommand extends Command {
-    public static final String COMMAND_WORD = "viewdoctors";
+    public static final String COMMAND_WORD = "doctors";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": View all doctors available. ";
 
