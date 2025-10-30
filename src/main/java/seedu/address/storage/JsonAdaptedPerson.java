@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Birthday;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Patient;
@@ -27,6 +28,11 @@ class JsonAdaptedPatient {
     private final String phone;
     private final String email;
     private final String address;
+    private final String birthday;
+    private final String gender;
+    private final String emergency;
+    private final String id;
+    private final String lang;
 
 
     /**
@@ -34,13 +40,37 @@ class JsonAdaptedPatient {
      */
     @JsonCreator
     public JsonAdaptedPatient(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address) {
+                              @JsonProperty("email") String email, @JsonProperty("address") String address,
+                              @JsonProperty("birthday") String birthday, @JsonProperty("gender") String gender,
+                              @JsonProperty("emergency") String emergency, @JsonProperty("id") String id,
+                              @JsonProperty("lang") String lang) {
+
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.emergency = emergency;
+        this.id = id;
+        this.lang = lang;
 
     }
+    //
+    //@JsonCreator
+    //public JsonAdaptedPatient(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
+    //                          @JsonProperty("email") String email, @JsonProperty("address") String address) {
+    //
+    //    this.name = name;
+    //    this.phone = phone;
+    //    this.email = email;
+    //    this.address = address;
+    //    this.birthday = "";
+    //    this.gender = "";
+    //    this.emergency = "";
+    //    this.id = "";
+    //    this.lang = "";
+    //}
 
     /**
      * Converts a given {@code Patient} into this class for Jackson use.
@@ -50,7 +80,11 @@ class JsonAdaptedPatient {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-
+        birthday = source.getBirthday().toString();
+        gender = source.getGender();
+        emergency = source.getEmergency();
+        id = source.getId();
+        lang = source.getLang();
     }
 
     /**
@@ -94,7 +128,29 @@ class JsonAdaptedPatient {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Patient(modelName, modelPhone, modelEmail, modelAddress);
+
+        if (birthday == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "birthday"));
+        }
+
+        if (gender == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "gender"));
+        }
+
+        if (emergency == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "emergency contact"));
+        }
+
+        if (id == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "ID"));
+        }
+
+        if (lang == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "language"));
+        }
+
+        return new Patient(modelName, new Birthday(birthday), gender, modelPhone, modelEmail,
+                modelAddress, emergency, id, lang);
     }
 
 }
