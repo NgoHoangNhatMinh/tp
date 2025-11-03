@@ -160,7 +160,7 @@ Examples:
 
 Delete an existing patient appointment from address book.
 
-Format: `a-delete n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
+Format: `a-delete n/PATIENT_NAME t/YYYY-MM-DD HH`
 
 * Delete an existing patient appointment by patient name and appointment time.
 * Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
