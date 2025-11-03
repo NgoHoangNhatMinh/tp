@@ -4,7 +4,10 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.NameMatchesPredicate;
+import seedu.address.model.person.exceptions.PatientNotFoundException;
 import seedu.address.model.prescription.HavingPatientIdPredicate;
 
 /**
@@ -19,14 +22,20 @@ public class ViewPrescriptionsCommand extends Command {
         + "Example: " + COMMAND_WORD + " n/Alex Yeoh";
 
     private final HavingPatientIdPredicate predicate;
+    private final NameMatchesPredicate predicate2;
 
-    public ViewPrescriptionsCommand(HavingPatientIdPredicate predicate) {
+    public ViewPrescriptionsCommand(HavingPatientIdPredicate predicate, NameMatchesPredicate predicate2) {
         this.predicate = predicate;
+        this.predicate2 = predicate2;
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        model.updateFilteredPatientList(predicate2);
+        if(model.getFilteredPatientList().isEmpty()) {
+            throw new CommandException("Patient Not Found in AddressBook!");
+        };
         model.updateFilteredPrescriptionList(predicate);
         return new CommandResult(
             String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW, model.getFilteredPrescriptionList().size()),
@@ -45,7 +54,8 @@ public class ViewPrescriptionsCommand extends Command {
         }
 
         ViewPrescriptionsCommand otherViewPrescriptionCommand = (ViewPrescriptionsCommand) other;
-        return predicate.equals(otherViewPrescriptionCommand.predicate);
+        return predicate.equals(otherViewPrescriptionCommand.predicate)
+            && predicate2.equals((otherViewPrescriptionCommand.predicate2));
     }
 
     @Override
