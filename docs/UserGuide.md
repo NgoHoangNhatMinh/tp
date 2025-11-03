@@ -112,34 +112,18 @@ Examples:
 * `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321
     id/T9876543B lang/Chinese`
 
-### Deleting a patient : `delete`
+### Deleting a patient : `i-delete`
 
 Deletes the specified patient from the address book.
 
-Format: `delete INDEX`
+Format: `delete n/ PATIENT_NAME`
 
-* Deletes the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed patient list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd patient in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
-
-### Adding an appointment : `a-add`
-
-Schedules a new appointment for a patient with a doctor.
-
-Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
-
-* Creates a new appointment record for the specified patient and doctor.
-* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
-* The date and time must follow the format YYYY-MM-DD HH:MM.
-* The patient must already exist in the address book before scheduling an appointment.
+* Deletes the patient with the specified PATIENT_NAME.
+* The PATIENT_NAME is case-sensitive.
 
 Examples:
-* `a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp`
-* `a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up`
+* `list` displays 'Alex Yeoh' in the display.
+* 'i-delete n/Alex Yeoh' will delete Alex Yeoh from the list.
 
 ### Viewing appointments: `a-view`
 
@@ -157,6 +141,21 @@ Examples:
 * `a-view n/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
 * between 1 January 2025 and 31 December 2025
 
+### Adding an appointment : `a-add`
+
+Schedules a new appointment for a patient with a doctor.
+
+Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
+
+* Creates a new appointment record for the specified patient and doctor.
+* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
+* The date and time must follow the format YYYY-MM-DD HH:MM.
+* The patient must already exist in the address book before scheduling an appointment.
+
+Examples:
+* `a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp`
+* `a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up`
+
 ### Delete patient appointments: `a-delete`
 
 Delete an existing patient appointment from address book.
@@ -169,21 +168,6 @@ Format: `a-delete n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
 Examples:
 * `a-delete n/John Doe t/2025-11-11 14`
 * `a-delete n/Betsy Crowe t/2025-12-01 09`
-
-### Adding a prescription: `p-add`
-
-Prescribe medication for a patient.
-
-Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION`
-
-* Creates a new medication record for the specified patient.
-* The DOSAGE is in milligrams.
-* The DURATION is in days.
-* The patient must already exist in the address book before scheduling an appointment.
-
-Examples:
-* `p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3`
-* `p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365`
 
 ### Listing all prescriptions: `p-list`
 
@@ -202,6 +186,21 @@ Views all prescriptions listed in a similar UI style to Patients in `list`
 Examples:
 
 * `p-view n/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
+
+### Adding a prescription: `p-add`
+
+Prescribe medication for a patient.
+
+Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION`
+
+* Creates a new medication record for the specified patient.
+* The DOSAGE is in milligrams.
+* The DURATION is in days.
+* The patient must already exist in the address book before scheduling an appointment.
+
+Examples:
+* `p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3`
+* `p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365`
 
 ### Delete a prescription: `p-delete`
 
@@ -279,7 +278,6 @@ _Details coming soon ..._
 | Action     | Format, Examples                                                                                                                                             |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Clear**  | `clear`                                                                                                                                                      |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                          |
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]` <br> e.g.,                                                                                                                    |
 | **List**   | `list`                                                                                                                                                       |
 | **Help**   | `help`                                                                                                                                                       |
