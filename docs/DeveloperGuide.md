@@ -275,15 +275,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | user                                   | view all patient's appointments         | see a complete list of appointments for a given patient.                 |
-| `* * *`  | user                                       | add a patient's appointment               |                                                                        |
-| `* * *`  | user                                       | delete a patient's appointment                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | view patient's payment information          |               |
-| `* *`    | user                                       | generate invoice   | can give patients the receipt of their payment               |
-| `* *`      | user | view appointments between specific dates           | focus on recent appointments                                                 |
-| `* *`      | user | export patient's data to Excel           | can have a spreadsheet version of the data                                                 |
+| Priority | As a …​                                    | I want to …​                    | So that I can…​                                            |
+| -------- | ------------------------------------------ |---------------------------------|------------------------------------------------------------|
+| `* * *`  | user                                   | view all patients               | see a complete list of all possible patient's information. |
+| `* * *`  | user                                       | add a patient's information     |                                                            |
+| `* * *`  | user                                       | delete a patient's information  | remove entries that I no longer need                       |
+| `* * *`  | user                                   | view all patient's appointments | see a complete list of appointments for a given patient.   |
+| `* * *`  | user                                       | add a patient's appointment     |                                                            |
+| `* * *`  | user                                       | delete a patient's appointment  | remove entries that I no longer need                       |
+| `* * *`  | user                                   | view all patient's prescription | see what I have prescribed to the patient                     |
+| `* * *`  | user                                       | add a patient's prescription    | provide treatment plan for the patient                     |
+| `* * *`  | user                                       | delete a patient's appointment  | remove entries that I no longer need                       |
 
 *{More to be added}*
 
