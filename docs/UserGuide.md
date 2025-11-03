@@ -112,19 +112,6 @@ Examples:
 * `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321
     id/T9876543B lang/Chinese`
 
-### Editing a patient : `edit`
-
-Edits an existing patient in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]`
-
-* Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
-
 ### Deleting a patient : `delete`
 
 Deletes the specified patient from the address book.
@@ -291,10 +278,8 @@ _Details coming soon ..._
 
 | Action     | Format, Examples                                                                                                                                             |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS`  <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
 | **Clear**  | `clear`                                                                                                                                                      |
 | **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                          |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                            |
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]` <br> e.g.,                                                                                                                    |
 | **List**   | `list`                                                                                                                                                       |
 | **Help**   | `help`                                                                                                                                                       |
