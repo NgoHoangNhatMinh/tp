@@ -21,9 +21,6 @@ public class HavingPatientIdPredicate implements Predicate<Prescription> {
         }
 
         String prescriptionPatientId = prescription.getPatientId();
-        if (prescriptionPatientId == null) {
-            return patientId == null;
-        }
 
         return prescriptionPatientId.toLowerCase().contains(patientId.toLowerCase());
     }
