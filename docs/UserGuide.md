@@ -25,7 +25,7 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 
 
 ![Ui_list](images/UI_list_patients.png)
-*list patients
+*list patients*
 
 ![Ui_pres](images/UI_list_prescriptions.png)
 *list prescriptions*
