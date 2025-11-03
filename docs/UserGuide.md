@@ -196,6 +196,7 @@ Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATIO
 * Creates a new medication record for the specified patient.
 * The DOSAGE is in milligrams.
 * The DURATION is in days.
+* The FREQUENCY is in times/day
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
