@@ -1,0 +1,33 @@
+package seedu.hospital.logic.commands;
+
+import seedu.hospital.logic.commands.exceptions.CommandException;
+import seedu.hospital.model.Model;
+
+/**
+ * View the list of doctors available.
+ */
+
+public class ViewDoctorsCommand extends Command {
+    public static final String COMMAND_WORD = "doctors";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": View all doctors available. ";
+
+    public static final String[] DOCTORS = {
+        "Dr. A",
+        "Dr. B",
+        "Dr. C"
+    };
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+        return new CommandResult(showListOfDoctors());
+    }
+
+    private String showListOfDoctors() {
+        String doctors = "";
+        for (int i = 1; i <= DOCTORS.length; i++) {
+            doctors += i + ". " + DOCTORS[i - 1] + "\n";
+        }
+        return doctors;
+    }
+}

@@ -6,7 +6,7 @@ plugins {
     id 'jacoco'
 }
 
-mainClassName = 'seedu.address.Main'
+mainClassName = 'seedu.hospital.Main'
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
@@ -72,7 +72,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'seedu.address.Main'
+    mainClass = 'seedu.hospital.Main'
     applicationDefaultJvmArgs = ['-ea']
 }
 
