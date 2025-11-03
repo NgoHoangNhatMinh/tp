@@ -7,7 +7,6 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameMatchesPredicate;
-import seedu.address.model.person.exceptions.PatientNotFoundException;
 import seedu.address.model.prescription.HavingPatientIdPredicate;
 
 /**
@@ -24,6 +23,11 @@ public class ViewPrescriptionsCommand extends Command {
     private final HavingPatientIdPredicate predicate;
     private final NameMatchesPredicate predicate2;
 
+    /**
+     * Constructor for a ViewPrescription Command
+     * @param predicate predicate to check for Prescriptions having the given patient name
+     * @param predicate2 predicate to check whether patient exists in addressbook
+     */
     public ViewPrescriptionsCommand(HavingPatientIdPredicate predicate, NameMatchesPredicate predicate2) {
         this.predicate = predicate;
         this.predicate2 = predicate2;
@@ -33,9 +37,9 @@ public class ViewPrescriptionsCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.updateFilteredPatientList(predicate2);
-        if(model.getFilteredPatientList().isEmpty()) {
+        if (model.getFilteredPatientList().isEmpty()) {
             throw new CommandException("Patient Not Found in AddressBook!");
-        };
+        }
         model.updateFilteredPrescriptionList(predicate);
         return new CommandResult(
             String.format(Messages.MESSAGE_PRESCRIPTION_LISTED_OVERVIEW, model.getFilteredPrescriptionList().size()),
