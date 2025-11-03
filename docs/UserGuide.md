@@ -16,11 +16,11 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-T17-1/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your HospitalContactsXPM.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+4. Open the command terminal, type `cd path/to/folder` into the folder you put the jar file in, and use the `java -jar hospitalcontactsxpm.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
 
 
@@ -38,9 +38,9 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `i-add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `i-delete n/John Doe` : Deletes the patient with name John Doe.
 
    * `clear` : Deletes all contacts.
 
@@ -57,7 +57,7 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `i-add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
   e.g `n/PATIENT_NAME [note/NOTE]` can be used as `n/John Doe note/follow-up` or as `n/John Doe`.
@@ -112,47 +112,18 @@ Examples:
 * `i-add n/Sarah Lim dob/1985-12-03 g/Female p/91234567 e/sarahlim@email.com a/456 Orchard Road em/David Lim - 87654321
     id/T9876543B lang/Chinese`
 
-### Editing a patient : `edit`
-
-Edits an existing patient in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS]`
-
-* Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
-
-### Deleting a patient : `delete`
+### Deleting a patient : `i-delete`
 
 Deletes the specified patient from the address book.
 
-Format: `delete INDEX`
+Format: `delete n/ PATIENT_NAME`
 
-* Deletes the patient at the specified `INDEX`.
-* The index refers to the index number shown in the displayed patient list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd patient in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st patient in the results of the `find` command.
-
-### Adding an appointment : `a-add`
-
-Schedules a new appointment for a patient with a doctor.
-
-Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
-
-* Creates a new appointment record for the specified patient and doctor.
-* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
-* The date and time must follow the format YYYY-MM-DD HH:MM.
-* The patient must already exist in the address book before scheduling an appointment.
+* Deletes the patient with the specified PATIENT_NAME.
+* The PATIENT_NAME is case-sensitive.
 
 Examples:
-* `a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp`
-* `a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up`
+* `list` displays 'Alex Yeoh' in the display.
+* 'i-delete n/Alex Yeoh' will delete Alex Yeoh from the list.
 
 ### Viewing appointments: `a-view`
 
@@ -170,6 +141,21 @@ Examples:
 * `a-view n/John Doe from/2025-01-01 to/2025-12-31`Displays all appointments for John Doe scheduled
 * between 1 January 2025 and 31 December 2025
 
+### Adding an appointment : `a-add`
+
+Schedules a new appointment for a patient with a doctor.
+
+Format: `a-add n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH:MM [note/NOTE]`
+
+* Creates a new appointment record for the specified patient and doctor.
+* The NOTE field is optional and can include remarks such as visit purpose or follow-up notes.
+* The date and time must follow the format YYYY-MM-DD HH:MM.
+* The patient must already exist in the address book before scheduling an appointment.
+
+Examples:
+* `a-add n/Alex Yeoh d/Dr Wee t/2025-11-11 14:00 note/Fp`
+* `a-add n/Bernice Yu d/Dr Tan t/2025-12-01 09:30 note/Annual check-up`
+
 ### Delete patient appointments: `a-delete`
 
 Delete an existing patient appointment from address book.
@@ -182,21 +168,6 @@ Format: `a-delete n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
 Examples:
 * `a-delete n/John Doe t/2025-11-11 14`
 * `a-delete n/Betsy Crowe t/2025-12-01 09`
-
-### Adding a prescription: `p-add`
-
-Prescribe medication for a patient.
-
-Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION`
-
-* Creates a new medication record for the specified patient.
-* The DOSAGE is in milligrams.
-* The DURATION is in days.
-* The patient must already exist in the address book before scheduling an appointment.
-
-Examples:
-* `p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3`
-* `p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365`
 
 ### Listing all prescriptions: `p-list`
 
@@ -215,6 +186,21 @@ Views all prescriptions listed in a similar UI style to Patients in `list`
 Examples:
 
 * `p-view n/Alex Yeoh` Views all prescriptions for the patient named "Alex Yeoh"
+
+### Adding a prescription: `p-add`
+
+Prescribe medication for a patient.
+
+Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATION`
+
+* Creates a new medication record for the specified patient.
+* The DOSAGE is in milligrams.
+* The DURATION is in days.
+* The patient must already exist in the address book before scheduling an appointment.
+
+Examples:
+* `p-add n/Alex Yeoh m/Panadol d/500 f/2 dur/3`
+* `p-add n/Bernice Yu m/Methamphetamine d/1000 f/3 dur/365`
 
 ### Delete a prescription: `p-delete`
 
@@ -255,7 +241,7 @@ AddressBook data are saved in the hard disk automatically after any command that
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+AddressBook data are saved automatically as a JSON file `[JAR file location]/data/hospitalcontactsxpm.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 <br>
@@ -291,10 +277,7 @@ _Details coming soon ..._
 
 | Action     | Format, Examples                                                                                                                                             |
 |------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS`  <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
 | **Clear**  | `clear`                                                                                                                                                      |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                          |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                            |
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]` <br> e.g.,                                                                                                                    |
 | **List**   | `list`                                                                                                                                                       |
 | **Help**   | `help`                                                                                                                                                       |
