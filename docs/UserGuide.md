@@ -25,7 +25,7 @@ HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to hel
 
 
 ![Ui_list](images/UI_list_patients.png)
-*list patients
+*list patients*
 
 ![Ui_pres](images/UI_list_prescriptions.png)
 *list prescriptions*
@@ -102,7 +102,7 @@ Adds a patient to the address book.
 Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
 
 * Add personal information of a new patient.
-* Compulsory fields: name, birthday, gender, phone, emergency, id, lang.
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang, address.
 * The date for birthday must follow the format YYYY-MM-DD.
 * Currently, the app does not allow duplication in names.
 
@@ -160,7 +160,7 @@ Examples:
 
 Delete an existing patient appointment from address book.
 
-Format: `a-delete n/PATIENT_NAME d/DOCTOR_NAME t/YYYY-MM-DD HH`
+Format: `a-delete n/PATIENT_NAME t/YYYY-MM-DD HH`
 
 * Delete an existing patient appointment by patient name and appointment time.
 * Patient name must be full name. Appointment must follow the format of YYYY-MM-DD HH.
@@ -196,6 +196,7 @@ Format: `p-add n/PATIENT_NAME m/MEDICATION_NAME d/DOSAGE f/FREQUENCY dur/DURATIO
 * Creates a new medication record for the specified patient.
 * The DOSAGE is in milligrams.
 * The DURATION is in days.
+* The FREQUENCY is in times/day
 * The patient must already exist in the address book before scheduling an appointment.
 
 Examples:
