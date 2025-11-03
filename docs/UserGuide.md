@@ -102,7 +102,7 @@ Adds a patient to the address book.
 Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
 
 * Add personal information of a new patient.
-* Compulsory fields: name, birthday, gender, phone, emergency, id, lang.
+* Compulsory fields: name, birthday, gender, phone, emergency, id, lang, address.
 * The date for birthday must follow the format YYYY-MM-DD.
 * Currently, the app does not allow duplication in names.
 
