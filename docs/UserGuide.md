@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to help manage patient details in a high-volume patient environment**. We leverage the optimised nature of AB3 on the Command Line Interface (CLI) so if you can type fast, AB3 retrieves your patient details faster than traditional GUI apps. There still remains the benefits of a Graphical User Interface.
+HospitalAdminProMax is a **desktop app built on AddressBook Level 3 (AB3) to help manage patient details in a high-volume patient environment**. We leverage the optimised speed of AB3 on typing interface so if you can type fast, AB3 retrieves your patient details faster than traditional Mouse-and-Click apps. There still remains the benefits of a visual interface.
 
 
 * Table of Contents
@@ -99,10 +99,10 @@ Examples:
 
 Adds a patient to the address book.
 
-Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY id/ID_NUMBER lang/LANGUAGE`
+Format: `i-add n/NAME dob/BIRTHDAY g/GENDER p/PHONE e/EMAIL a/ADDRESS em/EMERGENCY_CONTACT id/ID_NUMBER lang/LANGUAGE`
 
 * Add personal information of a new patient.
-* Compulsory fields: name, birthday, gender, phone, emergency, id, lang, address.
+* Compulsory fields: name, birthday, gender, phone, emergency contact, id, lang, address.
 * The date for birthday must follow the format YYYY-MM-DD.
 * Currently, the app does not allow duplication in names.
 
@@ -287,11 +287,11 @@ _Details coming soon ..._
 
 ### Patient information commands
 
-| Action | Format, Examples                                                                                                                                                                                                                                                         |
-|---|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Patient Information** | `i-add n/PATIENT_NAME dob/BIRTHDAY g/GENDER p/PHONE [e/EMAIL a/ADDRESS] em/EMERGENCY id/ID_NUMBER lang/LANGUAGE` <br> e.g., `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 id/S1234567A lang/English` |
-| **View Patient Information** | `i-view KEYWORD [MORE_KEYWORDS]` <br> e.g., `i-view n/Alex Yeoh`                                                                                                                                                                                                         |
-| **Delete Patient Information** | `i-delete n/PATIENT_NAME` <br> e.g., `i-delete n/Alex Yeoh`                                                                                                                                                                                                              |
+| Action | Format, Examples                                                                                                                                                                                                                                                                 |
+|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Patient Information** | `i-add n/PATIENT_NAME dob/BIRTHDAY g/GENDER p/PHONE [e/EMAIL a/ADDRESS] em/EMERGENCY_CONTACT id/ID_NUMBER lang/LANGUAGE` <br> e.g., `i-add n/John Tan dob/1990-05-15 g/Male p/98765432 e/johntan@example.com a/123 Main Street em/Jane Tan - 91234567 id/S1234567A lang/English` |
+| **View Patient Information** | `i-view KEYWORD [MORE_KEYWORDS]` <br> e.g., `i-view n/Alex Yeoh`                                                                                                                                                                                                                 |
+| **Delete Patient Information** | `i-delete n/PATIENT_NAME` <br> e.g., `i-delete n/Alex Yeoh`                                                                                                                                                                                                                      |
 
 ---
 
